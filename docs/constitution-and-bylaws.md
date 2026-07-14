@@ -33,8 +33,8 @@ The purposes of the Organization are to:
 
 ## Article IV — Officers
 The elected officers are: **President, Vice President, Secretary, Treasurer,
-Financial Secretary, Historian, Hospitality Chair, and Sergeant-at-Arms.**
-Their duties are defined in the Bylaws.
+Financial Secretary, Historian, Hospitality Chair, Sergeant-at-Arms, and
+Membership Chair.** Their duties are defined in the Bylaws.
 
 ## Article V — Meetings
 1. The **Annual Business Meeting** is held during the family reunion (or by
@@ -73,6 +73,9 @@ amendment was distributed to the family at least [30] days in advance.
    care, ushers, and assigned tables; counts superlatives ballots.
 8. **Sergeant-at-Arms** — maintains order at meetings and events under the
    direction of the chair; supports the Safety Committee.
+9. **Membership Chair** — maintains the membership roll with the Secretary;
+   recruits and welcomes new members; matches volunteer sign-ups to
+   committees so that every committee has 2–5 members assisting its chair.
 
 ## Article 2 — Elections & Terms
 1. Officers are elected at the Annual Business Meeting by majority vote and

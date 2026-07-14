@@ -129,9 +129,10 @@ left = ["Welcome & The Weekend at a Glance", "Our Family History & Trivia",
         "Acknowledgments & Accomplishments", "Family Superlatives — Cast Your Vote!",
         "Tribute to Loved Ones We've Lost", "Family Business: Financial Report",
         "Officers, Robert's Rules & Our Constitution"]
-right = ["Committees & Chair Sign-Ups", "Where We Meet Next — Location Vote",
+right = ["Board Recognition, Committees & Sign-Ups", "Where We Meet Next — Location Vote",
          "Our New Website: hnfamilyreunion.com", "Getting Our Land Back — Where Is My Land",
-         "Scholarship Fund for Our Descendants", "The Family Foundation — Our 501(c)(3)",
+         "Scholarship Fund for Our Descendants", "Helping Hands — Family Hardship Fund",
+         "The Family Foundation — Our 501(c)(3)",
          "The Family Tree Project — Add Yourself!", "Closing & Next Steps"]
 text(s, 0.9, 1.8, 5.9, 5.2, [(f"{i+1}.  {t}", {"size": 16, "space_after": 10}) for i, t in enumerate(left)])
 text(s, 7.0, 1.8, 5.9, 5.2, [(f"{i+10}.  {t}", {"size": 16, "space_after": 10}) for i, t in enumerate(right)])
@@ -346,7 +347,8 @@ officers = [("President", "Miesha", "Presides, sets agenda, speaks for the famil
             ("Financial Secretary", "Aunt Vanessa", "Records all money in, issues receipts, tracks dues"),
             ("Historian", "Shone", "History, archives, yearbook, family tree"),
             ("Hospitality", "Loretta", "Welcome, elders' care, tables & ushers"),
-            ("Sergeant-at-Arms", "Joseph", "Order at meetings & events, safety")]
+            ("Sergeant-at-Arms", "Joseph", "Order at meetings & events, safety"),
+            ("Membership Chair", "[Open — nominate today!]", "Membership roll & recruitment; matches volunteers to committees")]
 tbl = s.shapes.add_table(len(officers) + 1, 3, Inches(0.8), Inches(1.8),
                          Inches(11.7), Inches(4.6)).table
 tbl.columns[0].width = Inches(2.9); tbl.columns[1].width = Inches(2.4)
@@ -362,6 +364,24 @@ for i, row in enumerate(officers, 1):
         f = c.text_frame.paragraphs[0].runs[0].font
         f.size = Pt(12); f.color.rgb = INK; f.bold = (j == 1)
 footer(s, "Our written Constitution & Bylaws (Robert's Rules as parliamentary authority) is ready for adoption at this meeting.")
+
+# ---------------------------------------------------- 16b · RECOGNITION
+s = slide()
+kicker(s, "Family Business · Recognition")
+title(s, "Give Our Board & Committee Members Their Flowers \U0001F44F")
+bullets(s, 0.7, 1.8, 4.0, [
+    "Miesha — President", "Aunt Shirley — Vice President", "Marcelette — Secretary",
+    "Jasmine — Treasurer", "Aunt Vanessa — Financial Secretary", "Shone — Historian",
+    "Loretta — Hospitality", "Joseph — Sergeant-at-Arms"],
+    head="Our current board — thank you!", size=13)
+bullets(s, 4.85, 1.8, 4.0, [
+    "[Add the names of everyone currently serving on a committee — they get recognized here]"],
+    head="Our committee members", size=13, head_color=ORANGE)
+bullets(s, 9.0, 1.8, 3.9, [
+    "MEMBERSHIP CHAIR — a new board seat, open for nominations today",
+    "COMMITTEE MEMBERS — every committee needs 2–5 members to assist its chair; no chair should carry a committee alone"],
+    head="We need YOU", size=13, head_color=RED)
+footer(s, "The Membership Chair keeps the family roll, welcomes new members, and matches volunteers to committees. The Secretary is taking nominations right now.")
 
 # -------------------------------------------------------- 17 · ROBERT'S RULES
 s = slide()
@@ -453,7 +473,7 @@ text(s, 0.7, 1.8, 6.2, 2.6, [
     ("We are partnering with Where Is My Land (whereismyland.com) — an organization that helps Black families research, document, and reclaim land that was taken from them.", {"size": 16, "space_after": 10}),
     ("Step 1: gather deeds, tax records & oral history\nStep 2: fund the RETAINER through reunion fundraising\nStep 3: family volunteers support the research", {"size": 15})])
 bullets(s, 7.2, 1.8, 5.4, [
-    "\U0001F3E1 A share of every fundraiser → the land-back retainer",
+    "\U0001F3E1 A share of every fundraiser → the land-back fund (retainer + renovation & revitalization of our land)",
     "\U0001F331 A share → seed money for future reunions",
     "\U0001F393 A share → the scholarship fund",
     "Exact percentages set by member vote today — chair, entertain a motion!"],
@@ -476,6 +496,29 @@ bullets(s, 7.0, 1.8, 5.6, [
     "Tax-deductible once the 501(c)(3) is approved"],
     head="How we'll fund it", size=15, head_color=RED)
 footer(s, "Goal: award our first scholarship(s) at the next reunion.")
+
+# ---------------------------------------------------- 22b · HARDSHIP FUND
+s = slide()
+kicker(s, "Family Business · New Program")
+title(s, "Helping Hands — the Family Hardship Fund \U0001F91D")
+bullets(s, 0.7, 1.8, 4.0, [
+    "Any descendant, spouse/partner, or child (minors via a guardian) — or apply on behalf of a relative",
+    "Hardship within the past 12 months: medical, job loss, housing/disaster, funeral, caregiving, education emergency",
+    "One award per household per cycle; dues status does NOT affect eligibility"],
+    head="Who can apply", size=13)
+bullets(s, 4.85, 1.8, 4.0, [
+    "Confidential application → Philanthropy & Fundraising Committee scores it",
+    "Rubric: severity & urgency 40% · impact 30% · clarity & completeness 20% · discretion 10%",
+    "3+ independent scorers; household conflicts recuse; officers ratify",
+    "Recipient may stay ANONYMOUS — always their choice"],
+    head="How the recipient is chosen", size=13, head_color=ORANGE)
+bullets(s, 9.0, 1.8, 3.9, [
+    "Applications open January 1 of the reunion year",
+    "Deadline: 30 days before the reunion",
+    "Committee scores by 14 days out; officers ratify by 7",
+    "Award presented at Sunday brunch"],
+    head="Deadlines each cycle", size=13, head_color=RED)
+footer(s, "Apply at hnfamilyreunion.com (Hardship Fund page) or on paper from any officer. Award amount set by the Treasurer's budget each cycle — funded from the fundraising split.")
 
 # ----------------------------------------------------------------- 23 · 501c3
 s = slide()

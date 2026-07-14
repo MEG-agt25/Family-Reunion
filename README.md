@@ -8,10 +8,11 @@ presentation, the code for **hnfamilyreunion.com**, and the governance /
 
 | Path | What it is |
 |---|---|
-| `presentation/index.html` | **The reunion presentation** — a self-contained slide deck (open in any browser; ← → keys to navigate, `P` to print). 24 slides: welcome, family history, trivia, yearbook, Reunion 2024 memories, acknowledgments, superlatives voting, tribute, financial report, officers & Robert's Rules, committee chair sign-ups, next-reunion location options (halfway between Jackson, MS and Cleveland, OH), website plans, Where Is My Land fundraising, scholarships, 501(c)(3) foundation, and the family tree project. |
+| `presentation/index.html` | **The reunion presentation** — a self-contained slide deck (open in any browser; ← → keys to navigate, `P` to print). 28 slides: welcome, weekend schedule, family history, trivia, yearbook, Reunion 2024 memories, acknowledgments, superlatives voting, tribute, financial report, officers & Robert's Rules, board & committee recognition (incl. the new Membership Chair seat), committee chair sign-ups, next-reunion location options, website plans, Where Is My Land fundraising, scholarships, the Helping Hands hardship fund, 501(c)(3) foundation, and the family tree project. |
 | `website/` | **Starter code for hnfamilyreunion.com** — a complete static site, no build step needed. |
 | `presentation/Harris-Nelson-Reunion-2026.pptx` | **Editable PowerPoint version** of the deck (26 slides) — open in PowerPoint or import into Canva to edit names, captions, and numbers. Regenerate anytime with `python3 presentation/build_pptx.py`. |
 | `docs/constitution-and-bylaws.md` | Draft Constitution & Bylaws (Robert's Rules of Order as parliamentary authority) ready for adoption — bracketed items are the family's choices to vote on. |
+| `docs/Hardship-Fund-Application.docx` | Printable Helping Hands hardship application (paper version of hardship.html). |
 | `docs/roberts-rules-quick-guide.md` | One-page Robert's Rules handout for business meetings. |
 | `docs/501c3-roadmap.md` | Step-by-step checklist to form the family foundation in the next few months. |
 | `data/Latest-Family-Tree.ged` | The Ancestry GEDCOM export (July 2026, 3,465 people) — source of truth for tree dates; keep this updated after each Ancestry sync. |
@@ -28,6 +29,7 @@ presentation, the code for **hnfamilyreunion.com**, and the governance /
 | `gallery.html` | Photo gallery + fullscreen auto-playing slideshow of all 123 slides from Reunion 2024 (Cleveland) — "We All We Got… We All We Need!" (photos in `photos/2024/`) |
 | `mildred-tree.html` | **Interactive Mildred Harris branch tree** (1942–2012) built from the Ancestry GEDCOM + written history — "+ add" buttons on every person, weekend additions saved locally and exportable as CSV for the Historian |
 | `constitution.html` | The Constitution & Bylaws as a readable, printable web page |
+| `hardship.html` | Helping Hands hardship fund — program rules, deadlines, rubric, and the confidential application form |
 | `shop.html` | T-shirt orders + registration/dues payment buttons |
 | `give.html` | The three funds: land-back retainer (Where Is My Land), scholarships, seed money + scholarship interest form |
 | `business.html` | Officers, Robert's Rules, financial reports, 501(c)(3) roadmap |
