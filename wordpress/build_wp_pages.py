@@ -3,7 +3,9 @@
 Run from repo root: python3 wordpress/build_wp_pages.py"""
 import re, os
 SITE, OUT = 'website', 'wordpress'
-RAW = 'https://raw.githubusercontent.com/MEG-agt25/Family-Reunion/main/website/'
+# WordPress Media Library base — all photos uploaded there in one batch.
+# If your uploads land in a different month folder, adjust once here and re-run.
+MEDIA = '/wp-content/uploads/2026/07/'
 LINKMAP = {
   'index.html': '/', 'history.html': '/history/', 'tree.html': '/family-tree-form/',
   'committees.html': '/committees/', 'superlatives.html': '/superlatives/',
@@ -35,10 +37,10 @@ def wp_fragment(fname):
     if fname == 'gallery.html':
         for s in re.findall(r'<script>(.*?)</script>', src, re.S):
             frag += '<script>\n' + s + '\n</script>\n'
-    frag = frag.replace("'photos/2024/'", "'" + RAW + "photos/2024/'")
-    frag = frag.replace("'photos/family/'", "'" + RAW + "photos/family/'")
-    frag = frag.replace('src="photos/', 'src="' + RAW + 'photos/')
-    frag = frag.replace('../website/photos/', RAW + 'photos/')
+    frag = frag.replace("'photos/2024/'", "'" + MEDIA + "'")
+    frag = frag.replace("'photos/family/'", "'" + MEDIA + "'")
+    frag = frag.replace('src="photos/2024/', 'src="' + MEDIA).replace('src="photos/family/', 'src="' + MEDIA)
+    
     return frag
 PAGES = ['index.html','history.html','tree.html','committees.html','superlatives.html',
          'gallery.html','shop.html','give.html','business.html','constitution.html',

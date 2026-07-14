@@ -11,9 +11,13 @@ Ultimate Member, WooCommerce, Fluent Forms, Elementor).
   paste ONCE into **Appearance → Customize → Additional CSS**
 - This runbook — page map, menus, registration fields, forms, and products
 
-Photos inside the fragments load from the GitHub repo's raw URLs, so they
-work immediately with no media uploads. (Optionally migrate them to the
-WordPress Media Library later.)
+Photos: the repo is now PRIVATE (done ✅), so the fragments reference the
+WordPress Media Library instead. Upload the owner's
+`Photos-for-WordPress-Media.zip` contents (136 images, unique filenames)
+via **Media → Add New** in a single batch. The fragments assume the upload
+month folder `/wp-content/uploads/2026/07/` — if WordPress puts them
+elsewhere or renames a file, adjust those URLs in the pasted pages
+(they appear only on the Photos page and members-only tree page).
 
 ---
 
@@ -38,15 +42,12 @@ Specifically:
   history of deceased ancestors) — if unsure whether something identifies a
   living person, keep it behind login and ask the owner.
 
-## 0b. Repo hygiene (do this early)
-The GitHub repo is currently PUBLIC and page images hotlink from it.
-1. Upload the photos (from the repo's `website/photos/` folders) to the
-   WordPress **Media Library** and update the image URLs in the pasted
-   pages to the Media Library URLs (search for `raw.githubusercontent`).
-2. Then ask the owner to flip the repo to **Private** (GitHub repo →
-   Settings → General → Danger Zone → Change visibility). The genealogy
-   data files have been removed from the repo, but private is the right
-   resting state for a family repo.
+## 0b. Repo hygiene — status
+✅ The owner has made the GitHub repo private. Genealogy data files were
+removed. One consequence: you (Claude Chrome) can still read the repo in
+the owner's logged-in browser, but the public internet cannot — which is
+why photos must be served from the WordPress Media Library (see the photo
+note above).
 
 ## 1. Paste the stylesheet (once)
 Appearance → Customize → Additional CSS → paste the whole contents of

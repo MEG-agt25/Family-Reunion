@@ -54,7 +54,7 @@
     b.setAttribute('aria-label', 'Family album photo');
     var img = document.createElement('img');
     img.loading = 'lazy';
-    img.src = 'https://raw.githubusercontent.com/MEG-agt25/Family-Reunion/main/website/photos/family/' + name + '.jpg';
+    img.src = '/wp-content/uploads/2026/07/' + name + '.jpg';
     img.alt = 'Family album photo';
     img.style.objectFit = 'contain';
     img.style.background = '#0d1a10';
@@ -72,14 +72,14 @@
     b.setAttribute('aria-label', 'Open photo ' + i);
     var img = document.createElement('img');
     img.loading = 'lazy';
-    img.src = 'https://raw.githubusercontent.com/MEG-agt25/Family-Reunion/main/website/photos/2024/' + i + '.jpg';
+    img.src = '/wp-content/uploads/2026/07/' + i + '.jpg';
     img.alt = 'Reunion 2024 slide ' + i;
     b.appendChild(img);
     b.onclick = (function (n) { return function () { openPlayer(n, false); }; })(i - 1);
     grid.appendChild(b);
   }
   function render() {
-    document.getElementById('stageImg').src = 'https://raw.githubusercontent.com/MEG-agt25/Family-Reunion/main/website/photos/2024/' + (idx + 1) + '.jpg';
+    document.getElementById('stageImg').src = '/wp-content/uploads/2026/07/' + (idx + 1) + '.jpg';
     document.getElementById('playerCount').textContent = (idx + 1) + ' / ' + TOTAL;
   }
   function openPlayer(n, autoplay) {
