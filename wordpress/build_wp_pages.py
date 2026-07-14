@@ -14,6 +14,7 @@ LINKMAP = {
   'hardship.html': '/hardship-fund/', 'features.html': '/features/', 'account.html': '/register/',
   'history-map.html': '/family-journey/',
   'mildred-tree.html': '/members/interactive-tree/',
+  'financial-reports.html': '/board/financial-reports/',
 }
 def wp_fragment(fname):
     src = open(os.path.join(SITE, fname)).read()
@@ -45,7 +46,7 @@ def wp_fragment(fname):
     return frag
 PAGES = ['index.html','history.html','history-map.html','tree.html','committees.html','superlatives.html',
          'gallery.html','shop.html','give.html','business.html','constitution.html',
-         'hardship.html','features.html']
+         'hardship.html','features.html','financial-reports.html']
 for p in PAGES:
     out = os.path.join(OUT, 'pages', p.replace('.html', '.wp.html'))
     open(out, 'w').write(wp_fragment(p))

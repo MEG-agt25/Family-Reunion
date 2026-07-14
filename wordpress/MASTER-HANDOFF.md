@@ -241,11 +241,35 @@ record every result (pass/fail + what you saw):
    don't fake it.
 8. Clean up ALL test data: test users, test orders, test form entries.
 
+**Task O — Executive Board area (Financial Reports + board sign-up).**
+Board-only is a level ABOVE members-only: role-based, not just logged-in.
+1. *Role:* Ultimate Member → User Roles → Add New → title `Executive
+   Board`, based on Subscriber (no admin capabilities). Set the role's
+   **Registration Status to "Require admin review"** so nobody activates
+   themselves — the owner approves each officer.
+2. *Financial Reports page:* new page, slug `board/financial-reports`,
+   content = `wordpress/pages/financial-reports.wp.html` from the repo
+   (safe to paste — organizational finances only, no personal info).
+   Create as DRAFT → UM Content Restriction: logged-in + roles
+   **Administrator and Executive Board ONLY** → then publish → verify a
+   logged-out visitor AND a regular logged-in member are both blocked,
+   and an Executive Board test user gets in.
+3. *Board sign-up link:* UM → Forms → duplicate the Registration form →
+   name `Board Member Sign-Up` → set its assigned role to `Executive
+   Board` → put its shortcode on a new page `board-signup` (NOT in any
+   menu — the owner shares the ONE link privately with her 12 officers).
+   Each officer registers there; the owner approves them in Users →
+   pending review; approval = board access. Duty-based extras stay with
+   the owner: she can additionally give the Treasurer and Financial
+   Secretary the WooCommerce "Shop manager" role to see orders/dues.
+4. *Menu:* add "Financial Reports (board)" to the Family Members →
+   Membership Benefits group.
+
 **Task N — Final status report (the handoff back).** End by writing a
 report the owner will carry back to Claude Code, in EXACTLY this shape:
 ```
 == HN WEBSITE STATUS REPORT <date> ==
-TASKS: one line per Task A–M — DONE / PARTIAL / BLOCKED + one-line detail
+TASKS: one line per Task A–M and O — DONE / PARTIAL / BLOCKED + detail
 PRODUCT IDS: dues125=__ dues175=__ dues225=__ installment25=__
 TEST RESULTS: the numbered Task M results, pass/fail each
 REMAINING ACTIONS (priority order): numbered list; for each, WHO must do
@@ -266,7 +290,15 @@ Benefits (Committees, Constitution & Bylaws, Family Business,
 Superlatives, Hardship, Interactive Tree, Directory) behind login ·
 Give + Dues & T-Shirts stay public · GiveWP approved · owner handles
 Stripe/PayPal + all credentials · repo visibility is the owner's business,
-not yours.
+not yours · switch Settings → Permalinks to **"Post name"** (REQUIRED —
+every internal link in the fragments assumes pretty URLs like
+`/family-journey/`; plain `?page_id=` permalinks 404 them) · UM
+restriction fix approved: explicitly check ALL logged-in role boxes
+(Administrator, Subscriber, Customer, Executive Board, any UM member
+role) when "all logged in users" over-blocks, re-verifying logged-out
+blocking after every change · Financial Reports page is Executive
+Board + Administrator ONLY (Task O) · board sign-up = one unlisted
+/board-signup/ form, role activation requires the owner's approval.
 
 # PART 5 — IF THIS CONVERSATION BREAKS
 The owner starts a fresh conversation, re-attaches THIS file, and says

@@ -76,6 +76,8 @@ github.com/MEG-agt25/Family-Reunion/tree/main/wordpress/pages — use the
 | Constitution & Bylaws | `constitution-and-bylaws` | `constitution.wp.html` | printable |
 | Hardship Fund | `hardship-fund` | `hardship.wp.html` | placeholder → Fluent Form #4 |
 | Features | `features` | `features.wp.html` | the feature tour |
+| Financial Reports (BOARD-ONLY) | `board/financial-reports` | `financial-reports.wp.html` | draft → restrict to Administrator + Executive Board roles → publish (MASTER-HANDOFF Task O) |
+| Board Sign-Up (unlisted) | `board-signup` | UM Board registration form shortcode | never in a menu; owner shares the link with officers |
 
 Delete "Sample Page" and the "Hello world!" post.
 
@@ -137,6 +139,20 @@ directory & profiles (logged-in only). New-registration notification email
 → harrisnelsonfamilyreunion@gmail.com **(this is how each sign-up
 automatically becomes a family-tree entry — the Historian receives every
 registration with the genealogy fields).**
+
+## 4b. Executive Board role & board sign-up (access by duty)
+1. UM → User Roles → Add New: `Executive Board`, based on Subscriber, no
+   wp-admin capabilities, **Registration Status = "Require admin review"**
+   (self-service activation must be impossible).
+2. UM → Forms → duplicate Registration → `Board Member Sign-Up` → assigned
+   role `Executive Board` → shortcode on unlisted page `/board-signup/`.
+   The owner shares that single link privately with the 12 officers and
+   approves each pending registration herself (Users → pending review).
+3. Restrict `/board/financial-reports/` to roles Administrator +
+   Executive Board only (draft first — see §2 table and Task O).
+4. Duty-based extras (owner-only decisions): Treasurer + Financial
+   Secretary may additionally get WooCommerce "Shop manager" to view
+   orders/dues; nobody but the owner gets Administrator.
 
 ## 5. Fluent Forms — the four forms
 Replace each page's dashed placeholder box with the matching form's
