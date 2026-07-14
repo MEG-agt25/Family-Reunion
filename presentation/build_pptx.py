@@ -118,7 +118,7 @@ text(s, 0.7, 1.8, W - 1.4, 2.2, "Harris-Nelson\nFamily Reunion 2026", size=54,
      color=GREEN, bold=True, align=PP_ALIGN.CENTER)
 text(s, 0.7, 4.2, W - 1.4, 0.6, "Our roots run deep — from Mississippi to Cleveland and beyond…",
      size=20, color=MUTED, align=PP_ALIGN.CENTER)
-text(s, 0.7, 5.0, W - 1.4, 0.5, "Cleveland, Ohio · July 17–19, 2026 · hnfamilyreunion.com",
+text(s, 0.7, 5.0, W - 1.4, 0.5, "Cleveland, Ohio · July 17–19, 2026 · hnreunion.com",
      size=14, color=MUTED, align=PP_ALIGN.CENTER, font="Verdana")
 
 # ---------------------------------------------------------------- 2 · AGENDA
@@ -130,7 +130,7 @@ left = ["Welcome & The Weekend at a Glance", "Our Family History & Trivia",
         "Tribute to Loved Ones We've Lost", "Family Business: Financial Report",
         "Officers, Robert's Rules & Our Constitution"]
 right = ["Board Recognition, Committees & Sign-Ups", "Where We Meet Next — Location Vote",
-         "Our New Website: hnfamilyreunion.com", "Getting Our Land Back — Where Is My Land",
+         "Our New Website: hnreunion.com", "Getting Our Land Back — Where Is My Land",
          "Scholarship Fund for Our Descendants", "Helping Hands — Family Hardship Fund",
          "The Family Foundation — Our 501(c)(3)",
          "The Family Tree Project — Add Yourself!", "Closing & Next Steps"]
@@ -240,7 +240,7 @@ title(s, "“We All We Got… We All We Need!” \U0001F4F8")
 photo_row(s, [P("2024", f"{n}.jpg") for n in (1, 15, 45, 105)], 1.9, 1.75,
           caption="[Add caption]")
 bullets(s, 0.7, 4.3, 6.0, [
-    "All 123 slides play fullscreen on the Photos page of hnfamilyreunion.com",
+    "All 123 slides play fullscreen on the Photos page of hnreunion.com",
     "Put it on the big screen during dinner!"],
     head="▶ Watch the full slideshow", size=15, h=2.2)
 bullets(s, 7.2, 4.3, 5.4, [
@@ -487,7 +487,7 @@ chairs = [
     ("\U0001F4F8 Photography", "photographer & videographer, branch portraits, yearbook photos"),
     ("\U0001F49D Philanthropy & Fundraising", "fundraisers for all three funds; scholarship & hardship review"),
     ("\U0001F5D3 Planning", "dates, venues, decade planning, budgets, registration"),
-    ("\U0001F4BB Technology", "hnfamilyreunion.com, online payments & shirts, tree tools")]
+    ("\U0001F4BB Technology", "hnreunion.com, online payments & shirts, tree tools")]
 for i, (cname, duty) in enumerate(chairs):
     col, row = i % 3, i // 3
     x, y = 0.8 + col * 4.1, 1.75 + row * 1.5
@@ -515,7 +515,7 @@ bullets(s, 0.7, 5.25, 6.2, [
     head="How committees operate", size=13, h=2.0)
 bullets(s, 7.2, 5.25, 5.4, [
     "Paper sheets at the welcome table (write your name under Chair or Member)",
-    "Online: Committee Sign-Up form on hnfamilyreunion.com",
+    "Online: Committee Sign-Up form on hnreunion.com",
     "Right now: raise your hand when your committee is called"],
     head="Three ways to sign up", size=13, h=2.0, head_color=ORANGE)
 
@@ -546,7 +546,7 @@ footer(s, "The Planning Committee gets group-rate quotes from the top three pick
 # --------------------------------------------------------------- 20 · WEBSITE
 s = slide()
 kicker(s, "Family Business · Technology")
-title(s, "Our New Home Online: hnfamilyreunion.com \U0001F4BB")
+title(s, "Our New Home Online: hnreunion.com \U0001F4BB")
 bullets(s, 0.7, 1.9, 4.0, ["Announcements & event schedule", "Family history & photo gallery",
                             "2024 slideshow & yearbook archive", "Memorial page"],
         head="Everything reunion", size=14)
@@ -611,7 +611,7 @@ bullets(s, 9.0, 1.8, 3.9, [
     "Committee scores by 14 days out; officers ratify by 7",
     "Award presented at Sunday brunch"],
     head="Deadlines each cycle", size=13, head_color=RED)
-footer(s, "Apply at hnfamilyreunion.com (Hardship Fund page) or on paper from any officer. Award amount set by the Treasurer's budget each cycle — funded from the fundraising split.")
+footer(s, "Apply at hnreunion.com (Hardship Fund page) or on paper from any officer. Award amount set by the Treasurer's budget each cycle — funded from the fundraising split.")
 
 # ----------------------------------------------------------------- 23 · 501c3
 s = slide()
@@ -642,7 +642,7 @@ bullets(s, 0.7, 1.8, 6.0, [
     "A large family tree poster gets printed with EVERYONE listed"],
     head="Four easy steps", size=15)
 bullets(s, 7.0, 1.8, 5.6, [
-    "Online: the Family Tree Google Form, or the matching form on hnfamilyreunion.com",
+    "Online: the Family Tree Google Form, or the matching form on hnreunion.com",
     "Paper: forms at the Family Tree table all weekend",
     "Bring old photos, obituaries, bibles, deeds — we scan them on the spot (you keep the originals)"],
     head="Ways to submit", size=15, head_color=ORANGE)
@@ -650,7 +650,7 @@ bullets(s, 7.0, 1.8, 5.6, [
 # ------------------------------------------------------------------ 25 · LINKS
 s = slide()
 kicker(s, "Keep These Handy"); title(s, "All the Links \U0001F517")
-links = [("Family website", "hnfamilyreunion.com (launching soon)"),
+links = [("Family website", "hnreunion.com (launching soon)"),
          ("Family email", "harrisnelsonfamilyreunion@gmail.com"),
          ("Zelle (dues & shirts)", "Joseph Nelson — harrisnelsonfamilyreunion@gmail.com"),
          ("Cash App", "Miesha Wilson — $mieshanulife06"),
@@ -681,7 +681,7 @@ text(s, 0.7, 4.2, W - 1.4, 1.0,
      "Sign a form. Chair a committee. Add your branch to the tree.\nSee you at the next reunion — bigger, better, and on our own land.",
      size=18, color=MUTED, align=PP_ALIGN.CENTER)
 text(s, 0.7, 5.6, W - 1.4, 0.5,
-     "Harris-Nelson Family Reunion · hnfamilyreunion.com · harrisnelsonfamilyreunion@gmail.com",
+     "Harris-Nelson Family Reunion · hnreunion.com · harrisnelsonfamilyreunion@gmail.com",
      size=13, color=MUTED, align=PP_ALIGN.CENTER, font="Verdana")
 
 out = os.path.join(HERE, "Harris-Nelson-Reunion-2026.pptx")
