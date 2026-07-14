@@ -265,13 +265,15 @@ bullets(s, 0.7, 1.8, 4.0, [
     "Miesha — first college degree in her grandmother's family; NuLife Fitness Camp turns 20 (Mar 2026); Juicy Vegan; property owner since 2021",
     "Lovie — homeowner at 24 (May 2026)",
     "Denisha — RN for 10 years, NP in progress",
-    "Dennis Jr. — serves special-needs students"],
+    "Dennis Jr. — serves special-needs students",
+    "Marcelette — Virginia State '12, Master's from WashU St. Louis '17 (Alpha Kappa Alpha)"],
     head="\U0001F31F Shine on", size=12)
 bullets(s, 4.85, 1.8, 4.0, [
     "Nyeri is our resident makeup artist",
     "Lovie reps us in Cincinnati — and Delta Sigma Theta Sorority, Inc.",
     "Mary Jane loves to fish",
-    "Miesha researched the census from when Grandma Lela Mae was a baby"],
+    "Miesha researched the census from when Grandma Lela Mae was a baby",
+    "Everyone in Marcelette's house has an M name — including the dogs, Mitchell & Maximus"],
     head="\U0001F604 Did you know…", size=12, head_color=ORANGE)
 bullets(s, 9.0, 1.8, 3.9, [
     "More participants — every branch in the building",
@@ -280,15 +282,15 @@ bullets(s, 9.0, 1.8, 3.9, [
     "A destination reunion — 'a 1-hour trip'",
     "Keep the competitions coming!"],
     head="\U0001F5F3 What y'all want next", size=12, head_color=RED)
-footer(s, "From the 2026 Family Questionnaire (7 responses so far). Genealogy answers went straight to the Historian for the family tree.")
+footer(s, "From the 2026 Family Questionnaire (8 responses so far). Genealogy answers went straight to the Historian for the family tree.")
 
 # ------------------------------------------- 10c · PARTICIPATION STATS
 s = slide()
 kicker(s, "Real Talk · The Numbers")
-title(s, "115 of Us Showed Up. 7 Filled Out the Questionnaire. \U0001F62C")
+title(s, "115 of Us Showed Up. 8 Filled Out the Questionnaire. \U0001F62C")
 for i, (amt, lab, c) in enumerate([("≈115", "Family members at Reunion 2026", GREEN),
-                                   ("7", "Questionnaire responses", ORANGE),
-                                   ("6%", "Our participation rate, family…", RED)]):
+                                   ("8", "Questionnaire responses", ORANGE),
+                                   ("7%", "Our participation rate, family…", RED)]):
     x = 0.8 + i * 4.15
     text(s, x, 1.75, 3.9, 1.3, [(amt, {"size": 34, "bold": True, "color": c, "space_after": 2}),
                                  (lab, {"size": 13, "color": MUTED})])
@@ -305,13 +307,13 @@ def hbar(x, y, label, value_txt, frac, w_lab=2.55, w_bar=2.5, track=False, fill=
 text(s, 0.8, 2.95, 5.6, 0.3, "Who showed up vs. who spoke up", size=12, bold=True, color=GREEN)
 hbar(0.8, 3.35, "Attended Reunion 2026", "≈115", 1.0)
 hbar(0.8, 3.72, "Serving on the board today", "8", 0.07)
-hbar(0.8, 4.09, "Filled out the questionnaire", "7", 0.06)
+hbar(0.8, 4.09, "Filled out the questionnaire", "8", 0.07)
 text(s, 7.0, 2.95, 5.6, 0.3, "Seats filled vs. seats we need", size=12, bold=True, color=GREEN)
 hbar(7.0, 3.35, "Board seats", "8/12", 0.67, w_lab=2.3, w_bar=2.3, track=True)
 hbar(7.0, 3.72, "Committee chairs", "1/11", 0.09, w_lab=2.3, w_bar=2.3, track=True)
 hbar(7.0, 4.09, "Committee members", "0/~33", 0.0, w_lab=2.3, w_bar=2.3, track=True)
 bullets(s, 0.7, 4.55, 6.0, [
-    "The yearbook, tree poster, acknowledgments & trivia were ALL built from those 7 responses",
+    "The yearbook, tree poster, acknowledgments & trivia were ALL built from those 8 responses",
     "Imagine what we could show with 115 — your history dies untold if you don't tell it"],
     head="Why it matters", size=12, h=1.9)
 bullets(s, 7.0, 4.55, 5.6, [
@@ -627,7 +629,7 @@ bullets(s, 7.0, 1.8, 5.6, [
     "Its own body with its own votes, separate from reunion officers",
     "Board meets quarterly; minutes published to the family"],
     head="Foundation board (to be elected)", size=15, head_color=ORANGE)
-footer(s, "Nominations open today — see the Secretary. Already raised their hands on the questionnaire: Toni Nelson & Dennis Derrick Jr. We ratify the founding board by motion and vote.")
+footer(s, "Nominations open today — see the Secretary. Already raised their hands on the questionnaire: Toni Nelson, Dennis Derrick Jr. & Marcelette We ratify the founding board by motion and vote.")
 
 # ----------------------------------------------------------- 24 · FAMILY TREE
 s = slide()
