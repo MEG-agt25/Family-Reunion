@@ -1,166 +1,222 @@
-# MASTER HANDOFF — hnfamilyreunion.com build
-**Read this FIRST in every new Claude Chrome session. It supersedes all
-earlier instructions, summaries, and the runbook where they conflict.
-Last updated: July 14, 2026.**
-
-## How to use this document
-You are Claude in Chrome, working in the owner's logged-in browser. The
-website code was pre-built by Claude Code — your job is deployment and
-configuration, not redesign. Work the OPEN TASKS below in order, checking
-each against DONE first so you never redo or re-ask. The owner has already
-made every decision recorded here — do not re-litigate them.
+# HARRIS-NELSON FAMILY REUNION — COMPLETE WEBSITE HANDOFF
+**For Claude in Chrome. This is the full project brief + build instructions.
+It is the ONLY source you need — never fetch URLs for content; when this
+file travels as an attachment, the five page fragments are appended at the
+bottom. Version: July 14, 2026.**
 
 ---
 
-## 1. VERIFIED STATUS (as of last session)
+# PART 1 — THE PROJECT (everything decided this session)
 
-**DONE — do not redo:**
-- ✅ Plugins installed & active: Ultimate Member, WooCommerce, Fluent Forms, Elementor
-- ✅ Additional CSS published to the theme (6,831 chars, `.hnwp`-scoped)
-- ✅ 9 pages created WITH content: Home, Our History, Family Tree Form,
+## Who this is for
+The **Harris-Nelson Family Reunion Organization** — a family founded by
+John Harris & Judy Bender (late 1800s, Mississippi; he a farmer, she a
+homemaker). Through Emma (Bently) Moncrief & Ed Moncrief came Mandy
+Moncrief, then **Lela Mae Price (July 16, 1922 – Feb 15, 1996)**, whose
+nine children became the family's nine branches: Mary Nelson, Mildred
+Ellis, Jessie Moore, James Edward, James Earl, Curtis, Mary Jane Gray,
+Mandy Ellis, Shirley Harris (plus the Nelson line of Joe & Oreatha). The
+family migrated from Mississippi to Cleveland, Ohio. The 2026 reunion
+("Together Again!" / "Here we go Again… Kick'n it with the Kins!") was
+held July 17–19, 2026 in Cleveland with ~115 attending.
+
+**Website:** hnfamilyreunion.com (WordPress, Twenty Twenty-Five).
+**Family email:** harrisnelsonfamilyreunion@gmail.com.
+**Site identity:** Title `Harris-Nelson Family Reunion` · Tagline
+`Rooted in love. Growing together.` This is NOT a blog.
+
+## How the family governs (context for the pages)
+- **12 officers**: President (Miesha) · Vice President (Aunt Shirley) ·
+  Secretary (Marcelette — the site owner) · Treasurer (Jasmine) ·
+  Financial Secretary (Aunt Vanessa) · Historian (Shone) · Hospitality
+  Chair (Loretta, leads the Courtesy Committee) · Sergeant-at-Arms
+  (Joseph) · plus four open seats: Membership Chair, Parliamentarian
+  (chairs the Protocol Committee), Doorkeeper, Meditation Chair.
+- **11 standing committees**: Sports/Games, Music, Food, Safety, Services,
+  Photography, Philanthropy & Fundraising, Planning, Technology, Courtesy,
+  Protocol. Nine need chairs; all need 2–5 members.
+- **Robert's Rules of Order** is the parliamentary authority; a written
+  **Constitution & Bylaws** exists (it's one of the site pages).
+- A family **501(c)(3) foundation** is being formed.
+
+## The money model (context for shop/give pages)
+- **Dues:** $125 single (or w/ 1 minor) · $175 single + guest or college
+  student · $225 family of 3+. **Shirts:** $10, 2XL–4XL $15 (adult SM–4XL,
+  youth SM–XL, toddler 6M–24M).
+- **Three funds**, split of all fundraising set by family vote:
+  1. **Land-Back Fund** — Where Is My Land retainer, research/legal costs,
+     plus renovation & revitalization of family land
+  2. **Scholarship Fund** — for descendants of the ancestors
+  3. **Operating Fund** — strictly operating costs: this website's hosting,
+     printing, permits/deposits, and seed money for future reunions
+- **Helping Hands Hardship Fund** — confidential aid each reunion cycle:
+  applications open Jan 1, close 30 days before the reunion; scored by the
+  Philanthropy & Fundraising Committee (severity 40% / impact 30% /
+  clarity 20% / discretion 10%); officers ratify; recipients may stay
+  anonymous.
+- **Payments today:** Zelle harrisnelsonfamilyreunion@gmail.com · Cash App
+  $mieshanulife06 (payer writes name + purpose). Card payments come later
+  when the owner connects Stripe/PayPal herself. Payment plans = a $25
+  repeatable "Dues Installment" product. Donation pages get **goal
+  progress meters** (GiveWP) so paid-vs-goal is visible.
+
+## The membership vision (the heart of the site)
+Family members **register** to create a profile. The registration form IS
+the family questionnaire, generalized for all future reunions (no
+2026-specific questions). **Each registration automatically becomes a
+family-tree entry** — the notification email (to the family inbox) carries
+the genealogy fields to the Historian, who maintains the master Ancestry
+tree (3,465+ people) and the printed family-tree poster. Members get:
+the interactive family tree, the member directory, committee sign-up,
+superlatives voting, hardship applications, and orders — the "Membership
+Benefits."
+
+## HARD PRIVACY RULES (owner directive — non-negotiable)
+**No personally identifiable information anywhere on the public site.**
+The questionnaire shapes the registration form's FIELDS only — no
+member's answers, names, dates, genealogy, accomplishments, or contact
+details ever become public content. Profiles, member directory, and the
+interactive tree live behind login. DOB visible to member + admins only;
+board-suggestions field admin-only; only account basics required. Never
+publish dues status, receipts, or payment confirmations. Public pages
+carry organizational info and deceased ancestors' history only. If unsure
+whether something identifies a living person: restrict it and ask.
+
+---
+
+# PART 2 — BUILD STATE (verify, don't redo)
+
+**DONE:**
+- Plugins active: Ultimate Member, WooCommerce, Fluent Forms, Elementor
+- Additional CSS published (6,831 chars, `.hnwp`-scoped)
+- 9 pages created WITH content: Home, Our History, Family Tree Form,
   Committees, Superlatives, Photos, Dues & T-Shirts, Give, Family Business
-- ✅ 3 pages created EMPTY: Constitution & Bylaws (ID 36), Hardship Fund
+- 3 pages created EMPTY: Constitution & Bylaws (ID 36), Hardship Fund
   (ID 37), Features (ID 38)
-- ✅ Photos uploaded to the Media Library by the owner (136 images)
-- ✅ Repo history scrubbed of all genealogy data (safe at either visibility)
+- Photos uploaded to the Media Library (136 images)
 
-**NOT done:** everything in section 4.
+**HUMAN-ONLY (ask the owner, never do):** Stripe/PayPal connection, any
+passwords/logins, file selection from her computer, GitHub settings.
 
-## 2. WHERE EVERY ASSET LIVES
-| Asset | Location |
-|---|---|
-| Page fragments (public pages) | repo `wordpress/pages/*.wp.html` — read via raw URLs if repo public, or the owner's logged-in GitHub tab if private |
-| Interactive Family Tree fragment (PII — never in repo) | owner's private bundle: https://claude.ai/code/artifact/218c7ccb-7581-4ccb-aeca-3e78f3d74246 (textareas f1–f4: f1 Constitution, f2 Hardship, f3 Features, f4 Interactive Tree) |
-| NEW: Family Journey interactive map fragment | repo `wordpress/pages/history-map.wp.html` |
-| Field lists for registration/forms/products | repo `wordpress/RUNBOOK-WORDPRESS.md` §4–§7 |
-| Photos | already in the WP Media Library — verify one URL (Media → any image → copy URL) and fix the base path in the Photos page + tree page if it isn't `/wp-content/uploads/2026/07/` |
+---
 
-## 3. HARD PRIVACY RULES (unchanged, non-negotiable)
-No PII on the public website. Profiles/directory behind login. The
-Interactive Family Tree page is members-only — apply Ultimate Member's
-logged-in-only restriction BEFORE publishing it. DOB visible to member +
-admins only; board-suggestions field admin-only; only account basics
-required. Never publish dues status, receipts, or payment confirmations.
-The questionnaire shaped the registration FIELDS only — no one's actual
-answers become page content.
+# PART 3 — OPEN TASKS, IN ORDER
 
-## 4. OPEN TASKS — in this order
+**Task A — Fill the 3 empty pages.** ID 36 ← FRAGMENT 1 · ID 37 ←
+FRAGMENT 2 · ID 38 ← FRAGMENT 3. Wrap in a Custom HTML block
+(`<!-- wp:html --> … <!-- /wp:html -->`); the REST API method already
+proven on the 9 successful pages works well.
 
-### Task A — Fill the 3 empty pages
-Page ID 36 ← bundle textarea f1 (Constitution & Bylaws) · ID 37 ← f2
-(Hardship Fund) · ID 38 ← f3 (Features). Wrap each in a Custom HTML block
-(`<!-- wp:html --> … <!-- /wp:html -->`) via the REST API, same method as
-the 9 successful pages.
+**Task B — Members-only Interactive Family Tree.** New page, slug
+`members/interactive-tree`, content = FRAGMENT 4. Apply Ultimate Member's
+logged-in-only restriction BEFORE publishing. Verify logged-out visitors
+get a login prompt.
 
-### Task B — Members-only Interactive Family Tree
-New page, slug `members/interactive-tree`, content = bundle textarea f4.
-Apply UM logged-in-only restriction FIRST, then publish. Verify logged-out
-visitors get a login prompt, not the tree.
+**Task C — "The Family Journey" interactive history map.** New PUBLIC
+page, slug `family-journey`, content = FRAGMENT 5 — an SVG road map with
+8 clickable stops (Mississippi 1800s → Lela Mae → the nine branches → the
+Migration → Cleveland 2024 → 2026 → the road ahead), each with a story
+card and a reserved slot for **elder-interview videos** the owner will
+record (her questions are printed in each slot). This page is the
+**History menu tab's landing page**.
 
-### Task C — NEW: "Family Journey" interactive map page
-Create page, slug `family-journey`, title "The Family Journey", content =
-repo fragment `wordpress/pages/history-map.wp.html` (self-contained SVG
-road map with 8 clickable stops + story cards + reserved video slots).
-This page is PUBLIC and is the **landing page for the History menu tab**.
-The dashed boxes are placeholders for elder-interview videos the owner
-will provide later (she wrote interview questions; videos get embedded
-into the matching slot as they're ready — recommend unlisted YouTube/Vimeo
-embeds, owner's call on hosting).
+**Task D — Site identity & de-blog.** Settings → General: title + tagline
+above (kills "Wanderlust"). Settings → Reading: static front page = Home,
+no posts page. Delete "Hello world!" + Sample Page; remove blog blocks
+from theme templates.
 
-### Task D — Site identity & de-blog
-Settings → General: Site Title `Harris-Nelson Family Reunion`, Tagline
-`Rooted in love. Growing together.` (kills "Wanderlust"). Settings →
-Reading: static front page = Home, no posts page. Delete "Hello world!"
-post + Sample Page. Remove blog/latest-posts blocks from theme templates.
-
-### Task E — THE MENU (owner's final structure — supersedes ALL earlier menus)
-Three top-level tabs:
-1. **Home** — its own tab, links to the front page, NO dropdown.
-2. **History** — links to **/family-journey/ (the interactive map)** →
-   dropdown: Our History · Photos & Slideshow · Family Tree Form · Features
+**Task E — THE MENU (final; supersedes everything earlier).**
+1. **Home** — its own tab, links to front page, NO dropdown
+2. **History** — links to /family-journey/ → dropdown: Our History ·
+   Photos & Slideshow · Family Tree Form · Features
 3. **Family Members** (renamed from "Account") — links to UM Account →
-   dropdown, two groups:
-   - Account tabs: Sign Up/Register · Login/Logout · My Account ·
-     Orders/Checkout (WooCommerce) · Password Reset
-   - **Membership Benefits** (each page gets UM logged-in-only
-     restriction): Committees · Constitution & Bylaws · Family Business ·
-     Superlatives · Hardship Fund · Interactive Family Tree ·
-     Members Directory
-   Deliberately PUBLIC (do not restrict): Home, Family Journey, Our
-   History, Photos, Family Tree Form, Features, **Give and Dues &
-   T-Shirts** — so relatives can donate/pay without creating an account.
-   (If the owner wants Give/Dues restricted too, she'll say so.)
+   dropdown in two groups:
+   - Account: Sign Up/Register · Login/Logout · My Account ·
+     Orders/Checkout · Password Reset
+   - Membership Benefits (login-restricted pages): Committees ·
+     Constitution & Bylaws · Family Business · Superlatives · Hardship
+     Fund · Interactive Family Tree · Members Directory
+   Deliberately PUBLIC: Home, Family Journey, Our History, Photos, Family
+   Tree Form, Features, Give, Dues & T-Shirts (so relatives can pay/donate
+   without an account). Keep Cart/Checkout out of the top menu.
 
-### Task F — Apply the membership restrictions
-For every Membership Benefits page above: UM restriction = logged-in users
-only, with "redirect to login" behavior. Verify each as a logged-out
-visitor.
+**Task F — Apply the membership restrictions** to every Membership
+Benefits page (UM logged-in-only, redirect to login). Verify logged out.
 
-### Task G — Ultimate Member registration form
-Exact field list in RUNBOOK-WORDPRESS.md §4 (the generalized
-questionnaire). Registration notification email →
-harrisnelsonfamilyreunion@gmail.com (each sign-up doubles as the family
-tree entry for the Historian).
+**Task G — Ultimate Member registration form** (basics required, rest
+optional): Account: First/Last Name, Email, Username, Password. About:
+DOB *(member/admin-only)*, City & State, Phone, **Family Branch** dropdown
+with EXACT options: Mary Nelson / Mildred Ellis / Jessie Moore / James
+Edward / James Earl / Curtis / Mary Jane Gray / Mandy Ellis / Shirley
+Harris / Nelson line (Joe & Oreatha) / Not sure — help me find my branch!
+Your line (feeds the tree): Parents · Grandparents · Great-Grandparents ·
+Great-Great-Grandparents & other greats · Spouse/Partner & Anniversary ·
+Children (& birth years). Your story: Schools & Graduation Dates ·
+Fraternity/Sorority · Military · Accomplishments · One Interesting Fact ·
+Known Family History Facts. Planning: Future-reunion wishes · Foundation
+(501c3) interest Yes/Maybe/No · Board suggestions *(admin-only)* · Serve
+on a committee? Chair/Member/Not now. Permissions checkboxes: Ancestry
+tree (required) · poster · contact. Settings: profiles + directory
+logged-in-only; new-registration notification →
+harrisnelsonfamilyreunion@gmail.com (this IS the automatic tree entry).
 
-### Task H — Four Fluent Forms
-Field lists in RUNBOOK §5: #1 Family Tree Update (family-tree-form page) ·
-#2 Committee Sign-Up (committees) · #3 Superlatives Ballot (superlatives) ·
-#4 CONFIDENTIAL Hardship Application (hardship-fund). Replace each page's
-dashed placeholder with the form shortcode; notifications → family email.
+**Task H — Four Fluent Forms** (replace each page's dashed placeholder
+with the form shortcode; notifications → family email):
+1. *Family Tree Update* (family-tree-form): Full name*, Maiden/other
+   names, DOB, City & state, Branch dropdown, Parents*, Grandparents,
+   Spouse, Children, Email, Phone, consent checkboxes (Ancestry*, poster,
+   contact), story for the Historian. Subject "TREE ENTRY".
+2. *Committee Sign-Up* (committees): Full name*, Branch, Email*, Phone,
+   committee checkboxes (the 11; Courtesy/Protocol member-only), Role*
+   radio Chair/Member/Either, Chair-first-choice dropdown (9), and the 7
+   volunteer questions (why volunteer, hopes, hours/month, best
+   contribution, prior volunteering, passions, success).
+3. *Superlatives Ballot* (superlatives): Voter name*, Branch, one text
+   input per award (Best Dressed, Life of the Party, Best Dancer, Loudest
+   Laugh, Most Likely to Be Late, Best Cook/Dish, Grill Master, Best
+   Card/Domino Player, Games MVP, Family Glue, Traveled the Farthest,
+   Legacy Keeper, Write-in).
+4. *CONFIDENTIAL Hardship Application* (hardship-fund): Applicant name*,
+   Branch*, Email/phone*, Household size, For whom (self/on behalf),
+   hardship-type checkboxes (Medical, Job loss, Housing/disaster, Funeral,
+   Caregiving, Education emergency, Other), what happened & when*, how the
+   award helps*, amount (opt), documentation (opt), confidential-review
+   consent*, prefer-anonymity checkbox. Subject "CONFIDENTIAL — Hardship
+   Application"; notification ONLY to the family email.
 
-### Task I — WooCommerce products
-RUNBOOK §6: three dues tiers ($125/$175/$225, virtual) · variable T-shirt
-(sizes; $10, 2XL–4XL $15) · $25 repeatable Dues Installment (the free
-payment-plan mechanism). Link the buttons on Dues & T-Shirts. Payments
-stay Zelle/Cash App until the owner connects Stripe/PayPal herself.
+**Task I — WooCommerce products:** Dues $125 / $175 / $225 (virtual) ·
+variable T-Shirt (sizes & prices above) · $25 repeatable Dues Installment
+(the free payment-plan mechanism). Link buttons on Dues & T-Shirts.
 
-### Task J — GiveWP
-Install + activate GiveWP (owner pre-approved). Three donation forms with
-goal progress meters, placed on the Give page: Land-Back Fund ·
-Scholarship Fund · Operating Fund. Goal amounts: ask the owner (Treasurer
-sets them); use $5,000 placeholders if she says proceed.
+**Task J — GiveWP** (install pre-approved): three donation forms with goal
+progress meters on the Give page — Land-Back · Scholarship · Operating.
+Goal amounts: ask the owner; $5,000 placeholders if she says proceed.
 
-### Task K — Verification checklist
-- [ ] www.hnfamilyreunion.com shows the reunion homepage, no Wanderlust, no blog
-- [ ] Menu = Home / History / Family Members exactly as Task E
-- [ ] /family-journey/ map: stops click, story cards change, video slots show
-- [ ] Register a test account → profile behind login → notification email arrives
-- [ ] Each Membership Benefits page blocks logged-out visitors
-- [ ] Interactive tree renders for a logged-in member; "+ add" works
-- [ ] Photos page plays the 2024 slideshow (fix upload-path URLs if broken)
-- [ ] All four Fluent Forms submit + notify the family inbox
-- [ ] Products exist; Give page shows three goal meters
-- [ ] Nothing public shows any individual's personal information
+**Task K — Verify:** menu matches Task E · registration works and the
+notification email arrives · every Membership Benefits page blocks
+logged-out visitors · the tree renders for members · /family-journey/
+stops click through · Photos slideshow plays (fix `/wp-content/uploads/`
+month path if images 404) · all four forms submit · products exist ·
+three goal meters show · nothing public shows any individual's info.
 
-## 5. HUMAN-ONLY TASKS (never do these; ask the owner)
-Connecting Stripe/PayPal credentials · any logins/passwords · GitHub repo
-visibility toggles · selecting files from her computer · Google One
-storage billing (her Drive banner — unrelated to this build).
+---
 
-## 6. DECISION LOG (already settled — don't re-ask)
-- Stack: WordPress (not the static site). Domain: hnfamilyreunion.com.
-- Repo visibility: owner's call; history was scrubbed so either is safe
-  for the genealogy data. She may flip it private when the build is done.
-- Privacy: the three UM defaults confirmed (DOB member/admin-only, basics
-  required only, board-suggestions admin-only).
-- Menu: Task E above is FINAL (replaces "Home/History/Account" and the
-  older 6-heading structure).
-- "Account" is renamed "Family Members".
-- Committees, Constitution & Bylaws, Family Business (+ Superlatives,
-  Hardship, Interactive Tree, Directory) are Membership Benefits — behind
-  login.
-- GiveWP install pre-approved.
+# PART 4 — DECISION LOG (settled; do not re-ask)
+WordPress over static · domain hnfamilyreunion.com · profiles behind
+login, registration = generalized questionnaire, registration doubles as
+tree entry · DOB member/admin-only, basics-only required,
+board-suggestions admin-only · "Account" renamed **Family Members** ·
+Home standalone; History lands on the Family Journey map · Membership
+Benefits (Committees, Constitution & Bylaws, Family Business,
+Superlatives, Hardship, Interactive Tree, Directory) behind login ·
+Give + Dues & T-Shirts stay public · GiveWP approved · owner handles
+Stripe/PayPal + all credentials · repo visibility is the owner's business,
+not yours.
 
-## 7. TROUBLESHOOTING
-- **WordPress session expires:** stop, ask the owner to log back in.
-- **Claude Chrome conversation errors out** (e.g. "unexpected tool_use_id"
-  API errors) **or compacts and loses the thread:** the owner starts a
-  FRESH conversation and says: "Open
-  github.com/MEG-agt25/Family-Reunion/blob/main/wordpress/MASTER-HANDOFF.md
-  (or read it via my logged-in GitHub tab), verify the DONE list, and
-  continue from the first unfinished OPEN TASK."
-- **Repo fetch fails** (private repo / rate limits): read files through the
-  owner's logged-in GitHub tab, or the claude.ai bundle for the four
-  fragments it contains.
-- Prefer the WP REST API for bulk content (proven method); narrate
-  progress; update nothing outside WordPress admin + reading the repo.
+# PART 5 — IF THIS CONVERSATION BREAKS
+The owner starts a fresh conversation, re-attaches THIS file, and says
+"continue from the first unfinished task." Verify the DONE list against
+the live site — never redo, never re-ask, never fetch URLs for content.
+If WordPress logs out, stop and ask the owner to log back in.
+
+*(When sent as an attachment, FRAGMENTS 1–5 follow below this line.)*
