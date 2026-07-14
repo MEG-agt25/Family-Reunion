@@ -1,6 +1,10 @@
 /* Harris-Nelson Family Reunion — hnfamilyreunion.com
-   Design System v2 "Sunday Best": Fraunces (headings) + Nunito (body) */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Nunito:wght@400;600;700;800&display=swap');
+   Design System v2 "Sunday Best": Fraunces (headings) + Nunito (body)
+   Fonts are SELF-HOSTED from ../fonts/ — no third-party requests. */
+@font-face{font-family:'Fraunces'; font-style:normal; font-weight:100 900;
+  font-display:swap; src:url('../fonts/fraunces-var.woff2') format('woff2');}
+@font-face{font-family:'Nunito'; font-style:normal; font-weight:100 900;
+  font-display:swap; src:url('../fonts/nunito-var.woff2') format('woff2');}
 
 :root{
   --green:#1b5e20; --green-mid:#2e7d32; --green-deep:#0d3f11; --green-soft:#e8f2e8;

@@ -84,39 +84,61 @@ whether something identifies a living person: restrict it and ask.
 
 ---
 
-# PART 2 — BUILD STATE (verify, don't redo)
+# PART 2 — BUILD STATE (post overnight run 2026-07-14; verify, don't redo)
 
-**DONE:**
-- Plugins active: Ultimate Member, WooCommerce, Fluent Forms, Elementor
-- Additional CSS published (6,831 chars, `.hnwp`-scoped)
-- 9 pages created WITH content: Home, Our History, Family Tree Form,
-  Committees, Superlatives, Photos, Dues & T-Shirts, Give, Family Business
-- Task A COMPLETE & verified: Constitution & Bylaws (ID 36), Hardship Fund
-  (ID 37), Features (ID 38) published with the correct fragments
-- Photos uploaded to the Media Library (136 images)
-- **Member Benefits Bridge installed by the owner** (the
-  `wordpress/hn-member-benefits.php` snippet/plugin): dues purchases or
-  $125 of $25 installments unlock `[hn_members]` sections; Treasurer gets
-  a Dues column + manual-paid checkbox. Its four product IDs are still
-  `0 => TODO` until Task I creates the products — see Task L.
-- Task B PARTIAL: page ID 48 "Interactive Family Tree" exists, published
-  WITH the UM logged-in restriction applied (verified: logged-out visitors
-  get only a login redirect — zero family content ever leaked). Known
-  bug: the restriction OVER-blocks logged-in users; the role-checkbox
-  re-save did NOT cure it (all 7 role boxes checked, admin still
-  redirected). Use the RESTRICTION PLAYBOOK below. Do NOT re-create the
-  page or unpublish it.
-- Audit 2026-07-14 (Claude Chrome, verified live): permalinks already
-  "Post name" · site title/tagline/static-front-page done · Hello world!/
-  Sample Page already gone · page 53 /family-journey/ exists with content
-  (Task C done pending look-check) · committees(30)+tree(48) restricted
-  (block logged-out correctly, over-block logged-in) · constitution(36),
-  family-business(35), superlatives(31), hardship(37), members
-  directory(20) NOT restricted yet · menu is the OLD structure (rebuild
-  to Task E v2) · 0 WooCommerce products · 0 Fluent Forms · GiveWP not
-  installed · UM registration form still default · Bridge installed as a
-  real PLUGIN (hn-member-benefits), active, IDs still TODO · no Executive
-  Board role, no board pages · only user is the admin (ID 1).
+**DONE & VERIFIED (do not redo any of this):**
+- Plugins active: Ultimate Member, WooCommerce, Fluent Forms, Elementor,
+  Code Snippets, User Switching, HN Member Benefits Bridge (plugin).
+  GiveWP installed but DEACTIVATED (memory blocker — see Task J).
+- Permalinks = Post name · title "Harris-Nelson Family Reunion" · tagline
+  "Rooted in love. Growing together." · static front = Home (27) · no
+  blog remnants, Hello world!/Sample Page gone (Tasks C/D done).
+- All 13 content pages published with fragments (Tasks A/B/C done),
+  incl. Interactive Family Tree = page 48, /family-journey/ = page 53.
+- **Task F DONE:** UM logged-in restriction (redirect→login) applied AND
+  verified both directions on all seven member pages: committees(30),
+  constitution(36), family-business(35), superlatives(31), hardship(37),
+  interactive-tree(48), members directory(20). Page 48 over-block CURED —
+  a real subscriber sees the tree (User Switching-verified); cookie-less
+  requests get only the login redirect. Admin still redirected on the
+  front end — known harmless UM quirk, do NOT chase it.
+- **Task I DONE — PRODUCT IDS (canonical):** dues125=**59** ·
+  dues175=**60** · dues225=**61** · installment25=**62** · Reunion
+  T-Shirt variable=**63** (variations 64–78; $15 for Adult 2XL/3XL/4XL,
+  $10 all others). WooCommerce Test Mode ON; gateways untouched.
+- **Task L DONE (verify pending):** Code Snippets snippet "HN Member
+  Benefits — Product Map (IDs)" active, feeding the real IDs via
+  `hn_member_product_map` (plugin file untouched). `[hn_dues_status]`
+  added to Account page (22). Still to verify: dues gate + Treasurer
+  Paid checkbox toggle with a non-admin user.
+- Fluent Forms created + shortcodes placed (Task H partial): id 4 Family
+  Tree Update → /family-tree-form/ · id 5 Committee Sign-Up →
+  /committees/ · id 6 Superlatives Ballot → /superlatives/ · id 7
+  Helping Hands Hardship → /hardship-fund/. **FIELDS ARE EMPTY** — the
+  REST/AJAX save sanitized injected field JSON; fields must be built in
+  the Fluent Forms visual editor UI (drag-and-drop), not via REST.
+- Task O PARTIAL: UM role "Executive Board" exists (Subscriber-based,
+  Require Admin Review). Board parent page id 87 (draft) + Financial
+  Reports id 88 (draft, slug board/financial-reports, fragment pasted).
+  Restriction/publish/board-signup-form/menu item still to do.
+- One QA user remains: qa_test_member (id 2, subscriber) — reuse for
+  testing, DELETE in final cleanup.
+- Photos in Media Library (136 images, /wp-content/uploads/2026/07/).
+
+**KNOWN BLOCKER (owner/host):** PHP memory_limit is 128M and exhausts
+("Allowed memory size of 134217728 bytes exhausted") — 500s GiveWP
+campaign endpoints and heavy admin ops. Owner must raise to ≥256M
+(hosting panel php.ini/MultiPHP + wp-config `WP_MEMORY_LIMIT`). Until
+then GiveWP stays DEACTIVATED. If the host can't raise it, fallback:
+static goal meters built into the Give page (Claude Code will supply).
+
+**NOT YET DONE:** menu v2 (live menu is still the OLD Home/History/
+Family Members structure; wp_navigation id 4) · UM registration
+questionnaire (form id 6 still default) · Fluent form FIELDS +
+notifications · GiveWP campaigns (blocked) · Dues & T-Shirts page
+buttons not linked to products 59–63 · Task O finish · Design v2 CSS +
+self-hosted fonts (see playbook §5–6) · Home page re-paste (venue fix) ·
+full Task M stress test + cleanup.
 
 **RESTRICTION PLAYBOOK (pre-approved; supersedes the role-checkbox fix):**
 1. Install the free **User Switching** plugin (John Blackbourn — the
@@ -167,6 +189,54 @@ whether something identifies a living person: restrict it and ask.
 4. Test users for QA are pre-approved by the owner (create, use, then
    DELETE them all in cleanup) — this is not "creating accounts on the
    owner's behalf."
+5. **SELF-HOSTED FONTS (owner directive: nothing loads from third
+   parties).** `wordpress/additional.css` v2 declares @font-face for
+   Fraunces + Nunito at `/wp-content/uploads/2026/07/fraunces-var.woff2`
+   and `nunito-var.woff2`. The two files are in the repo at
+   `wordpress/fonts/`. To install without a file picker:
+   a. Add a Code Snippets snippet allowing font uploads:
+      `add_filter('upload_mimes', function ($m) {
+         $m['woff2'] = 'font/woff2'; $m['woff'] = 'font/woff';
+         return $m; });
+       add_filter('wp_check_filetype_and_ext', function ($d, $f, $fn) {
+         if (str_ends_with(strtolower($fn), '.woff2')) {
+           $d['ext'] = 'woff2'; $d['type'] = 'font/woff2'; }
+         return $d; }, 10, 3);`
+   b. In the wp-admin page context, fetch each font from
+      `https://raw.githubusercontent.com/MEG-agt25/Family-Reunion/main/wordpress/fonts/<name>.woff2`
+      as a blob and POST it to `/wp-json/wp/v2/media` (X-WP-Nonce,
+      Content-Disposition filename) — same REST pattern already proven
+      for pages.
+   c. Check the returned source_url. If WordPress renamed the file or
+      used a different month folder, edit the two `src:` lines at the
+      top of Additional CSS to the actual URLs.
+   d. Verify in the browser Network tab: NO requests to
+      fonts.googleapis.com / fonts.gstatic.com anywhere on the site, and
+      headings render in Fraunces (serif with character), body in Nunito
+      (rounded sans).
+6. **DESIGN v2 "Sunday Best" (owner-requested glow-up).** The repo file
+   `wordpress/additional.css` was fully rewritten: Fraunces+Nunito
+   site-wide (self-hosted per §5), gradient hero headline, card hover
+   lifts, sunset-gradient buttons, gradient nav band + styled dropdowns,
+   zebra tables, footer trim, focus-visible states. Install order:
+   upload the two fonts (§5) FIRST, then REPLACE the entire contents of
+   Appearance → Customize → Additional CSS with the new file (replace,
+   don't append), then verify fonts + no default-theme blues anywhere.
+   It also styles WooCommerce/UM/GiveWP buttons, so little or no manual
+   Site Editor color work should remain.
+7. **Home page re-paste (venue corrections).** The repo fragment
+   `wordpress/pages/index.wp.html` was updated: Friday = "Andrews
+   Osborne Park — at the front pavilion" (was "in back"); Saturday =
+   11 AM–8 PM (was 10 AM–3 PM). Re-paste it into Home (page 27).
+8. **Answers to the overnight report's open questions:** Q1 memory —
+   owner action, in progress; GiveWP stays deactivated until raised.
+   Q3 — $5,000 placeholder goals confirmed fine for launch. Q4 — read
+   the real role slug from UM → User Roles (the row's ID/slug column)
+   and use exactly that in the board gate snippet.
+9. **Fluent form FIELDS must be built in the visual editor UI** (the
+   REST sanitizer strips injected JSON — proven overnight). Field lists
+   are in Task H; notifications per form (hardship = ONLY the family
+   email, subject "CONFIDENTIAL — Hardship Application").
 
 **HUMAN-ONLY (ask the owner, never do):** Stripe/PayPal connection, any
 passwords/logins, file selection from her computer, GitHub settings.
@@ -369,7 +439,9 @@ Benefits (Committees, Constitution & Bylaws, Family Business,
 Superlatives, Hardship, Interactive Tree, Directory) behind login ·
 Give + Dues & T-Shirts stay public · GiveWP approved · owner handles
 Stripe/PayPal + all credentials · repo visibility is the owner's business,
-not yours · switch Settings → Permalinks to **"Post name"** (REQUIRED —
+not yours · EVERYTHING SELF-HOSTED: no Google Fonts, no CDN assets — all
+fonts/images from the Media Library ·
+switch Settings → Permalinks to **"Post name"** (REQUIRED —
 every internal link in the fragments assumes pretty URLs like
 `/family-journey/`; plain `?page_id=` permalinks 404 them) · UM
 restriction fix approved: explicitly check ALL logged-in role boxes
