@@ -1,0 +1,121 @@
+<div class="hnwp">
+<style>
+
+  .journey-wrap{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:1rem; overflow-x:auto;}
+  .journey-svg{min-width:760px; width:100%; height:auto; display:block;}
+  .stop-dot{cursor:pointer;}
+  .stop-dot circle.ring{fill:var(--cream); stroke:var(--green-mid); stroke-width:3; transition:all .2s;}
+  .stop-dot.active circle.ring{fill:var(--green-mid);}
+  .stop-dot.active text.num{fill:#fff;}
+  .stop-dot:hover circle.ring{stroke:var(--orange); stroke-width:4;}
+  .stop-dot text.num{font-family:Verdana,sans-serif; font-weight:bold; font-size:15px; fill:var(--green); text-anchor:middle;}
+  .stop-dot text.lbl{font-family:Verdana,sans-serif; font-size:11px; fill:var(--muted); text-anchor:middle;}
+  .story-card{margin-top:1.2rem;}
+  .story-card .kicker{margin-bottom:.3rem;}
+  .video-slot{
+    border:2px dashed #cb923f; background:#fffaf0; border-radius:12px; padding:1.1rem 1.2rem;
+    font-family:Verdana,sans-serif; font-size:.85rem; color:#8a5a13; margin-top:.9rem;
+  }
+  .video-slot strong{display:block; margin-bottom:.25rem;}
+  .jnav{display:flex; gap:.6rem; margin-top:1rem; align-items:center;}
+  .jnav .counter{font-family:Verdana,sans-serif; font-size:.8rem; color:var(--muted);}
+
+</style>
+<div class="hero">
+  <span class="kicker">Our Roots Run Deep</span>
+  <h1>The Family Journey 🗺️</h1>
+  <p>From Mississippi farmland to Cleveland and beyond — tap each stop on the road to walk through our family's story, told by the people who lived it.</p>
+</div>
+<div class="wrap">
+  <section>
+    <div class="journey-wrap">
+      <svg class="journey-svg" viewBox="0 0 1000 300" role="list" aria-label="Family history journey map">
+        <path d="M 60 220 C 180 120, 240 260, 360 190 S 560 90, 660 170 S 860 250, 950 120"
+              fill="none" stroke="#e5ddcd" stroke-width="10" stroke-linecap="round"/>
+        <path d="M 60 220 C 180 120, 240 260, 360 190 S 560 90, 660 170 S 860 250, 950 120"
+              fill="none" stroke="var(--green-mid)" stroke-width="4" stroke-dasharray="1 14" stroke-linecap="round"/>
+        <!-- stops (positions along the path) -->
+        <g class="stop-dot" data-stop="0" role="listitem" tabindex="0"><circle class="ring" cx="60" cy="220" r="17"/><text class="num" x="60" y="225">1</text><text class="lbl" x="60" y="258">Late 1800s</text></g>
+        <g class="stop-dot" data-stop="1" role="listitem" tabindex="0"><circle class="ring" cx="205" cy="168" r="17"/><text class="num" x="205" y="173">2</text><text class="lbl" x="205" y="136">16 children</text></g>
+        <g class="stop-dot" data-stop="2" role="listitem" tabindex="0"><circle class="ring" cx="360" cy="190" r="17"/><text class="num" x="360" y="195">3</text><text class="lbl" x="360" y="228">1922</text></g>
+        <g class="stop-dot" data-stop="3" role="listitem" tabindex="0"><circle class="ring" cx="510" cy="122" r="17"/><text class="num" x="510" y="127">4</text><text class="lbl" x="510" y="90">Nine branches</text></g>
+        <g class="stop-dot" data-stop="4" role="listitem" tabindex="0"><circle class="ring" cx="660" cy="170" r="17"/><text class="num" x="660" y="175">5</text><text class="lbl" x="660" y="208">The Migration</text></g>
+        <g class="stop-dot" data-stop="5" role="listitem" tabindex="0"><circle class="ring" cx="800" cy="222" r="17"/><text class="num" x="800" y="227">6</text><text class="lbl" x="800" y="260">2024 · Cleveland</text></g>
+        <g class="stop-dot" data-stop="6" role="listitem" tabindex="0"><circle class="ring" cx="900" cy="185" r="17"/><text class="num" x="900" y="190">7</text><text class="lbl" x="900" y="150">2026 · 115 strong</text></g>
+        <g class="stop-dot" data-stop="7" role="listitem" tabindex="0"><circle class="ring" cx="950" cy="120" r="17"/><text class="num" x="950" y="125">8</text><text class="lbl" x="950" y="88">What's next</text></g>
+      </svg>
+    </div>
+
+    <div class="card story-card t-green" id="storyCard" aria-live="polite">
+      <span class="kicker" id="storyKicker"></span>
+      <h2 id="storyTitle" style="margin-bottom:.5rem;"></h2>
+      <p id="storyBody"></p>
+      <div class="video-slot" id="storyVideo"></div>
+      <div class="jnav">
+        <button class="btn ghost" onclick="go(-1)">← Previous stop</button>
+        <button class="btn" onclick="go(1)">Next stop →</button>
+        <span class="counter" id="storyCounter"></span>
+      </div>
+    </div>
+    <p class="form-note" style="margin-top:1rem;">🎬 The dashed boxes are reserved for <strong>elder interview videos</strong> — short recordings of our elders answering the family's questions. As each video is ready, it replaces its box. Want to be interviewed, or have a question we should ask? Email harrisnelsonfamilyreunion@gmail.com.</p>
+  </section>
+
+  <section>
+    <h2>Go Deeper</h2>
+    <div class="grid c3">
+      <div class="card t-green"><h3>📖 The Written History</h3><p>The full story as read at the reunion — every generation, every branch.</p><p style="margin-top:.5rem;"><a href="/history/">Read it →</a></p></div>
+      <div class="card t-orange"><h3>📷 Photos &amp; Slideshow</h3><p>The 2024 slideshow and the family album.</p><p style="margin-top:.5rem;"><a href="/photos/">Watch →</a></p></div>
+      <div class="card t-red"><h3>🌳 Add Your Branch</h3><p>Every profile grows the tree — and the printed poster.</p><p style="margin-top:.5rem;"><a href="/family-tree-form/">Family tree form →</a></p></div>
+    </div>
+  </section>
+</div>
+</div>
+<script>
+
+var STOPS = [
+  { k: "Late 1800s · Mississippi", t: "Where It All Began 🌱",
+    b: "Mr. John Harris, a farmer, and Ms. Judy Bender, a homemaker, united in Mississippi in the late 1800s. Their union brought forth six children — four boys and two girls: Gussy, Pasty, Josh, A.C., D.B., and Will Harris. Everything on this website grows from this root.",
+    q: "Elder interview slot — “What do you know about the land our family farmed in Mississippi?”" },
+  { k: "The Moncriefs", t: "Sixteen Children Strong 👨‍👩‍👧‍👦",
+    b: "Emma (Bently) Moncrief (1867–1954) and Ed Moncrief raised sixteen children. Out of those sixteen came Mandy Moncrief (c. 1900–1986), who married Nelson Price — and blessed us with a daughter who would carry the whole family forward.",
+    q: "Elder interview slot — “What stories did your parents tell about the Moncrief house?”" },
+  { k: "July 16, 1922", t: "Lela Mae Price 👑",
+    b: "Born July 16, 1922, Lela Mae Price became the heart of this family. She married Dennis Bernard “D.B.” Harris — three girls — and later Floyd Nelson — six more children. She carried this family until February 15, 1996, and we carry her name forward at every reunion.",
+    q: "Elder interview slot — “Tell us your favorite memory of Grandma Lela Mae.”" },
+  { k: "The Branches", t: "One Mother, Nine Branches 🌳",
+    b: "From Lela Mae's nine children grew the nine branches we call when we say “stand with your family!” Every branch keeps growing — that's why every member profile on this site feeds the family tree and the printed poster.",
+    q: "Elder interview slot — “How did the branches stay close when everyone started moving away?”" },
+  { k: "The Great Migration", t: "Mississippi ➜ Cleveland 🚂",
+    b: "Like millions of Black families, ours moved north for work, safety, and opportunity — putting down new roots in Cleveland, Ohio, while never letting go of the Mississippi soil. Reclaiming that soil is now family business: our land-back fund with Where Is My Land.",
+    q: "Elder interview slot — “Who moved north first, and what was that journey like?”" },
+  { k: "2024 · Cleveland", t: "“We All We Got… We All We Need!” 📸",
+    b: "The 2024 reunion in Cleveland gave us 123 slides of memories — pool parties, portraits, and every branch showing up and showing out. Watch the whole slideshow on the Photos page.",
+    q: "Elder interview slot — “What did the 2024 reunion mean to you?”" },
+  { k: "2026 · Cleveland", t: "Here We Go Again… Kick'n It with the Kins! 👟",
+    b: "About 115 of us came together July 17–19, 2026 — fish fry at Andrews Osborne Park, family fun at Clay's Park, and Sunday brunch where we adopted our constitution, filled our board, and launched the funds that secure our future.",
+    q: "Elder interview slot — “What do you hope this family looks like in 20 years?”" },
+  { k: "The Road Ahead", t: "Land. Scholarships. Legacy. ✨",
+    b: "What's next: recovering and revitalizing our family land, awarding scholarships to descendants, the Helping Hands fund, our 501(c)(3) foundation, and the next reunion city — chosen together, by vote. Add your voice: create your profile and join a committee.",
+    q: "Elder interview slot — “What would you tell the great-great-grandchildren watching this?”" }
+];
+var cur = 0;
+function render(){
+  document.querySelectorAll('.stop-dot').forEach(function(d){
+    d.classList.toggle('active', +d.getAttribute('data-stop') === cur);
+  });
+  var s = STOPS[cur];
+  document.getElementById('storyKicker').textContent = s.k;
+  document.getElementById('storyTitle').textContent = s.t;
+  document.getElementById('storyBody').textContent = s.b;
+  document.getElementById('storyVideo').innerHTML = '<strong>🎬 Video coming soon</strong>' + s.q;
+  document.getElementById('storyCounter').textContent = 'Stop ' + (cur+1) + ' of ' + STOPS.length;
+}
+function go(d){ cur = (cur + d + STOPS.length) % STOPS.length; render(); }
+document.querySelectorAll('.stop-dot').forEach(function(d){
+  function pick(){ cur = +d.getAttribute('data-stop'); render(); }
+  d.addEventListener('click', pick);
+  d.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+});
+render();
+
+</script>

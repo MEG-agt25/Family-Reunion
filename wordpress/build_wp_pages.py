@@ -12,6 +12,7 @@ LINKMAP = {
   'gallery.html': '/photos/', 'shop.html': '/dues-and-shirts/', 'give.html': '/give/',
   'business.html': '/family-business/', 'constitution.html': '/constitution-and-bylaws/',
   'hardship.html': '/hardship-fund/', 'features.html': '/features/', 'account.html': '/register/',
+  'history-map.html': '/family-journey/',
   'mildred-tree.html': '/members/interactive-tree/',
 }
 def wp_fragment(fname):
@@ -31,10 +32,10 @@ def wp_fragment(fname):
                     'field list in RUNBOOK-WORDPRESS.md</p></div>' % name)
         body = re.sub(r'<form data-hn-form=.*?</form>', formsub, body, flags=re.S)
     frag = '<div class="hnwp">\n'
-    if page_css and fname in ('gallery.html', 'constitution.html'):
+    if page_css and fname in ('gallery.html', 'constitution.html', 'history-map.html'):
         frag += '<style>\n' + page_css.group(1) + '\n</style>\n'
     frag += body + '\n</div>\n'
-    if fname == 'gallery.html':
+    if fname in ('gallery.html', 'history-map.html'):
         for s in re.findall(r'<script>(.*?)</script>', src, re.S):
             frag += '<script>\n' + s + '\n</script>\n'
     frag = frag.replace("'photos/2024/'", "'" + MEDIA + "'")
@@ -42,7 +43,7 @@ def wp_fragment(fname):
     frag = frag.replace('src="photos/2024/', 'src="' + MEDIA).replace('src="photos/family/', 'src="' + MEDIA)
     
     return frag
-PAGES = ['index.html','history.html','tree.html','committees.html','superlatives.html',
+PAGES = ['index.html','history.html','history-map.html','tree.html','committees.html','superlatives.html',
          'gallery.html','shop.html','give.html','business.html','constitution.html',
          'hardship.html','features.html']
 for p in PAGES:
