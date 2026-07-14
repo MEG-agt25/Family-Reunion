@@ -91,9 +91,14 @@ whether something identifies a living person: restrict it and ask.
 - Additional CSS published (6,831 chars, `.hnwp`-scoped)
 - 9 pages created WITH content: Home, Our History, Family Tree Form,
   Committees, Superlatives, Photos, Dues & T-Shirts, Give, Family Business
-- 3 pages created EMPTY: Constitution & Bylaws (ID 36), Hardship Fund
-  (ID 37), Features (ID 38)
+- Task A COMPLETE & verified: Constitution & Bylaws (ID 36), Hardship Fund
+  (ID 37), Features (ID 38) published with the correct fragments
 - Photos uploaded to the Media Library (136 images)
+- **Member Benefits Bridge installed by the owner** (the
+  `wordpress/hn-member-benefits.php` snippet/plugin): dues purchases or
+  $125 of $25 installments unlock `[hn_members]` sections; Treasurer gets
+  a Dues column + manual-paid checkbox. Its four product IDs are still
+  `0 => TODO` until Task I creates the products — see Task L.
 
 **HUMAN-ONLY (ask the owner, never do):** Stripe/PayPal connection, any
 passwords/logins, file selection from her computer, GitHub settings.
@@ -102,10 +107,8 @@ passwords/logins, file selection from her computer, GitHub settings.
 
 # PART 3 — OPEN TASKS, IN ORDER
 
-**Task A — Fill the 3 empty pages.** ID 36 ← FRAGMENT 1 · ID 37 ←
-FRAGMENT 2 · ID 38 ← FRAGMENT 3. Wrap in a Custom HTML block
-(`<!-- wp:html --> … <!-- /wp:html -->`); the REST API method already
-proven on the 9 successful pages works well.
+**Task A — DONE (verified; do not redo).** Pages 36/37/38 are published
+with fragments 1/2/3.
 
 **Task B — Members-only Interactive Family Tree.** New page, slug
 `members/interactive-tree`, content = FRAGMENT 4. Apply Ultimate Member's
@@ -198,6 +201,58 @@ logged-out visitors · the tree renders for members · /family-journey/
 stops click through · Photos slideshow plays (fix `/wp-content/uploads/`
 month path if images 404) · all four forms submit · products exist ·
 three goal meters show · nothing public shows any individual's info.
+
+**Task L — Wire the Member Benefits Bridge.** After Task I, edit the
+installed "HN Member Benefits Bridge" snippet (Snippets menu) or plugin
+file: in `hn_mb_map()`, replace the four `0 => … // TODO real ID` keys
+with the real product IDs (three dues products → `'type' => 'dues'`;
+$25 installment → `'type' => 'installment'`). Report the four IDs to the
+owner. Then verify with a NON-admin test user: an `[hn_members]` section
+shows the "pay your dues" prompt; ticking the Treasurer "Paid" checkbox on
+their profile unlocks it; un-ticking locks it. Add `[hn_dues_status]` to
+the member Account page so each member sees their OWN dues status (never
+anyone else's). See RUNBOOK-WORDPRESS.md §8.
+
+**Task M — Full functionality & stress test.** Run AFTER everything above;
+record every result (pass/fail + what you saw):
+1. *Every page, logged out:* each menu item loads without PHP errors,
+   broken layout, 404 images, or dead links; restricted pages redirect to
+   login; NO living person's name/DOB/genealogy visible anywhere public.
+2. *Every page, as a non-admin member:* Membership Benefits pages render;
+   the interactive tree renders and "+ add" works; dues gate behaves per
+   Task L.
+3. *Forms torture:* submit each of the 4 Fluent Forms with (a) valid data,
+   (b) required fields empty (must show validation, not submit), (c) very
+   long text in textareas (must not break the page). Confirm notifications
+   arrive at harrisnelsonfamilyreunion@gmail.com with the right subjects.
+4. *Registration flow end-to-end:* register a test member → notification
+   email (with genealogy fields) arrives → profile requires login to
+   view → member appears in the logged-in-only directory → delete the
+   test user when done.
+5. *Commerce flow (NO real payments — owner connects Stripe/PayPal
+   later):* products display right prices/variations; add to cart → cart
+   math correct with multiple $25 installments; checkout page reaches the
+   payment step and stops there.
+6. *Mobile:* narrow the viewport to phone width — menu collapses and
+   works, journey map scrolls, slideshow plays, forms usable.
+7. *Speed/robustness:* note any page over ~3s; double-submit a form
+   rapidly (no duplicate chaos); browse 10+ pages in quick succession
+   (no logouts/errors). True load testing needs external tools — flag,
+   don't fake it.
+8. Clean up ALL test data: test users, test orders, test form entries.
+
+**Task N — Final status report (the handoff back).** End by writing a
+report the owner will carry back to Claude Code, in EXACTLY this shape:
+```
+== HN WEBSITE STATUS REPORT <date> ==
+TASKS: one line per Task A–M — DONE / PARTIAL / BLOCKED + one-line detail
+PRODUCT IDS: dues125=__ dues175=__ dues225=__ installment25=__
+TEST RESULTS: the numbered Task M results, pass/fail each
+REMAINING ACTIONS (priority order): numbered list; for each, WHO must do
+  it (owner / Claude Chrome / Claude Code) and what exactly
+OPEN QUESTIONS: anything you need decided
+```
+Include nothing about member data in the report beyond counts.
 
 ---
 
