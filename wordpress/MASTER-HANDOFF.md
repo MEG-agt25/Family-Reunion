@@ -102,13 +102,71 @@ whether something identifies a living person: restrict it and ask.
 - Task B PARTIAL: page ID 48 "Interactive Family Tree" exists, published
   WITH the UM logged-in restriction applied (verified: logged-out visitors
   get only a login redirect — zero family content ever leaked). Known
-  bug: the restriction OVER-blocks — even logged-in members/admins get
-  redirected. Fix (pre-approved): explicitly check ALL logged-in role
-  boxes (Administrator, Subscriber, Customer, member roles) in the page's
-  UM Content Restriction, save, re-verify both directions. Do NOT
-  re-create the page or unpublish it.
-- Site was on PLAIN permalinks as of last check; switching to "Post name"
-  is pre-approved and REQUIRED (see decision log).
+  bug: the restriction OVER-blocks logged-in users; the role-checkbox
+  re-save did NOT cure it (all 7 role boxes checked, admin still
+  redirected). Use the RESTRICTION PLAYBOOK below. Do NOT re-create the
+  page or unpublish it.
+- Audit 2026-07-14 (Claude Chrome, verified live): permalinks already
+  "Post name" · site title/tagline/static-front-page done · Hello world!/
+  Sample Page already gone · page 53 /family-journey/ exists with content
+  (Task C done pending look-check) · committees(30)+tree(48) restricted
+  (block logged-out correctly, over-block logged-in) · constitution(36),
+  family-business(35), superlatives(31), hardship(37), members
+  directory(20) NOT restricted yet · menu is the OLD structure (rebuild
+  to Task E v2) · 0 WooCommerce products · 0 Fluent Forms · GiveWP not
+  installed · UM registration form still default · Bridge installed as a
+  real PLUGIN (hn-member-benefits), active, IDs still TODO · no Executive
+  Board role, no board pages · only user is the admin (ID 1).
+
+**RESTRICTION PLAYBOOK (pre-approved; supersedes the role-checkbox fix):**
+1. Install the free **User Switching** plugin (John Blackbourn — the
+   standard admin tool for this). It lets the admin switch INTO a test
+   member and switch back WITHOUT passwords or losing the admin session
+   ("Switch back" link / olduser cookie). Never log out of admin any
+   other way. Application-password Basic Auth will NOT work for
+   front-end views (it authenticates REST/XML-RPC only) — don't try it.
+2. Create a test subscriber, switch to them, and check a UM-restricted
+   page. If UM still redirects the member, STOP using UM per-page
+   restriction: REMOVE it from committees + tree (and don't add it
+   elsewhere) and instead gate via Code Snippets (install the free
+   **Code Snippets** plugin) with this fail-safe snippet — it blocks
+   ONLY logged-out visitors, so it can never lock out members or admin:
+   `add_action('template_redirect', function () {
+      $protected = array('committees','constitution-and-bylaws',
+        'family-business','superlatives','hardship-fund',
+        'interactive-tree','members');
+      if (is_page($protected) && !is_user_logged_in()) {
+        wp_safe_redirect(wp_login_url(get_permalink())); exit; }
+    });`
+   Board page gate (add to the same snippet):
+   `add_action('template_redirect', function () {
+      if (!is_page('financial-reports')) return;
+      $u = wp_get_current_user();
+      if (current_user_can('manage_options') ||
+          in_array('um_executive-board', (array)$u->roles, true) ||
+          in_array('executive_board', (array)$u->roles, true)) return;
+      wp_safe_redirect(is_user_logged_in() ? home_url('/')
+        : wp_login_url(get_permalink())); exit; });`
+   (Check the real role slug in wp-admin after creating the UM role and
+   adjust the snippet to match.) After ANY gating change, re-verify
+   logged-out blocking with a cookie-less request AND member access via
+   User Switching.
+3. **Bridge product IDs — do NOT edit the plugin file.** The plugin
+   applies `apply_filters('hn_member_product_map', $map)` precisely so
+   IDs can be supplied externally. Add a Code Snippets snippet:
+   `add_filter('hn_member_product_map', function ($map) {
+      return array(
+        DUES125_ID => array('label' => 'Dues — Single $125', 'type' => 'dues'),
+        DUES175_ID => array('label' => 'Dues — Single + guest $175', 'type' => 'dues'),
+        DUES225_ID => array('label' => 'Dues — Family 3+ $225', 'type' => 'dues'),
+        INSTALL25_ID => array('label' => 'Dues Installment $25', 'type' => 'installment'),
+      ); });`
+   with the real numeric IDs. Code Snippets validates and deactivates a
+   broken snippet instead of white-screening the site, so this is safe
+   overnight; the plugin file itself stays untouched.
+4. Test users for QA are pre-approved by the owner (create, use, then
+   DELETE them all in cleanup) — this is not "creating accounts on the
+   owner's behalf."
 
 **HUMAN-ONLY (ask the owner, never do):** Stripe/PayPal connection, any
 passwords/logins, file selection from her computer, GitHub settings.
