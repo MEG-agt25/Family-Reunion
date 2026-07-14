@@ -52,7 +52,7 @@ legal home.
 - [ ] **Set up bookkeeping** and a receipts process (Financial Secretary model
       carries over) — 501(c)(3)s file an annual IRS Form 990-N/990-EZ
 - [ ] **Publish everything to the family** — bylaws, minutes, budgets on
-      hnreunion.com
+      hnfamilyreunion.com
 
 ## How the foundation relates to the reunion
 - The **reunion organization** (officers + committees) keeps running the reunion.

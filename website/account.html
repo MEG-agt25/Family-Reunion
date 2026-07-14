@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile — Harris-Nelson Family Reunion</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="index.html"><span class="leaf">🌳</span> Harris-Nelson Family Reunion</a>
+  <nav>
+    <a href="index.html">Home</a><a href="tree.html">Family Tree</a><a href="shop.html">Shop</a>
+    <a href="give.html">Give</a><a href="account.html">My Profile</a>
+  </nav>
+</div></header>
+
+<div class="hero">
+  <span class="kicker">One Profile · Everything Pre-Filled</span>
+  <h1>My Family Profile 👤</h1>
+  <p>Create your profile once — it automatically files your <strong>family tree entry</strong> with the Historian, pre-fills every form on this site, and gives you one-tap dues payments and shirt orders.</p>
+</div>
+
+<main class="wrap">
+  <!-- ====== DASHBOARD (shown when a profile exists) ====== -->
+  <section id="dashboard" style="display:none;">
+    <h2 id="dashHello">Welcome back!</h2>
+    <div class="dash-grid">
+      <div class="card t-green">
+        <h3>💵 Pay Dues</h3>
+        <p style="margin-bottom:.5rem;">$125 single (or w/ 1 minor) · $175 single + guest or college student · $225 family of 3+. <strong>Write your name and "dues" in the payment note.</strong></p>
+        <ul style="list-style:none; padding:0; display:grid; gap:.5rem;">
+          <li><strong>Zelle:</strong> harrisnelsonfamilyreunion@gmail.com <button class="copybtn" data-copy="harrisnelsonfamilyreunion@gmail.com">copy</button></li>
+          <li><strong>Cash App:</strong> $mieshanulife06 <button class="copybtn" data-copy="$mieshanulife06">copy</button></li>
+        </ul>
+        <p style="margin-top:.6rem;"><a class="btn" data-pay="REGISTRATION" href="#">Pay by Card</a></p>
+      </div>
+      <div class="card t-orange">
+        <h3>👕 Order T-Shirts</h3>
+        <p>$10 (2XL–4XL $15) — adult SM–4XL, youth SM–XL, toddler 6M–24M. The order form opens with your info already filled in.</p>
+        <p style="margin-top:.6rem;"><a class="btn" href="shop.html">Order Shirts</a></p>
+      </div>
+      <div class="card t-green">
+        <h3>🌳 My Tree Entry</h3>
+        <p>Your profile was sent to the Historian as your family tree entry. Need to add a new baby, a marriage, or a correction? Update your profile below and re-submit — the Historian gets the update.</p>
+        <p style="margin-top:.6rem;"><a class="btn ghost" href="mildred-tree.html">View the Interactive Tree</a></p>
+      </div>
+      <div class="card t-red">
+        <h3>🗳️ Quick Actions</h3>
+        <ul>
+          <li><a href="committees.html">Join a committee</a> — your info pre-fills</li>
+          <li><a href="superlatives.html">Vote superlatives</a></li>
+          <li><a href="hardship.html">Helping Hands application</a> (confidential)</li>
+          <li><a href="give.html">Give to the three funds</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:1.1rem;">
+      <h3>📋 My Activity on This Device</h3>
+      <ul class="activity" id="activityList" style="list-style:none; padding:0;"></ul>
+      <p class="form-note">Activity and your profile are saved on this device only (nothing is stored on a server). Submissions go to the family inbox for the Historian and officers.</p>
+    </div>
+    <p style="margin-top:1rem;">
+      <button class="btn ghost" onclick="editProfile()">✏️ Update My Profile</button>
+      <button class="btn ghost" onclick="clearProfile()" style="margin-left:.4rem;">Remove profile from this device</button>
+    </p>
+  </section>
+
+  <!-- ====== SIGN-UP / EDIT (the generalized family questionnaire) ====== -->
+  <section id="signup">
+    <h2>Create Your Profile</h2>
+    <p class="lead" style="margin-bottom:1.2rem;">These are the family questionnaire questions, made evergreen — answer once and you're set for every future reunion. Saving your profile <strong>automatically submits your family tree entry</strong> to the Historian.</p>
+    <form data-hn-form="Member Profile + Family Tree Entry" data-hn-keep id="profileForm">
+      <fieldset>
+        <legend>About You</legend>
+        <div class="field"><label>Full name <span class="req">*</span></label><input type="text" name="Full name" required></div>
+        <div class="field"><label>Date of birth</label><input type="date" name="Date of birth"></div>
+        <div class="field"><label>City &amp; state you live in</label><input type="text" name="City and state"></div>
+        <div class="field"><label>Family branch <span class="req">*</span></label>
+          <select name="Family branch" required>
+            <option value="">— Choose your branch —</option>
+            <option>Mary Nelson</option><option>Mildred Ellis</option><option>Jessie Moore</option>
+            <option>James Edward</option><option>James Earl</option><option>Curtis</option>
+            <option>Mary Jane Gray</option><option>Mandy Ellis</option><option>Shirley Harris</option>
+            <option>Nelson line (Joe &amp; Oreatha)</option><option>Not sure — help me find my branch!</option>
+          </select>
+        </div>
+        <div class="field"><label>Email <span class="req">*</span></label><input type="email" name="Email" required></div>
+        <div class="field"><label>Phone</label><input type="tel" name="Phone"></div>
+      </fieldset>
+      <fieldset>
+        <legend>Your Line — This Becomes Your Family Tree Entry 🌳</legend>
+        <div class="field"><label>Parents' names <span class="req">*</span></label><input type="text" name="Parents" required></div>
+        <div class="field"><label>Grandparents' names</label><input type="text" name="Grandparents"></div>
+        <div class="field"><label>Great-grandparents' names</label><input type="text" name="Great-grandparents"></div>
+        <div class="field"><label>Great-great-grandparents (and other greats you know)</label><input type="text" name="Great-great-grandparents"></div>
+        <div class="field"><label>Spouse / partner &amp; anniversary date</label><input type="text" name="Spouse" placeholder="e.g. Marcellus Goodwin — April 26, 2014"></div>
+        <div class="field"><label>Children's names (&amp; birth years)</label><textarea name="Children"></textarea></div>
+      </fieldset>
+      <fieldset>
+        <legend>Your Story — For the Yearbook &amp; Acknowledgments</legend>
+        <div class="field"><label>School(s) &amp; graduation date(s)</label><textarea name="Schools"></textarea></div>
+        <div class="field"><label>Fraternity / sorority affiliation</label><input type="text" name="Fraternity or sorority"></div>
+        <div class="field"><label>Military affiliation</label><input type="text" name="Military"></div>
+        <div class="field"><label>Personal &amp; family accomplishments (with dates if you can)</label><textarea name="Accomplishments"></textarea></div>
+        <div class="field"><label>One interesting fact about yourself</label><textarea name="Interesting fact"></textarea></div>
+        <div class="field"><label>Family history facts you know (stories, places, dates)</label><textarea name="Family history facts"></textarea></div>
+      </fieldset>
+      <fieldset>
+        <legend>Help Us Plan the Future</legend>
+        <div class="field"><label>What would you like to see at future family reunions?</label><textarea name="Future reunion wishes"></textarea></div>
+        <div class="field"><label>Are you interested in helping build the family foundation (501(c)(3))?</label>
+          <div class="choices">
+            <label><input type="radio" name="Foundation interest" value="Yes"> Yes — count me in</label>
+            <label><input type="radio" name="Foundation interest" value="Maybe"> Maybe — tell me more</label>
+            <label><input type="radio" name="Foundation interest" value="No"> Not right now</label>
+          </div>
+        </div>
+        <div class="field"><label>Suggestions for foundation board members (name &amp; contact)</label><textarea name="Board suggestions"></textarea></div>
+        <div class="field"><label>Would you serve on a committee?</label>
+          <div class="choices">
+            <label><input type="radio" name="Committee interest" value="Yes - chair"> Yes — I'd chair one ⭐</label>
+            <label><input type="radio" name="Committee interest" value="Yes - member"> Yes — as a member</label>
+            <label><input type="radio" name="Committee interest" value="Not right now"> Not right now</label>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Permissions</legend>
+        <div class="choices">
+          <label><input type="checkbox" name="Consent - Ancestry tree" value="yes" required> Add me (and the children listed) to the family Ancestry tree <span class="req">*</span></label>
+          <label><input type="checkbox" name="Consent - Poster" value="yes"> Include our names on the printed family tree poster</label>
+          <label><input type="checkbox" name="Consent - Contact" value="yes"> The family may contact me about reunions &amp; family business</label>
+        </div>
+      </fieldset>
+      <button class="btn" type="submit">Save My Profile &amp; File My Tree Entry</button>
+      <p class="form-status" role="status"></p>
+      <p class="form-note">Your profile is saved on this device to pre-fill every form on the site, and one copy is sent to the family inbox where the Historian adds you to the Ancestry tree. Living family members' details never appear publicly — only names go on the poster.</p>
+    </form>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div><strong style="color:#fff;">Harris-Nelson Family Reunion</strong><p>harrisnelsonfamilyreunion@gmail.com<br>hnfamilyreunion.com</p></div>
+  <div><strong style="color:#fff;">Family Links</strong><p><a href="history.html">Our History</a><br><a href="mildred-tree.html">Interactive Tree</a></p></div>
+  <div><strong style="color:#fff;">Get Involved</strong><p><a href="committees.html">Join a Committee</a><br><a href="give.html">Give</a></p></div>
+</div></footer>
+
+<script src="js/config.js"></script><script src="js/main.js"></script>
+<script>
+(function(){
+  var form = document.getElementById('profileForm');
+  var dash = document.getElementById('dashboard');
+  var signup = document.getElementById('signup');
+
+  function fill(profile){
+    Object.keys(profile).forEach(function(k){
+      var el = form.querySelector('[name="'+k+'"]');
+      if (!el) return;
+      if (el.type === 'radio') {
+        var r = form.querySelector('[name="'+k+'"][value="'+profile[k]+'"]');
+        if (r) r.checked = true;
+      } else if (el.type === 'checkbox') {
+        form.querySelectorAll('[name="'+k+'"]').forEach(function(c){ c.checked = (profile[k] === 'yes'); });
+      } else el.value = profile[k];
+    });
+  }
+
+  function showDash(profile){
+    dash.style.display = '';
+    signup.style.display = 'none';
+    document.getElementById('dashHello').textContent =
+      'Welcome back, ' + (profile['Full name'] || 'family') + '! 💛';
+    var list = document.getElementById('activityList');
+    var acts = [];
+    try { acts = JSON.parse(localStorage.getItem('hn-activity')) || []; } catch(e){}
+    list.innerHTML = acts.length
+      ? acts.map(function(a){ return '<li>✅ ' + a.what + ' <span style="color:var(--muted); font-size:.85em;">— ' + a.when + '</span></li>'; }).join('')
+      : '<li style="color:var(--muted);">Nothing yet — your submissions will show up here.</li>';
+  }
+
+  window.editProfile = function(){
+    dash.style.display = 'none';
+    signup.style.display = '';
+    document.querySelector('#signup h2').textContent = 'Update Your Profile';
+    var p = window.HN_getProfile();
+    if (p) fill(p);
+    window.scrollTo({top: signup.offsetTop - 80, behavior: 'smooth'});
+  };
+  window.clearProfile = function(){
+    if (confirm('Remove your profile from this device? (The Historian keeps what you already submitted.)')){
+      localStorage.removeItem('hn-profile'); location.reload();
+    }
+  };
+
+  // save locally right before main.js submits the tree entry
+  form.addEventListener('submit', function(){
+    var data = new FormData(form);
+    var profile = {};
+    data.forEach(function(v, k){ if (String(v).trim() !== '') profile[k] = v; });
+    localStorage.setItem('hn-profile', JSON.stringify(profile));
+    setTimeout(function(){ showDash(profile); }, 400);
+  });
+
+  document.querySelectorAll('.copybtn').forEach(function(b){
+    b.addEventListener('click', function(){
+      navigator.clipboard.writeText(b.getAttribute('data-copy')).then(function(){
+        b.textContent = 'copied!'; setTimeout(function(){ b.textContent = 'copy'; }, 1500);
+      });
+    });
+  });
+
+  var existing = window.HN_getProfile();
+  if (existing) showDash(existing);
+})();
+</script>
+</body>
+</html>

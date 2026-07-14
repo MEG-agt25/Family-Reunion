@@ -1,7 +1,7 @@
 # Family Reunion — Harris-Nelson Family Reunion Project
 
 Everything for the Harris-Nelson Family Reunion: the business-meeting
-presentation, the code for **hnreunion.com**, and the governance /
+presentation, the code for **hnfamilyreunion.com**, and the governance /
 501(c)(3) playbooks.
 
 ## What's here
@@ -9,7 +9,7 @@ presentation, the code for **hnreunion.com**, and the governance /
 | Path | What it is |
 |---|---|
 | `presentation/index.html` | **The reunion presentation** — a self-contained slide deck (open in any browser; ← → keys to navigate, `P` to print). 28 slides: welcome, weekend schedule, family history, trivia, yearbook, Reunion 2024 memories, acknowledgments, superlatives voting, tribute, financial report, officers & Robert's Rules, board & committee recognition (incl. the new Membership Chair seat), committee chair sign-ups, next-reunion location options, website plans, Where Is My Land fundraising, scholarships, the Helping Hands hardship fund, 501(c)(3) foundation, and the family tree project. |
-| `website/` | **Starter code for hnreunion.com** — a complete static site, no build step needed. |
+| `website/` | **Starter code for hnfamilyreunion.com** — a complete static site, no build step needed. |
 | `presentation/Harris-Nelson-Reunion-2026.pptx` | **Editable PowerPoint version** of the deck (26 slides) — open in PowerPoint or import into Canva to edit names, captions, and numbers. Regenerate anytime with `python3 presentation/build_pptx.py`. |
 | `docs/constitution-and-bylaws.md` | Draft Constitution & Bylaws (Robert's Rules of Order as parliamentary authority) ready for adoption — bracketed items are the family's choices to vote on. |
 | `docs/Hardship-Fund-Application.docx` | Printable Helping Hands hardship application (paper version of hardship.html). |
@@ -28,6 +28,8 @@ presentation, the code for **hnreunion.com**, and the governance /
 | `committees.html` | All eleven committees (incl. Courtesy, led by the Hospitality Chair, and Protocol, chaired by the Parliamentarian) with **chair/member sign-up** + volunteer questionnaire (adapted from the WIML questionnaire) |
 | `superlatives.html` | Family superlatives **voting ballot** (awarded at each reunion) |
 | `gallery.html` | Photo gallery + fullscreen auto-playing slideshow of all 123 slides from Reunion 2024 (Cleveland) — "We All We Got… We All We Need!" (photos in `photos/2024/`) |
+| `account.html` | **Family Profile** — the generalized questionnaire as a sign-up; saving it auto-files a family tree entry to the Historian, pre-fills every form site-wide, and opens a dashboard (dues payments, shirt orders, activity log). Device-local storage; upgrade path to real accounts documented. |
+| `features.html` | Landing page touring every feature of the site |
 | `mildred-tree.html` | **Interactive Mildred Harris branch tree** (1942–2012) built from the Ancestry GEDCOM + written history — "+ add" buttons on every person, weekend additions saved locally and exportable as CSV for the Historian |
 | `constitution.html` | The Constitution & Bylaws as a readable, printable web page |
 | `hardship.html` | Helping Hands hardship fund — program rules, deadlines, rubric, and the confidential application form |
@@ -45,8 +47,8 @@ presentation, the code for **hnreunion.com**, and the governance /
      t-shirts, and the three donation funds. Buttons stay hidden until filled in.
      Add the Cash App cashtag and Zelle info too.
 3. **Deploy:** upload the `website/` folder to any static host (Netlify, Vercel,
-   GitHub Pages, or the hosting that comes with the hnreunion.com domain).
-4. **Point the domain** hnreunion.com at the host.
+   GitHub Pages, or the hosting that comes with the hnfamilyreunion.com domain).
+4. **Point the domain** hnfamilyreunion.com at the host.
 
 No card numbers are ever handled by the site itself — payments go through the
 processor's hosted links.

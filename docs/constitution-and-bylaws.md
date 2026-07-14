@@ -130,7 +130,7 @@ amendment was distributed to the family at least [30] days in advance.
    of family land — repairs, restoration, cleanup, surveys, taxes, and
    improvements that keep the land productive and in the family.
 6. **The operating fund** is used **strictly for operating costs**: hosting
-   and maintaining the family website (hnreunion.com — domain,
+   and maintaining the family website (hnfamilyreunion.com — domain,
    hosting, and payment-processing fees), printing, postage and supplies,
    permits and venue deposits, and **seed money** for future reunions. It is
    not used for awards or charitable grants.
