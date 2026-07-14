@@ -123,13 +123,18 @@ amendment was distributed to the family at least [30] days in advance.
    representative, with payer and purpose noted.
 3. The fiscal year runs [January 1 – December 31].
 4. **Fundraising split.** Unless changed by member vote, net fundraising
-   proceeds are divided: [___%] land-back fund, [___%] scholarship
-   fund, [___%] seed money for the next reunion.
+   proceeds are divided: [___%] land-back fund, [___%] scholarship fund,
+   [___%] operating fund.
 5. **The land-back fund** covers the Where Is My Land retainer and related
    research and legal costs, and also the **renovation and revitalization**
    of family land — repairs, restoration, cleanup, surveys, taxes, and
    improvements that keep the land productive and in the family.
-6. The books may be reviewed on request by any two voting members not
+6. **The operating fund** is used **strictly for operating costs**: hosting
+   and maintaining the family website (hnfamilyreunion.com — domain,
+   hosting, and payment-processing fees), printing, postage and supplies,
+   permits and venue deposits, and **seed money** for future reunions. It is
+   not used for awards or charitable grants.
+7. The books may be reviewed on request by any two voting members not
    related by household to the Treasurer or Financial Secretary.
 
 ## Article 5 — Committees

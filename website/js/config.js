@@ -18,7 +18,7 @@ window.HN_CONFIG = {
     TSHIRT: "",         // e.g. Stripe/PayPal link for t-shirt orders
     DONATE_LAND: "",    // Where Is My Land retainer fund
     DONATE_SCHOLARSHIP: "",
-    DONATE_SEED: "",    // seed money for future reunions
+    DONATE_SEED: "",    // operating fund: website hosting + seed money for future reunions
     CASHAPP: "$mieshanulife06", // Miesha Wilson
     ZELLE: "harrisnelsonfamilyreunion@gmail.com" // Joseph Nelson — family reunion bank account
   },

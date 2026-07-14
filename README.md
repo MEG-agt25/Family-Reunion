@@ -31,7 +31,7 @@ presentation, the code for **hnfamilyreunion.com**, and the governance /
 | `constitution.html` | The Constitution & Bylaws as a readable, printable web page |
 | `hardship.html` | Helping Hands hardship fund — program rules, deadlines, rubric, and the confidential application form |
 | `shop.html` | T-shirt orders + registration/dues payment buttons |
-| `give.html` | The three funds: land-back retainer (Where Is My Land), scholarships, seed money + scholarship interest form |
+| `give.html` | The three funds: land-back (Where Is My Land + land renovation), scholarships, and the operating fund (website hosting + seed money) + scholarship interest form |
 | `business.html` | Officers, Robert's Rules, financial reports, 501(c)(3) roadmap |
 
 ### Launching the site (Technology Committee checklist)

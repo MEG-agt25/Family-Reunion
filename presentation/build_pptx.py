@@ -480,7 +480,7 @@ text(s, 0.7, 1.8, 6.2, 2.6, [
     ("Step 1: gather deeds, tax records & oral history\nStep 2: fund the RETAINER through reunion fundraising\nStep 3: family volunteers support the research", {"size": 15})])
 bullets(s, 7.2, 1.8, 5.4, [
     "\U0001F3E1 A share of every fundraiser → the land-back fund (retainer + renovation & revitalization of our land)",
-    "\U0001F331 A share → seed money for future reunions",
+    "\U0001F6E0 A share → the OPERATING FUND (strictly operating costs: website hosting, printing, permits + seed money for future reunions)",
     "\U0001F393 A share → the scholarship fund",
     "Exact percentages set by member vote today — chair, entertain a motion!"],
     head="How fundraising is split", size=15, head_color=ORANGE)
