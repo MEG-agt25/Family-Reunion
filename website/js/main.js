@@ -18,7 +18,7 @@
     '<span class="dropdown" role="menu">' +
       '<span><h4>Our Story</h4>' +
         '<a href="history.html">Our History<small>From Mississippi to Cleveland &amp; beyond</small></a>' +
-        '<a href="mildred-tree.html">Interactive Family Tree<small>Mildred’s branch — tap + add</small></a>' +
+        '<a href="tree.html">Interactive Family Tree<small>Members-only — after login</small></a>' +
         '<a href="gallery.html">Photos &amp; Slideshow<small>Reunion 2024 + the family album</small></a>' +
         '<a href="features.html">Everything This Site Does<small>The feature tour</small></a>' +
       '</span>' +

@@ -17,14 +17,36 @@ WordPress Media Library later.)
 
 ---
 
-## 0. Confirmed decisions (owner already approved these in chat)
-- Profiles **require registration** and live **behind login** — not public.
-- The registration form = the generalized questionnaire (no reunion-2026
-  items).
-- Recommended privacy defaults (owner should confirm once): DOB visible to
-  member + admins only; "board suggestions" field admin-only; only account
-  basics required, all else optional. **Never publish anyone's dues status,
-  receipts, or payment confirmations.**
+## 0. HARD PRIVACY RULES (owner directive — non-negotiable)
+**No personally identifiable information appears anywhere on the public
+website. None.** The questionnaire exists ONLY to shape the registration
+form's *fields* — no family member's answers, names, dates, genealogy,
+accomplishments, or contact details ever become public page content.
+Specifically:
+- Profiles **require registration** and live **behind login** — the member
+  directory and all profile pages are logged-in-only.
+- The **interactive family tree** (fragment at
+  `wordpress/members-only/interactive-tree.wp.html`) goes on a page
+  restricted to logged-in members (Ultimate Member → content restriction on
+  the page, or UM's Restrict Content box) at `/members/interactive-tree/`.
+  It must never be published publicly — it contains real names and years.
+- DOB: visible to the member + admins only. Board-suggestions field:
+  admin-only. Only account basics required; all else optional.
+- Never publish dues status, receipts, payment confirmations, or any
+  individual's questionnaire answers.
+- Public pages carry organizational info only (committees, funds, rules,
+  history of deceased ancestors) — if unsure whether something identifies a
+  living person, keep it behind login and ask the owner.
+
+## 0b. Repo hygiene (do this early)
+The GitHub repo is currently PUBLIC and page images hotlink from it.
+1. Upload the photos (from the repo's `website/photos/` folders) to the
+   WordPress **Media Library** and update the image URLs in the pasted
+   pages to the Media Library URLs (search for `raw.githubusercontent`).
+2. Then ask the owner to flip the repo to **Private** (GitHub repo →
+   Settings → General → Danger Zone → Change visibility). The genealogy
+   data files have been removed from the repo, but private is the right
+   resting state for a family repo.
 
 ## 1. Paste the stylesheet (once)
 Appearance → Customize → Additional CSS → paste the whole contents of
@@ -42,7 +64,7 @@ github.com/MEG-agt25/Family-Reunion/tree/main/wordpress/pages — use the
 | Home | (set as front page) | `index.wp.html` | Settings → Reading → static front page |
 | Our History | `history` | `history.wp.html` | |
 | Family Tree Form | `family-tree-form` | `tree.wp.html` | replace placeholder with Fluent Form #1 |
-| Interactive Family Tree | `interactive-family-tree` | `mildred-tree.wp.html` | fully self-contained (keeps its own JS) |
+| Interactive Family Tree (MEMBERS-ONLY) | `members/interactive-tree` | `members-only/interactive-tree.wp.html` | restrict to logged-in members (see §0) |
 | Committees | `committees` | `committees.wp.html` | placeholder → Fluent Form #2 |
 | Superlatives | `superlatives` | `superlatives.wp.html` | placeholder → Fluent Form #3 |
 | Photos | `photos` | `gallery.wp.html` | slideshow works as-is |
@@ -59,7 +81,7 @@ Delete "Sample Page" and the "Hello world!" post.
 Appearance → Editor → Navigation (or Menus). Primary menu:
 
 - **Home**
-- **Family Tree** → children: *Interactive Family Tree*, *Family Tree Form*
+- **Family Tree** → children: *Family Tree Form*, *Interactive Family Tree (members-only — hidden or lock-marked for logged-out visitors)*
 - **Get Involved** → children: *Committees*, *Superlatives*, *Hardship Fund*
 - **Money** → children: *Dues & T-Shirts* , *Give*, *Shop* (WooCommerce)
 - **Our Story** → children: *Our History*, *Photos*, *Features*
