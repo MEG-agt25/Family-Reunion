@@ -128,20 +128,29 @@ above (kills "Wanderlust"). Settings → Reading: static front page = Home,
 no posts page. Delete "Hello world!" + Sample Page; remove blog blocks
 from theme templates.
 
-**Task E — THE MENU (final; supersedes everything earlier).**
-1. **Home** — its own tab, links to front page, NO dropdown
+**Task E — THE MENU (FINAL v2, owner's words; supersedes everything
+earlier including "Family Members").** Exactly FIVE top-level tabs:
+1. **Home** — links to front page, NO dropdown
 2. **History** — links to /family-journey/ → dropdown: Our History ·
-   Photos & Slideshow · Family Tree Form · Features
-3. **Family Members** (renamed from "Account") — links to UM Account →
-   dropdown in two groups:
-   - Account: Sign Up/Register · Login/Logout · My Account ·
-     Orders/Checkout · Password Reset
+   Photos & Slideshow · Family Tree Form
+3. **What's Happening** — links to /features/ → dropdown: Features ·
+   Give · Dues & T-Shirts
+4. **My Account** — links to the UM Account page → dropdown in two
+   groups (ALL committee- and membership-related items live here):
+   - Account: Login/Logout · My Account · Orders/Checkout ·
+     Password Reset
    - Membership Benefits (login-restricted pages): Committees ·
      Constitution & Bylaws · Family Business · Superlatives · Hardship
-     Fund · Interactive Family Tree · Members Directory
-   Deliberately PUBLIC: Home, Family Journey, Our History, Photos, Family
-   Tree Form, Features, Give, Dues & T-Shirts (so relatives can pay/donate
-   without an account). Keep Cart/Checkout out of the top menu.
+     Fund · Interactive Family Tree · Members Directory ·
+     Financial Reports (board)
+5. **Sign Up/Register** — links to the UM Registration page, NO dropdown
+   (its own tab so new family can't miss it)
+NO other top-level tabs. Deliberately PUBLIC pages: Home, Family
+Journey, Our History, Photos, Family Tree Form, Features, Give, Dues &
+T-Shirts (relatives can pay/donate without an account). Keep
+Cart/Checkout out of the top menu; /board-signup/ is unlisted, never in
+any menu. If a menu was already built to the older spec, REBUILD it to
+this one.
 
 **Task F — Apply the membership restrictions** to every Membership
 Benefits page (UM logged-in-only, redirect to login). Verify logged out.
@@ -284,7 +293,9 @@ Include nothing about member data in the report beyond counts.
 WordPress over static · domain hnfamilyreunion.com · profiles behind
 login, registration = generalized questionnaire, registration doubles as
 tree entry · DOB member/admin-only, basics-only required,
-board-suggestions admin-only · "Account" renamed **Family Members** ·
+board-suggestions admin-only · menu = FIVE tabs: Home · History ·
+What's Happening · My Account · Sign Up/Register (Task E v2 — the
+earlier "Family Members" rename is dead) ·
 Home standalone; History lands on the Family Journey map · Membership
 Benefits (Committees, Constitution & Bylaws, Family Business,
 Superlatives, Hardship, Interactive Tree, Directory) behind login ·

@@ -89,21 +89,25 @@ placeholder branding). **Settings → Reading** → static front page = Home;
 no posts page. Delete the "Hello world!" post and Sample Page — this is
 not a blog; remove any blog/latest-posts blocks from the theme templates.
 
-Primary menu — exactly three top-level headings:
+Primary menu — exactly FIVE top-level tabs (owner's final structure;
+matches MASTER-HANDOFF Task E v2, which supersedes anything older):
 
-- **Home** (links to the front page) → dropdown:
-  *Features* · *Give* · *Dues & T-Shirts* · *Hardship Fund* ·
-  *Family Business* · *Constitution & Bylaws*
-- **History** (links to Our History) → dropdown:
-  *Photos & Slideshow* · *Family Tree Form* ·
-  *Interactive Family Tree (members-only)* · *Committees*
-- **Account** (links to Ultimate Member's Account page — shows
-  Login/Register when logged out) → dropdown:
-  *Register* · *Login* · *My Profile* · *Members Directory (login-only)* ·
-  *Committee Sign-Up* · *Superlatives Voting*
+- **Home** (links to the front page) — NO dropdown
+- **History** (links to /family-journey/) → dropdown:
+  *Our History* · *Photos & Slideshow* · *Family Tree Form*
+- **What's Happening** (links to /features/) → dropdown:
+  *Features* · *Give* · *Dues & T-Shirts*
+- **My Account** (links to Ultimate Member's Account page) → dropdown,
+  two groups — ALL committee- and membership-related items live here:
+  Account: *Login/Logout* · *My Account* · *Orders/Checkout* ·
+  *Password Reset* — then Membership Benefits (login-restricted):
+  *Committees* · *Constitution & Bylaws* · *Family Business* ·
+  *Superlatives* · *Hardship Fund* · *Interactive Family Tree* ·
+  *Members Directory* · *Financial Reports (board)*
+- **Sign Up/Register** (links to the UM Registration page) — NO dropdown
 
-Keep WooCommerce's Cart/Checkout out of the menu (they're reachable from
-the shop flow); the Shop product page links from Dues & T-Shirts.
+No other top-level tabs. Keep WooCommerce's Cart/Checkout out of the
+menu (reachable from the shop flow); /board-signup/ stays unlisted.
 
 ## 4. Ultimate Member — registration = the generalized questionnaire
 UM → Forms → edit the Registration form. Fields (basics required, all
