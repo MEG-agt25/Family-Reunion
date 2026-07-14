@@ -29,8 +29,9 @@ accomplishments, or contact details ever become public page content.
 Specifically:
 - Profiles **require registration** and live **behind login** — the member
   directory and all profile pages are logged-in-only.
-- The **interactive family tree** (fragment at
-  `wordpress/members-only/interactive-tree.wp.html`) goes on a page
+- The **interactive family tree** (fragment provided privately via the
+  owner's claude.ai bundle — NOT in this repo, because it names living
+  family members) goes on a page
   restricted to logged-in members (Ultimate Member → content restriction on
   the page, or UM's Restrict Content box) at `/members/interactive-tree/`.
   It must never be published publicly — it contains real names and years.
@@ -65,7 +66,7 @@ github.com/MEG-agt25/Family-Reunion/tree/main/wordpress/pages — use the
 | Home | (set as front page) | `index.wp.html` | Settings → Reading → static front page |
 | Our History | `history` | `history.wp.html` | |
 | Family Tree Form | `family-tree-form` | `tree.wp.html` | replace placeholder with Fluent Form #1 |
-| Interactive Family Tree (MEMBERS-ONLY) | `members/interactive-tree` | `members-only/interactive-tree.wp.html` | restrict to logged-in members (see §0) |
+| Interactive Family Tree (MEMBERS-ONLY) | `members/interactive-tree` | from the owner's private claude.ai bundle | restrict to logged-in members BEFORE publishing (see §0) |
 | Committees | `committees` | `committees.wp.html` | placeholder → Fluent Form #2 |
 | Superlatives | `superlatives` | `superlatives.wp.html` | placeholder → Fluent Form #3 |
 | Photos | `photos` | `gallery.wp.html` | slideshow works as-is |
