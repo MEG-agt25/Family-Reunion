@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harris-Nelson Family Reunion — Presentation</title>
+<style>
+  :root{
+    --green:#1b5e20; --green-mid:#2e7d32; --green-soft:#e8f2e8;
+    --orange:#e65100; --amber:#f59e0b; --red:#b71c1c;
+    --cream:#faf6ee; --ink:#26221b; --muted:#6b6355;
+    --card:#ffffff; --line:#e5ddcd;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:Georgia,'Times New Roman',serif;
+    background:var(--cream); color:var(--ink); overflow:hidden;
+  }
+  .deck{height:100vh; width:100vw; position:relative;}
+  .slide{
+    position:absolute; inset:0; display:none; flex-direction:column;
+    padding:5vh 7vw; overflow-y:auto;
+  }
+  .slide.active{display:flex;}
+  .kicker{
+    font-family:Verdana,Arial,sans-serif; font-size:.78rem; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--orange); font-weight:bold; margin-bottom:.6rem;
+  }
+  h1{font-size:clamp(2.2rem,5.5vw,4rem); color:var(--green); line-height:1.08; margin-bottom:1rem;}
+  h2{font-size:clamp(1.7rem,3.6vw,2.6rem); color:var(--green); margin-bottom:1.2rem; line-height:1.12;}
+  h3{font-size:1.15rem; color:var(--green-mid); margin-bottom:.4rem;}
+  p,li{font-size:clamp(1rem,1.55vw,1.22rem); line-height:1.55;}
+  ul,ol{padding-left:1.3em; display:grid; gap:.45em;}
+  .lead{font-size:clamp(1.1rem,1.9vw,1.45rem); color:var(--muted); max-width:58ch;}
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:2.2rem; align-items:start;}
+  .cols3{display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; align-items:stretch;}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:1.1rem 1.25rem; box-shadow:0 2px 10px rgba(38,34,27,.05);
+  }
+  .card h3{margin-bottom:.5rem;}
+  .card p, .card li{font-size:clamp(.9rem,1.3vw,1.05rem);}
+  .accent-card{border-top:5px solid var(--orange);}
+  .green-card{border-top:5px solid var(--green-mid);}
+  .red-card{border-top:5px solid var(--red);}
+  .pill{
+    display:inline-block; font-family:Verdana,sans-serif; font-size:.72rem; font-weight:bold;
+    letter-spacing:.08em; text-transform:uppercase; padding:.28em .8em; border-radius:99px;
+    background:var(--green-soft); color:var(--green); margin-right:.4rem; margin-bottom:.4rem;
+  }
+  .pill.open{background:#fdeee0; color:var(--orange);}
+  table{width:100%; border-collapse:collapse; background:var(--card); border-radius:12px; overflow:hidden; box-shadow:0 2px 10px rgba(38,34,27,.05);}
+  th,td{padding:.6em .9em; text-align:left; border-bottom:1px solid var(--line); font-size:clamp(.88rem,1.3vw,1.05rem);}
+  th{background:var(--green); color:#fff; font-family:Verdana,sans-serif; font-size:.78rem; letter-spacing:.08em; text-transform:uppercase;}
+  tr:last-child td{border-bottom:none;}
+  td.num{text-align:right; font-variant-numeric:tabular-nums;}
+  .divider-slide{justify-content:center; align-items:center; text-align:center; background:var(--green); color:#fff;}
+  .divider-slide h1{color:#fff;}
+  .divider-slide .kicker{color:var(--amber);}
+  .divider-slide .lead{color:#d9e7d9;}
+  .title-slide{justify-content:center; align-items:center; text-align:center;
+    background:radial-gradient(ellipse at 50% 30%, #fdf9f0 0%, var(--cream) 55%, #f2ead9 100%);}
+  .tree-mark{font-size:clamp(3rem,8vw,5.5rem); line-height:1; margin-bottom:1rem;}
+  .memoriam{background:#211d17; color:#f3ead8;}
+  .memoriam h2{color:#f5d58a;}
+  .memoriam .lead{color:#cabfa8;}
+  .memoriam .card{background:#2c2720; border-color:#453d31; color:#f3ead8;}
+  .memoriam .card h3{color:#f5d58a;}
+  .footer-note{margin-top:auto; padding-top:1.2rem; font-size:.85rem; color:var(--muted); font-family:Verdana,sans-serif;}
+  .memoriam .footer-note{color:#948a75;}
+  a{color:var(--orange); word-break:break-all;}
+  .trivia-q{cursor:pointer;}
+  .trivia-q .a{display:none; color:var(--orange); font-weight:bold; margin-top:.3rem;}
+  .trivia-q.revealed .a{display:block;}
+  .trivia-q .hint{font-family:Verdana,sans-serif; font-size:.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:.1em;}
+  .gen{display:flex; gap:1rem; align-items:flex-start; margin-bottom:1.05rem;}
+  .gen .dot{
+    flex:none; width:2.2rem; height:2.2rem; border-radius:50%; background:var(--green);
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    font-family:Verdana,sans-serif; font-weight:bold; font-size:.95rem; margin-top:.15rem;
+  }
+  .branch-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:.9rem;}
+  .branch-grid .card{display:flex; justify-content:space-between; align-items:center; padding:.85rem 1.1rem;}
+  .branch-grid .n{font-family:Verdana,sans-serif; font-weight:bold; color:var(--orange); font-size:1.3rem;}
+  .placeholder{border:2px dashed #cbbfa5; background:#fffdf7; border-radius:14px; padding:1rem 1.2rem; color:var(--muted); font-style:italic;}
+  .nav{
+    position:fixed; bottom:1.1rem; right:1.3rem; display:flex; gap:.5rem; align-items:center;
+    font-family:Verdana,sans-serif; z-index:10;
+  }
+  .nav button{
+    border:1px solid var(--line); background:var(--card); color:var(--green);
+    width:2.6rem; height:2.6rem; border-radius:50%; font-size:1.2rem; cursor:pointer;
+    box-shadow:0 2px 8px rgba(38,34,27,.12);
+  }
+  .nav button:hover{background:var(--green); color:#fff;}
+  .counter{font-size:.8rem; color:var(--muted); background:var(--card); border:1px solid var(--line);
+    padding:.35em .8em; border-radius:99px;}
+  .progress{position:fixed; top:0; left:0; height:4px; background:var(--orange); z-index:10; transition:width .25s;}
+  .agenda-list{list-style:none; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:.7rem 2.5rem;}
+  .agenda-list li{display:flex; gap:.8rem; align-items:baseline;}
+  .agenda-list .no{font-family:Verdana,sans-serif; font-weight:bold; color:var(--orange); font-size:.85rem; flex:none; width:1.6em;}
+  .split-money{display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-top:1rem;}
+  .money-tile{text-align:center; padding:1.3rem 1rem;}
+  .money-tile .big{font-family:Verdana,sans-serif; font-size:1.9rem; font-weight:bold; color:var(--green);}
+  .qr-box{width:110px;height:110px;border:2px dashed #cbbfa5;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--muted);text-align:center;font-family:Verdana,sans-serif;padding:.4rem;}
+  @media (max-width:820px){
+    .cols,.cols3,.branch-grid,.agenda-list,.split-money{grid-template-columns:1fr;}
+    .slide{padding:4vh 6vw;}
+  }
+  @media print{
+    body{overflow:visible;}
+    .deck{height:auto;}
+    .slide{display:flex !important; position:relative; page-break-after:always; min-height:100vh;}
+    .nav,.progress{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 · TITLE -->
+  <section class="slide title-slide active">
+    <div class="tree-mark">🌳</div>
+    <div class="kicker">Together Again! · "Here we go Again… Kick'n it with the Kins!"</div>
+    <h1>Harris-Nelson<br>Family Reunion 2026</h1>
+    <p class="lead">Our roots run deep — from Mississippi to Cleveland and beyond…</p>
+    <p style="margin-top:1.6rem; font-family:Verdana,sans-serif; font-size:.85rem; color:var(--muted);">
+      Cleveland, Ohio · July 17–19, 2026 · hnfamilyreunion.com
+    </p>
+    <p class="footer-note">Use ← → arrow keys, tap, or the buttons to move through slides · Press P to print the whole deck</p>
+  </section>
+
+  <!-- 2 · AGENDA -->
+  <section class="slide">
+    <div class="kicker">Today's Program</div>
+    <h2>What We'll Cover</h2>
+    <ol class="agenda-list">
+      <li><span class="no">1</span>Welcome &amp; The Weekend at a Glance</li>
+      <li><span class="no">2</span>Our Family History &amp; Trivia</li>
+      <li><span class="no">3</span>Family Yearbook</li>
+      <li><span class="no">4</span>Reunion 2024 Memories — Cleveland, Ohio</li>
+      <li><span class="no">5</span>Acknowledgments &amp; Accomplishments</li>
+      <li><span class="no">6</span>Family Superlatives — Cast Your Vote!</li>
+      <li><span class="no">7</span>Tribute to Loved Ones We've Lost</li>
+      <li><span class="no">8</span>Family Business: Financial Report</li>
+      <li><span class="no">9</span>How We'll Govern: Officers &amp; Robert's Rules</li>
+      <li><span class="no">10</span>Committees &amp; Chair Sign-Ups</li>
+      <li><span class="no">11</span>Where We Meet Next — Location Vote</li>
+      <li><span class="no">12</span>Our New Website: hnfamilyreunion.com</li>
+      <li><span class="no">13</span>Getting Our Land Back — Where Is My Land</li>
+      <li><span class="no">14</span>Scholarship Fund for Our Descendants</li>
+      <li><span class="no">15</span>The Family Foundation — Our 501(c)(3)</li>
+      <li><span class="no">16</span>The Family Tree Project — Add Yourself!</li>
+      <li><span class="no">17</span>Closing &amp; Next Steps</li>
+    </ol>
+  </section>
+
+  <!-- 3 · WELCOME -->
+  <section class="slide">
+    <div class="kicker">Welcome</div>
+    <h2>Welcome to the Harris-Nelson Family Reunion</h2>
+    <div class="cols">
+      <div>
+        <p style="margin-bottom:1rem;">This reunion started when <strong>Mr. John Harris</strong> and
+        <strong>Ms. Judy Bender</strong> united a long time ago. Both were born in the late 1800s —
+        he was a farmer, and she was a homemaker.</p>
+        <p style="margin-bottom:1rem;">Their union brought forth six children, four boys and two girls:
+        <strong>Gussy, Pasty, Josh, A.C., D.B., and Will Harris.</strong></p>
+        <p class="lead" style="font-style:italic;">"As I call your name, please stand with your family!"</p>
+      </div>
+      <div class="card green-card">
+        <h3>Why we gather</h3>
+        <ul>
+          <li>To honor the people who got us here</li>
+          <li>To make sure every branch knows every other branch</li>
+          <li>To pass the story — and the land, and the legacy — to the next generation</li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-note">Full family history: <a href="https://docs.google.com/document/d/1-XkKF4JBdL16uDzvXoB_foBZHAK3n_-f1kWKDvcqh7U/edit?tab=t.0">family history document</a> · Photos &amp; stories: <a href="https://canva.link/fqxj2trjluu9fl5">Canva family album</a></p>
+  </section>
+
+  <!-- 3b · WEEKEND SCHEDULE -->
+  <section class="slide">
+    <div class="kicker">July 17–19, 2026 · Cleveland, Ohio</div>
+    <h2>The Weekend at a Glance 🗓️</h2>
+    <div class="cols3">
+      <div class="card green-card">
+        <h3>Friday, July 17 · 5–9 PM</h3>
+        <p><strong>Meet &amp; Greet / Fish Fry</strong></p>
+        <p>Andrews Osborne Park (in back)<br>38575 Lakeshore Blvd, Willoughby, OH 44094</p>
+        <ul style="margin-top:.5rem;">
+          <li>👕 Wear any <strong>previous</strong> reunion shirt</li>
+          <li>Pick up your 2026 shirt &amp; Clay's Park tickets</li>
+          <li>Basketball, tennis, sand volleyball, soccer field, playground, pool, disc golf &amp; swings by the lake</li>
+        </ul>
+      </div>
+      <div class="card accent-card">
+        <h3>Saturday, July 18 · 10 AM–3 PM</h3>
+        <p><strong>Family Fun at Clay's Park</strong></p>
+        <p>12951 Patterson St NW, North Lawrence, OH 44666</p>
+        <ul style="margin-top:.5rem;">
+          <li>👕 Wear the <strong>beige/burgundy 2026</strong> reunion tee</li>
+          <li>Water &amp; dry activities — volleyball, basketball &amp; more</li>
+          <li>📸 <strong>Family picture 11:30 AM</strong> near the pavilion — ALL attendees</li>
+        </ul>
+      </div>
+      <div class="card red-card">
+        <h3>Sunday, July 19 · 11 AM–3 PM</h3>
+        <p><strong>Brunch · Family History · Farewell</strong></p>
+        <p>SiteCenters, 3333 Richmond Rd, Beachwood, OH</p>
+        <ul style="margin-top:.5rem;">
+          <li>👕 Wear <strong>white top &amp; blue-jean bottom</strong></li>
+          <li>Brunch served 11:30 AM · family pictures 1:45 PM</li>
+          <li>Acknowledgments, next reunion, committee changes &amp; close-out (this presentation!)</li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-note">Shirts: $10 (2XL–4XL $15) — adult SM–4XL, youth SM–XL, toddler 6M–24M. Pick up shirts at the park Friday; wear them to Clay's Park Saturday.</p>
+  </section>
+
+  <!-- 4 · HISTORY: GENERATIONS -->
+  <section class="slide">
+    <div class="kicker">Our Family History · Part 1</div>
+    <h2>From One Union, Many Branches</h2>
+    <div class="gen"><div class="dot">1</div><p><strong>John Harris &amp; Judy Bender</strong> (born late 1800s) — six children: Gussy, Pasty, Josh, A.C., D.B., and Will Harris.</p></div>
+    <div class="gen"><div class="dot">2</div><p><strong>Emma (Bently) Moncrief</strong> (1867–1954) <strong>&amp; Ed Moncrief</strong> had 16 children. Out of these 16, <strong>Mandy Moncrief</strong> (c. 1900–1986) was born. Mandy married <strong>Nelson Price</strong> (b. 1894) and blessed us with <strong>Lela Mae Price</strong> (July 16, 1922 – February 15, 1996).</p></div>
+    <div class="gen"><div class="dot">3</div><p><strong>Lela Mae Price</strong> married <strong>Dennis Bernard "D.B." Harris</strong> — three girls: <strong>Mary Nelson, Mildred Lucile Harris</strong> (1942–2012), <strong>Jessie Mae Harris-Moore</strong>. She later married <strong>Floyd Nelson</strong> and had six more children: <strong>James Edward, James Earl</strong> <em>(mom liked the name James!)</em>, <strong>Floyd Nelson Jr, Mary Jane Harris (Gray), Mandy Louise Ellis</strong>, and the baby of the bunch, <strong>Shirley Harris</strong>.</p></div>
+    <div class="gen"><div class="dot">4</div><p><strong>Charlie Nelson &amp; Mandy Harris</strong> brought forth two boys: <strong>Floyd Nelson</strong> (the oldest) and <strong>Joe Nelson</strong>. Joe married <strong>Oreatha Ward</strong> — four children: <strong>Doris Joe Smith, Mandy Mary Thomas, Charles Nelson</strong>, and the baby, <strong>Naiomi Matthews</strong>.</p></div>
+    <p class="footer-note">Dates verified against our Ancestry family tree (updated July 2026). This family history was brought to you by Yours Truly — <em>That Aunt</em> 💛 · Mildred's branch has its own interactive tree: <em>website/mildred-tree.html</em> — her family is in the house this weekend! 🌳</p>
+  </section>
+
+  <!-- 5 · HISTORY: THE BRANCHES -->
+  <section class="slide">
+    <div class="kicker">Our Family History · Part 2</div>
+    <h2>The Nine Branches — Stand With Your Family!</h2>
+    <p class="lead" style="margin-bottom:1.2rem;">Lela Mae's children, and the branches that grew from each one:</p>
+    <div class="branch-grid">
+      <div class="card"><span>Mary Nelson</span><span class="n">8</span></div>
+      <div class="card"><span>Mildred Ellis</span><span class="n">6</span></div>
+      <div class="card"><span>Jessie Moore</span><span class="n">4</span></div>
+      <div class="card"><span>James Edward</span><span class="n">5</span></div>
+      <div class="card"><span>James Earl</span><span class="n">3</span></div>
+      <div class="card"><span>Curtis</span><span class="n">4</span></div>
+      <div class="card"><span>Mary Jane Gray</span><span class="n">2</span></div>
+      <div class="card"><span>Mandy Ellis</span><span class="n">3</span></div>
+      <div class="card"><span>Shirley Harris</span><span class="n">1</span></div>
+    </div>
+    <p class="footer-note">Numbers = children in each branch. Every branch keeps growing — that's what the Family Tree Project (later today) is for!</p>
+  </section>
+
+  <!-- 6 · TRIVIA -->
+  <section class="slide">
+    <div class="kicker">Let's Play</div>
+    <h2>Family History Trivia 🏆</h2>
+    <p class="lead" style="margin-bottom:1rem;">Tap or click a question to reveal the answer. Winners get bragging rights (and maybe a t-shirt).</p>
+    <div class="cols">
+      <div style="display:grid; gap:.7rem;">
+        <div class="card trivia-q" onclick="this.classList.toggle('revealed')"><span class="hint">Q1 · tap to reveal</span><p>Who founded this family, and what did he do for a living?</p><p class="a">John Harris (married to Judy Bender) — he was a farmer; she was a homemaker.</p></div>
+        <div class="card trivia-q" onclick="this.classList.toggle('revealed')"><span class="hint">Q2 · tap to reveal</span><p>How many children did Emma &amp; Ed Moncrief have?</p><p class="a">Sixteen!</p></div>
+        <div class="card trivia-q" onclick="this.classList.toggle('revealed')"><span class="hint">Q3 · tap to reveal</span><p>What is Lela Mae Price's birthday?</p><p class="a">July 16, 1922.</p></div>
+        <div class="card trivia-q" onclick="this.classList.toggle('revealed')"><span class="hint">Q4 · tap to reveal</span><p>Which two brothers share a first name — and why?</p><p class="a">James Edward &amp; James Earl. Mom just liked the name James! 😄</p></div>
+      </div>
+      <div style="display:grid; gap:.7rem;">
+        <div class="card trivia-q" onclick="this.classList.toggle('revealed')"><span class="hint">Q5 · tap to reveal</span><p>Who is "the baby of the bunch"?</p><p class="a">Shirley Harris.</p></div>
+        <div class="card trivia-q" onclick="this.classList.toggle('revealed')"><span class="hint">Q6 · tap to reveal</span><p>Joe Nelson married whom, and how many children did they have?</p><p class="a">Oreatha Ward — four children: Doris Joe Smith, Mandy Mary Thomas, Charles Nelson, and Naiomi Matthews.</p></div>
+        <div class="card trivia-q" onclick="this.classList.toggle('revealed')"><span class="hint">Q7 · tap to reveal</span><p>Which branch has the most children?</p><p class="a">Mary Nelson's branch, with 8.</p></div>
+        <div class="card trivia-q" onclick="this.classList.toggle('revealed')"><span class="hint">Q8 · tap to reveal</span><p>In what year did Mary marry Willie Nelson?</p><p class="a">1957.</p></div>
+      </div>
+    </div>
+    <p class="footer-note">More trivia rounds: <a href="https://mail.google.com/mail/u/0/?ui=2&amp;ik=4780192b7c&amp;view=lg&amp;permmsgid=msg-f:1870651102193197918">Family History Trivia (email)</a></p>
+  </section>
+
+  <!-- 7 · YEARBOOK -->
+  <section class="slide">
+    <div class="kicker">Keepsake</div>
+    <h2>The Family Yearbook 📖</h2>
+    <div class="cols">
+      <div>
+        <p style="margin-bottom:1rem;">A yearbook for every reunion — portraits, superlatives, branch pages, recipes, and the year's biggest family moments. Everyone gets a page; every branch gets a spread.</p>
+        <ul>
+          <li>Submit photos &amp; captions to <strong>harrisnelsonfamilyreunion@gmail.com</strong></li>
+          <li>Photographer &amp; videographer will shoot portraits at reunion events</li>
+          <li>A recipe/cookbook section — bring your best dish AND the recipe</li>
+        </ul>
+      </div>
+      <div class="card accent-card">
+        <h3>Yearbook links</h3>
+        <p style="margin-bottom:.5rem;">📌 <a href="https://x.com/tendin2/status/17914652">Yearbook preview post (X)</a></p>
+        <p>📄 <a href="https://docs.google.com/document/d/1-XkKF4JBdL16uDzvXoB_foBZHAK3n_-f1kWKDvcqh7U/edit?tab=t.0">Yearbook &amp; history working doc (Google Docs)</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7b · 2024 MEMORIES -->
+  <section class="slide">
+    <div class="kicker">Reunion 2024 · Cleveland, Ohio</div>
+    <h2>"We All We Got… We All We Need!" 📸</h2>
+    <p class="lead" style="margin-bottom:1rem;">Last year's reunion in Cleveland gave us 123 slides of memories — pool parties, portraits, the old-school photos, and every branch showing up and showing out.</p>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:.7rem; margin-bottom:1.1rem;">
+      <img src="../website/photos/2024/1.jpg" alt="Reunion 2024 title slide" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(38,34,27,.15);" onerror="this.style.display='none'">
+      <img src="../website/photos/2024/15.jpg" alt="Reunion 2024 memories" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(38,34,27,.15);" onerror="this.style.display='none'">
+      <img src="../website/photos/2024/45.jpg" alt="Reunion 2024 memories" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(38,34,27,.15);" onerror="this.style.display='none'">
+      <img src="../website/photos/2024/105.jpg" alt="Reunion 2024 memories" style="width:100%; border-radius:10px; box-shadow:0 2px 8px rgba(38,34,27,.15);" onerror="this.style.display='none'">
+    </div>
+    <div class="cols">
+      <div class="card green-card">
+        <h3>▶ Watch the full slideshow</h3>
+        <p>All 123 slides play fullscreen on the <strong>Photos page of hnfamilyreunion.com</strong> — put it on the big screen during dinner. (In this kit: <em>website/gallery.html</em> → "Play the Slideshow".)</p>
+      </div>
+      <div class="card accent-card">
+        <h3>Add to next year's show</h3>
+        <p>Send your photos from this weekend to <strong>harrisnelsonfamilyreunion@gmail.com</strong> — the Photography Committee builds the next slideshow and the yearbook from what you send.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · ACKNOWLEDGMENTS -->
+  <section class="slide">
+    <div class="kicker">Celebrate</div>
+    <h2>Acknowledgments &amp; Accomplishments 🎉</h2>
+    <p class="lead" style="margin-bottom:1rem;">Stand and be recognized! This year we celebrate…</p>
+    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:.6rem; margin-bottom:1rem;">
+      <figure style="margin:0;"><img src="../website/photos/family/grad-1.jpg" alt="2026 graduate" style="width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:10px; box-shadow:0 2px 8px rgba(38,34,27,.15);" onerror="this.parentElement.style.display='none'"><figcaption style="font-size:.8rem; color:var(--muted); text-align:center; font-style:italic;">[Add name]</figcaption></figure>
+      <figure style="margin:0;"><img src="../website/photos/family/grad-2.jpg" alt="2026 graduate" style="width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:10px; box-shadow:0 2px 8px rgba(38,34,27,.15);" onerror="this.parentElement.style.display='none'"><figcaption style="font-size:.8rem; color:var(--muted); text-align:center; font-style:italic;">[Add name]</figcaption></figure>
+      <figure style="margin:0;"><img src="../website/photos/family/grad-3.jpg" alt="2026 graduate" style="width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:10px; box-shadow:0 2px 8px rgba(38,34,27,.15);" onerror="this.parentElement.style.display='none'"><figcaption style="font-size:.8rem; color:var(--muted); text-align:center; font-style:italic;">[Add name]</figcaption></figure>
+      <figure style="margin:0;"><img src="../website/photos/family/grad-4.jpg" alt="2026 graduate" style="width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:10px; box-shadow:0 2px 8px rgba(38,34,27,.15);" onerror="this.parentElement.style.display='none'"><figcaption style="font-size:.8rem; color:var(--muted); text-align:center; font-style:italic;">[Add name]</figcaption></figure>
+      <figure style="margin:0;"><img src="../website/photos/family/grad-5.jpg" alt="2026 graduate" style="width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:10px; box-shadow:0 2px 8px rgba(38,34,27,.15);" onerror="this.parentElement.style.display='none'"><figcaption style="font-size:.8rem; color:var(--muted); text-align:center; font-style:italic;">[Add name]</figcaption></figure>
+    </div>
+    <div class="cols3">
+      <div class="card accent-card"><h3>🎓 Class of 2026</h3><p class="placeholder" style="border:none;padding:0;">[Add graduate names — high school, college, trade school, advanced degrees]</p></div>
+      <div class="card accent-card"><h3>👶 New Arrivals</h3><p class="placeholder" style="border:none;padding:0;">[Add babies born since our last reunion]</p></div>
+      <div class="card accent-card"><h3>💍 Weddings &amp; Anniversaries</h3><p class="placeholder" style="border:none;padding:0;">[Add couples and milestone anniversaries]</p></div>
+      <div class="card accent-card"><h3>💼 Careers &amp; Business</h3><p class="placeholder" style="border:none;padding:0;">[Promotions, retirements, new businesses launched]</p></div>
+      <div class="card accent-card"><h3>🏅 Honors &amp; Service</h3><p class="placeholder" style="border:none;padding:0;">[Military service, awards, community honors]</p></div>
+      <div class="card accent-card"><h3>🌟 Elders' Recognition</h3><p class="placeholder" style="border:none;padding:0;">[Honor our eldest family members present today]</p></div>
+    </div>
+    <p class="footer-note">Send accomplishments to harrisnelsonfamilyreunion@gmail.com so they make the yearbook too.</p>
+  </section>
+
+  <!-- 9 · SUPERLATIVES -->
+  <section class="slide">
+    <div class="kicker">Vote All Weekend</div>
+    <h2>Family Superlatives 🏅 — Cast Your Vote!</h2>
+    <p class="lead" style="margin-bottom:1rem;">At every reunion, the family votes and we award the winners at the closing banquet — trophies, sashes, and a page in the yearbook. Vote by paper ballot at the welcome table or online at hnfamilyreunion.com.</p>
+    <div class="cols3">
+      <div class="card accent-card"><h3>😂 The Fun Ones</h3><ul><li>Best Dressed</li><li>Life of the Party</li><li>Best Dancer</li><li>Loudest Laugh</li><li>Most Likely to Be Late</li></ul></div>
+      <div class="card green-card"><h3>🍗 The Skills</h3><ul><li>Best Cook / Best Dish</li><li>Grill Master</li><li>Best Card/Domino Player</li><li>Spades Champion's Table</li><li>MVP of the Family Games</li></ul></div>
+      <div class="card red-card"><h3>💛 The Heart</h3><ul><li>Family Glue Award</li><li>Traveled the Farthest</li><li>Eldest &amp; Youngest Present</li><li>Biggest Branch in Attendance</li><li>Legacy Keeper (history &amp; stories)</li></ul></div>
+    </div>
+    <div class="card" style="margin-top:1.1rem;">
+      <h3>How voting works</h3>
+      <p>Nominations open <strong>Friday at check-in</strong> · voting closes <strong>Saturday at 6 PM</strong> · one ballot per person (honor system + the Sergeant-at-Arms is watching 👀) · Hospitality counts the ballots and winners are announced at the banquet.</p>
+    </div>
+  </section>
+
+  <!-- 10 · TRIBUTE -->
+  <section class="slide memoriam">
+    <div class="kicker" style="color:#f5d58a;">In Loving Memory</div>
+    <h2>A Tribute to Those We've Lost 🕊️</h2>
+    <p class="lead" style="margin-bottom:1.4rem;">They are not gone — they are the roots beneath everything we do today. Please stand with us for a moment of silence.</p>
+    <div class="cols">
+      <div class="card">
+        <h3>We remember</h3>
+        <p style="font-style:italic;">[Add the names of loved ones lost, with branch and years — e.g. Jennifer, Lamar, and all those whose love built this family]</p>
+      </div>
+      <div class="card">
+        <h3>Candle-lighting</h3>
+        <p>One representative from each of the nine branches lights a candle as their branch's names are read aloud.</p>
+      </div>
+    </div>
+    <p class="footer-note">A memorial page in the yearbook and on the website will keep their stories alive. Send photos and remembrances to harrisnelsonfamilyreunion@gmail.com.</p>
+  </section>
+
+  <!-- 10 · FAMILY BUSINESS DIVIDER -->
+  <section class="slide divider-slide">
+    <div class="kicker">Part Two</div>
+    <h1>Family Business</h1>
+    <p class="lead">Finances · Governance · Committees · Website · Land · Scholarships · Foundation</p>
+  </section>
+
+  <!-- 11 · FINANCIAL REPORT -->
+  <section class="slide">
+    <div class="kicker">Family Business · Financial Report</div>
+    <h2>Where the Money Stands 💵 <span style="font-size:.55em; color:var(--muted); font-family:Verdana,sans-serif;">(as of July 13, 2026)</span></h2>
+    <div class="split-money" style="margin-top:0; margin-bottom:1rem;">
+      <div class="card money-tile green-card"><div class="big">$5,540</div><p>Dues collected to date (115 attending)</p></div>
+      <div class="card money-tile accent-card"><div class="big">$1,675</div><p>Dues still outstanding</p></div>
+      <div class="card money-tile red-card"><div class="big">$410</div><p>Projected shortfall — let's close it this weekend!</p></div>
+    </div>
+    <table>
+      <tr><th>Expense</th><th style="text-align:right;">Amount</th><th>Status</th></tr>
+      <tr><td>Clay's Park pavilion</td><td class="num">$700</td><td>✅ Paid 3/13/26</td></tr>
+      <tr><td>Friday pavilion (Andrews Osborne)</td><td class="num">$65</td><td>✅ Paid 3/1/26</td></tr>
+      <tr><td>Clay's Park tickets — 93 @ $20</td><td class="num">$1,860</td><td>Due</td></tr>
+      <tr><td>Sunday banquet space</td><td class="num">$200</td><td>Due</td></tr>
+      <tr><td>Sunday brunch catering</td><td class="num">$2,600</td><td>$1,734 paid 6/19 · $866.75 due</td></tr>
+      <tr><td>Estimated food — Friday / Saturday</td><td class="num">$2,200</td><td>Due</td></tr>
+      <tr><td><strong>Total expenses</strong></td><td class="num"><strong>$7,625</strong></td><td><strong>$2,499 paid · $5,127 remaining</strong></td></tr>
+    </table>
+    <p class="footer-note">Dues to be collected in total: $7,215 — collecting the $1,675 outstanding leaves us just $410 short, which fundraising covers. Dues: $125 single (or w/ 1 minor) · $175 single + guest or college student · $225 family of 3+. See the Treasurer for your household's balance; every payment gets a receipt.</p>
+  </section>
+
+  <!-- 12 · GOVERNANCE / OFFICERS -->
+  <section class="slide">
+    <div class="kicker">Family Business · Governance</div>
+    <h2>How We'll Govern Going Forward 🏛️</h2>
+    <p class="lead" style="margin-bottom:1rem;">We are formalizing the reunion as an organization with elected officers, written duties, and orderly meetings.</p>
+    <table>
+      <tr><th>Office</th><th>Officer</th><th>Core duty</th></tr>
+      <tr><td>President</td><td><strong>Miesha</strong></td><td>Presides over meetings, sets agenda, speaks for the family organization</td></tr>
+      <tr><td>Vice President</td><td><strong>Aunt Shirley</strong></td><td>Presides in the President's absence; oversees committee chairs</td></tr>
+      <tr><td>Secretary</td><td><strong>Marcelette</strong></td><td>Minutes, records, correspondence, meeting notices</td></tr>
+      <tr><td>Treasurer</td><td><strong>Jasmine</strong></td><td>Holds funds, pays approved expenses, presents financial report</td></tr>
+      <tr><td>Financial Secretary</td><td><strong>Aunt Vanessa</strong></td><td>Receives/records all money in, issues receipts, tracks dues</td></tr>
+      <tr><td>Historian</td><td><strong>Shone</strong></td><td>Family history, archives, yearbook, tree project</td></tr>
+      <tr><td>Hospitality</td><td><strong>Loretta</strong></td><td>Welcome, comfort, elders' care, assigned tables &amp; ushers</td></tr>
+      <tr><td>Sergeant-at-Arms</td><td><strong>Joseph</strong></td><td>Order at meetings &amp; events, safety coordination</td></tr>
+    </table>
+    <p class="footer-note">A written <strong>Constitution &amp; Bylaws</strong> (with Robert's Rules of Order as our parliamentary authority) is drafted and ready for review — we'll move to adopt it at this meeting. It sets terms, elections, quorum, dues, and committee rules. Copies at the welcome table and on hnfamilyreunion.com.</p>
+  </section>
+
+  <!-- 13 · ROBERT'S RULES -->
+  <section class="slide">
+    <div class="kicker">Family Business · Governance</div>
+    <h2>We're Adopting Robert's Rules of Order 📜</h2>
+    <div class="cols">
+      <div>
+        <p style="margin-bottom:1rem;">Robert's Rules keep meetings <strong>fair, short, and drama-free</strong>: one person speaks at a time, every voice gets heard, and decisions get made by vote — not by volume.</p>
+        <ul>
+          <li><strong>Quorum</strong> — we set a minimum number of members to conduct business</li>
+          <li><strong>Motions</strong> — "I move that we…" puts an idea on the floor</li>
+          <li><strong>Second</strong> — one other member says "second" to open discussion</li>
+          <li><strong>Discussion</strong> — the chair recognizes speakers, pro and con, in turn</li>
+          <li><strong>Vote</strong> — majority carries; the Secretary records the result</li>
+        </ul>
+      </div>
+      <div class="card green-card">
+        <h3>Cheat sheet: what do I say?</h3>
+        <table>
+          <tr><th>You want to…</th><th>You say…</th></tr>
+          <tr><td>Propose something</td><td>"I move that…"</td></tr>
+          <tr><td>Support it</td><td>"Second!"</td></tr>
+          <tr><td>Change the wording</td><td>"I move to amend…"</td></tr>
+          <tr><td>End the debate</td><td>"I move the previous question"</td></tr>
+          <tr><td>Take a break</td><td>"I move to recess"</td></tr>
+          <tr><td>Wrap it up</td><td>"I move to adjourn"</td></tr>
+        </table>
+      </div>
+    </div>
+    <p class="footer-note">A one-page Robert's Rules quick guide will be posted on the website and handed out at every business meeting.</p>
+  </section>
+
+  <!-- 14 · COMMITTEES -->
+  <section class="slide">
+    <div class="kicker">Family Business · Committees</div>
+    <h2>Committees Need Chairs — That Means YOU 🙋🏾</h2>
+    <p class="lead" style="margin-bottom:1rem;">Nine standing committees. Each needs a <strong>chair</strong> and 2–5 members. Sign up to chair (or join) any committee — right on this slide's sign-up sheet, at the welcome table, or online.</p>
+    <div class="cols3" style="gap:.8rem;">
+      <div class="card accent-card"><h3>🏈 Sports / Games</h3><p class="placeholder" style="border:none;padding:0;">Chair: [sign up] · Members: [sign up]</p></div>
+      <div class="card accent-card"><h3>🎶 Music</h3><p class="placeholder" style="border:none;padding:0;">Chair: [sign up] · Members: [sign up]</p></div>
+      <div class="card accent-card"><h3>🍽️ Food</h3><p class="placeholder" style="border:none;padding:0;">Chair: [sign up] · Members: [sign up]</p></div>
+      <div class="card accent-card"><h3>🦺 Safety</h3><p class="placeholder" style="border:none;padding:0;">Chair: [sign up] · Members: [sign up]</p></div>
+      <div class="card accent-card"><h3>🙏 Services</h3><p class="placeholder" style="border:none;padding:0;">Chair: [sign up] · Members: [sign up]</p></div>
+      <div class="card accent-card"><h3>📸 Photography</h3><p class="placeholder" style="border:none;padding:0;">Chair: [sign up] · Members: [sign up]</p></div>
+      <div class="card accent-card"><h3>💝 Philanthropy &amp; Fundraising</h3><p class="placeholder" style="border:none;padding:0;">Chair: [sign up] · Members: [sign up]</p></div>
+      <div class="card accent-card"><h3>🗓️ Planning</h3><p class="placeholder" style="border:none;padding:0;">Chair: [sign up] · Members: [sign up]</p></div>
+      <div class="card accent-card"><h3>💻 Technology</h3><p class="placeholder" style="border:none;padding:0;">Chair: [sign up] · Members: [sign up]</p></div>
+    </div>
+    <div class="cols" style="margin-top:1.1rem;">
+      <div class="card green-card">
+        <h3>How committees will operate</h3>
+        <ul>
+          <li>Chairs are appointed by the President and confirmed by member vote</li>
+          <li>Committees meet <strong>monthly</strong> (video call is fine); chairs report to the <strong>Vice President</strong></li>
+          <li>Budget requests go in writing to the Treasurer <strong>before</strong> money is spent</li>
+          <li>Each chair gives a 3-minute report at every business meeting</li>
+          <li>Sub-committees may be formed as needed (decade planning, venue scouting, etc.)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Three ways to sign up</h3>
+        <ul>
+          <li>📝 <strong>Paper:</strong> committee sign-up sheets at the welcome table — write your name under Chair or Member</li>
+          <li>💻 <strong>Online:</strong> the Committee Sign-Up form on hnfamilyreunion.com — pick your committee and check "I want to chair"</li>
+          <li>🗣️ <strong>Right now:</strong> raise your hand when your committee is called and the Secretary will record you</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15b · NEXT REUNION LOCATION -->
+  <section class="slide">
+    <div class="kicker">Family Business · Decade Planning</div>
+    <h2>Where We Meet Next 🗺️ — Halfway Between Jackson, MS &amp; Cleveland, OH</h2>
+    <p class="lead" style="margin-bottom:1rem;">The drive is about 930 miles, so the true halfway point lands around <strong>Nashville, TN / Bowling Green, KY</strong>. These lodges host reunions with rooms, cabins, banquet space, and catering all on one property:</p>
+    <div class="cols3">
+      <div class="card green-card">
+        <h3>🎯 At the halfway mark</h3>
+        <ul>
+          <li><strong>Montgomery Bell State Park</strong> — Burns, TN (45 min from Nashville): 117 lakefront lodge rooms, cabins, 7,000+ sq ft of event space, pavilions up to 200</li>
+          <li><strong>Barren River Lake State Resort Park</strong> — near Bowling Green, KY: lodge + 22 two-bedroom cabins, banquet room seating 224–400, beach &amp; golf</li>
+        </ul>
+      </div>
+      <div class="card accent-card">
+        <h3>🚗 Along the route (KY / IN / SW OH)</h3>
+        <ul>
+          <li><strong>Kentucky Dam Village State Resort Park</strong> — Gilbertsville, KY: lodge, cottages, marina; markets itself for family reunions</li>
+          <li><strong>General Butler State Resort Park</strong> — off I-71 between Louisville &amp; Cincinnati</li>
+          <li><strong>Brown County State Park / Abe Martin Lodge</strong> — IN: 80+ rooms, cabins, indoor water park</li>
+          <li><strong>Hueston Woods Lodge</strong> — College Corner, OH</li>
+        </ul>
+      </div>
+      <div class="card red-card">
+        <h3>🏙️ Closer to Cleveland</h3>
+        <ul>
+          <li><strong>Salt Fork State Park Lodge</strong> — Lore City, OH: lodge, cabins, beach, catered banquet rooms</li>
+          <li><strong>Punderson Manor Lodge</strong> — Newbury, OH: Tudor manor + 26 two-bedroom cabins</li>
+          <li><strong>The Lodge at Geneva-on-the-Lake</strong> — Lake Erie shore, 8,500 sq ft of event space</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-top:1rem;">
+      <h3>How we decide</h3>
+      <p>The <strong>Planning Committee</strong> gets group-rate quotes from the top three picks (headcount, beds vs. banquet needs, time of year), and we choose by <strong>member vote</strong> — a motion, a second, and a show of hands. Decade planning means we can rotate: halfway one reunion, closer to each hub the next.</p>
+    </div>
+  </section>
+
+  <!-- 16 · WEBSITE -->
+  <section class="slide">
+    <div class="kicker">Family Business · Technology</div>
+    <h2>Our New Home Online: hnfamilyreunion.com 💻</h2>
+    <div class="cols3">
+      <div class="card green-card"><h3>Everything reunion</h3><ul><li>Announcements &amp; event schedule</li><li>Family history &amp; photo gallery</li><li>Yearbook archive</li><li>Memorial page</li></ul></div>
+      <div class="card accent-card"><h3>Payments &amp; shop</h3><ul><li>Registration &amp; dues online</li><li>T-shirt orders (all sizes, all branches)</li><li>Donations to the Land &amp; Scholarship funds</li></ul></div>
+      <div class="card red-card"><h3>Get involved</h3><ul><li>Committee &amp; chair sign-up</li><li>Superlatives voting</li><li>Family tree submission form</li><li>Contact the officers</li></ul></div>
+    </div>
+    <div class="card" style="margin-top:1.2rem;">
+      <h3>The plan</h3>
+      <p>The Technology Committee will launch the site from the starter code already written (it's in our family GitHub repository — home page, history, tree form, committee form, shop, and giving pages, ready to customize). Email stays <strong>harrisnelsonfamilyreunion@gmail.com</strong>. Payments will run through a secure processor (Stripe/PayPal/Cash App) — no card numbers ever stored by us.</p>
+    </div>
+  </section>
+
+  <!-- 16 · WHERE IS MY LAND -->
+  <section class="slide">
+    <div class="kicker">Family Business · Our Land</div>
+    <h2>Getting Our Family Land Back 🏡</h2>
+    <div class="cols">
+      <div>
+        <p style="margin-bottom:1rem;">We are partnering with <strong>Where Is My Land</strong> (whereismyland.com) — an organization that helps Black families research, document, and reclaim land that was taken from them, through genealogical research, records work, advocacy, and legal pathways.</p>
+        <ul>
+          <li><strong>Step 1:</strong> Gather what we know — deeds, tax records, oral history, locations</li>
+          <li><strong>Step 2:</strong> Engage Where Is My Land and fund the <strong>retainer</strong> for the research/claim work</li>
+          <li><strong>Step 3:</strong> Family volunteers support the research (a volunteer questionnaire is ready)</li>
+        </ul>
+      </div>
+      <div class="card accent-card">
+        <h3>How reunion fundraising will be split</h3>
+        <ul>
+          <li>🏡 A share of every fundraiser goes to the <strong>land-back retainer</strong></li>
+          <li>🌱 A share becomes <strong>seed money</strong> for future reunions</li>
+          <li>🎓 A share grows the <strong>scholarship fund</strong> (next slide)</li>
+        </ul>
+        <p style="margin-top:.6rem; font-style:italic;">Exact percentages to be set by member vote today — chair, entertain a motion!</p>
+      </div>
+    </div>
+    <p class="footer-note">If our claim succeeds, recovered land/proceeds would be stewarded by the family foundation (501(c)(3) slides ahead).</p>
+  </section>
+
+  <!-- 17 · SCHOLARSHIPS -->
+  <section class="slide">
+    <div class="kicker">Family Business · Education</div>
+    <h2>The Harris-Nelson Scholarship Fund 🎓</h2>
+    <div class="cols">
+      <div>
+        <p style="margin-bottom:1rem;">A scholarship opportunity for <strong>descendants of our ancestors</strong> — college, trade school, certification programs.</p>
+        <ul>
+          <li><strong>Who:</strong> any descendant enrolled (or enrolling) in an accredited program</li>
+          <li><strong>How:</strong> short application + one-page essay on what family legacy means to you</li>
+          <li><strong>Selection:</strong> Philanthropy &amp; Fundraising Committee reviews; officers ratify; awarded at the reunion banquet</li>
+        </ul>
+      </div>
+      <div class="card red-card">
+        <h3>How we'll fund it</h3>
+        <ul>
+          <li>A set share of all reunion fundraising (vote today)</li>
+          <li>Dedicated fundraisers: raffle, fish fry, walk-a-thon, souvenir sales</li>
+          <li>Online giving on hnfamilyreunion.com — give in honor or in memory of a loved one</li>
+          <li>Tax-deductible once the 501(c)(3) is approved</li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-note">Goal: award our first scholarship(s) at the next reunion. Amounts set by the budget the Treasurer presents.</p>
+  </section>
+
+  <!-- 18 · 501c3 -->
+  <section class="slide">
+    <div class="kicker">Family Business · The Foundation</div>
+    <h2>Starting Our Family Foundation — a 501(c)(3) 🏛️</h2>
+    <p class="lead" style="margin-bottom:1rem;">In the next few months we will form a nonprofit foundation so donations are tax-deductible and our scholarship, land, and legacy work has a permanent legal home.</p>
+    <div class="cols">
+      <div class="card green-card">
+        <h3>The process (next few months)</h3>
+        <ol>
+          <li><strong>Month 1:</strong> Choose the name, elect the founding board, draft bylaws &amp; conflict-of-interest policy</li>
+          <li><strong>Month 1–2:</strong> File Articles of Incorporation with the state; get an EIN (free, IRS.gov)</li>
+          <li><strong>Month 2–3:</strong> File IRS Form 1023-EZ (if eligible — expected under $50k/yr) or full Form 1023</li>
+          <li><strong>Month 3+:</strong> State charity registration, open a bank account, adopt an annual budget</li>
+        </ol>
+      </div>
+      <div class="card accent-card">
+        <h3>Foundation board (to be elected)</h3>
+        <ul>
+          <li>Board Chair · Vice Chair · Board Secretary · Board Treasurer</li>
+          <li>3–5 at-large directors — <strong>one from each generation if we can</strong></li>
+          <li>Officers of the reunion may serve, but the foundation board is its own body with its own votes</li>
+          <li>Board meets quarterly; minutes published to the family</li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-note">Nominations open today — see the Secretary. We'll ratify the founding board by motion and vote under Robert's Rules.</p>
+  </section>
+
+  <!-- 19 · FAMILY TREE PROJECT -->
+  <section class="slide">
+    <div class="kicker">All Weekend Long</div>
+    <h2>The Family Tree Project — Add Yourself! 🌳</h2>
+    <div class="cols">
+      <div>
+        <p style="margin-bottom:1rem;">We have an <strong>Ancestry</strong> family tree already started. Throughout the reunion weekend, add yourself, your children, and your line — then we'll print a <strong>large family tree poster</strong> with everyone on it.</p>
+        <ol>
+          <li>Stop by the <strong>Family Tree table</strong> (or scan the QR code)</li>
+          <li>Fill out the short form — name, birthday, parents, branch, children</li>
+          <li>The Historian (Shone) adds you to the Ancestry tree</li>
+          <li>The poster gets printed and unveiled — and mailed/posted for everyone</li>
+        </ol>
+      </div>
+      <div style="display:grid; gap:1rem;">
+        <div class="card green-card">
+          <h3>Two ways to submit</h3>
+          <p>📱 Online: the <a href="https://docs.google.com/forms/d/1Qiij5SyUJgV2qcYrMzBqY6h9ABc_ihg0OyhuHQWB5MY/edit?usp=forms_home&amp;ouid=105106528531987956128&amp;ths=true">Family Tree Google Form</a> — or the matching form on hnfamilyreunion.com</p>
+          <p style="margin-top:.4rem;">📝 Paper: forms at the Family Tree table all weekend</p>
+        </div>
+        <div style="display:flex; gap:1rem; align-items:center;">
+          <div class="qr-box">[QR code to the family tree form]</div>
+          <p style="font-size:.95rem; color:var(--muted);">Print the QR code on table tents so every table can scan it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 20 · LINKS -->
+  <section class="slide">
+    <div class="kicker">Keep These Handy</div>
+    <h2>All the Links 🔗</h2>
+    <table>
+      <tr><th>What</th><th>Where</th></tr>
+      <tr><td>Family website</td><td>hnfamilyreunion.com <em>(launching soon)</em></td></tr>
+      <tr><td>Family email</td><td>harrisnelsonfamilyreunion@gmail.com</td></tr>
+      <tr><td>Family history trivia</td><td><a href="https://mail.google.com/mail/u/0/?ui=2&amp;ik=4780192b7c&amp;view=lg&amp;permmsgid=msg-f:1870651102193197918">trivia email</a></td></tr>
+      <tr><td>Family yearbook post</td><td><a href="https://x.com/tendin2/status/17914652">x.com/tendin2</a></td></tr>
+      <tr><td>History &amp; yearbook doc</td><td><a href="https://docs.google.com/document/d/1-XkKF4JBdL16uDzvXoB_foBZHAK3n_-f1kWKDvcqh7U/edit?tab=t.0">Google Doc</a></td></tr>
+      <tr><td>Photos &amp; stories album</td><td><a href="https://canva.link/fqxj2trjluu9fl5">Canva album</a></td></tr>
+      <tr><td>Family tree form</td><td><a href="https://docs.google.com/forms/d/1Qiij5SyUJgV2qcYrMzBqY6h9ABc_ihg0OyhuHQWB5MY/edit?usp=forms_home&amp;ouid=105106528531987956128&amp;ths=true">Google Form</a></td></tr>
+      <tr><td>Land-back partner</td><td><a href="https://whereismyland.com">whereismyland.com</a></td></tr>
+    </table>
+  </section>
+
+  <!-- 21 · CLOSING -->
+  <section class="slide title-slide">
+    <div class="tree-mark">🫶🏾</div>
+    <h1>We Are the Harvest<br>of Their Planting</h1>
+    <p class="lead" style="margin:0 auto; margin-top:.6rem;">Sign a form. Chair a committee. Add your branch to the tree.<br>See you at the next reunion — bigger, better, and on our own land.</p>
+    <p style="margin-top:1.8rem; font-family:Verdana,sans-serif; font-size:.85rem; color:var(--muted);">
+      Harris-Nelson Family Reunion · hnfamilyreunion.com · harrisnelsonfamilyreunion@gmail.com
+    </p>
+  </section>
+
+</div>
+
+<div class="nav">
+  <span class="counter" id="counter">1 / 21</span>
+  <button id="prev" aria-label="Previous slide">‹</button>
+  <button id="next" aria-label="Next slide">›</button>
+</div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var i = 0;
+  function show(n){
+    i = Math.max(0, Math.min(slides.length-1, n));
+    slides.forEach(function(s, k){ s.classList.toggle('active', k===i); });
+    document.getElementById('counter').textContent = (i+1)+' / '+slides.length;
+    document.getElementById('progress').style.width = ((i+1)/slides.length*100)+'%';
+    if(location.hash !== '#'+(i+1)) history.replaceState(null,'','#'+(i+1));
+  }
+  document.getElementById('next').onclick = function(){ show(i+1); };
+  document.getElementById('prev').onclick = function(){ show(i-1); };
+  document.addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') show(i+1);
+    else if(e.key==='ArrowLeft'||e.key==='PageUp') show(i-1);
+    else if(e.key==='Home') show(0);
+    else if(e.key==='End') show(slides.length-1);
+    else if(e.key==='p'||e.key==='P') window.print();
+  });
+  var h = parseInt(location.hash.slice(1),10);
+  show(isNaN(h) ? 0 : h-1);
+})();
+</script>
+</body>
+</html>
