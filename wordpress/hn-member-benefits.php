@@ -1,6 +1,11 @@
 <?php
 /**
- * Harris-Nelson — Member Benefits Bridge (WooCommerce dues -> member status)
+ * Plugin Name: Harris-Nelson Member Benefits Bridge
+ * Description: WooCommerce dues purchases (or $25 installments totaling $125) unlock members-only benefits for the current reunion year. Adds a Dues column and a Treasurer manual-paid checkbox in wp-admin.
+ * Version: 1.0.0
+ * Author: Harris-Nelson Family Reunion
+ *
+ * Member Benefits Bridge (WooCommerce dues -> member status)
  *
  * PURPOSE
  *   Ultimate Member handles login. This snippet adds the DUES layer on top:
@@ -17,10 +22,11 @@
  *   A member's dues status is shown ONLY to that member and to admins
  *   (Users list column for the Treasurer). It is never printed publicly.
  *
- * INSTALL
- *   Paste into the free "Code Snippets" plugin (Snippets -> Add New ->
- *   run everywhere), or drop in wp-content/mu-plugins/. The OWNER should
- *   approve/paste this herself — it touches order handling.
+ * INSTALL (either route works — see RUNBOOK-WORDPRESS.md §9)
+ *   A) Code Snippets plugin: Snippets -> Add New -> paste everything BELOW
+ *      the opening <?php line -> run everywhere -> Save & Activate.
+ *   B) Plugin zip: Plugins -> Add New -> Upload Plugin -> hn-member-benefits.zip
+ *      (WordPress only accepts .zip uploads, never a bare .php file).
  *
  * CONFIG — after creating the WooCommerce products (handoff Task I),
  *   fill in the real product IDs below. Zeros are ignored safely.

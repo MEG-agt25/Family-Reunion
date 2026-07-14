@@ -200,7 +200,48 @@ GiveWP free supports one-time gifts of any amount at any frequency the
 giver chooses manually; automatic recurring donations are a paid add-on —
 flag, don't buy.
 
-## 8. Verification checklist
+## 8. Member Benefits Bridge — installing `hn-member-benefits.php`
+This code (in the repo at `wordpress/hn-member-benefits.php`) makes a
+WooCommerce dues purchase — or $125 of $25 installments — automatically
+unlock members-only sections wrapped in `[hn_members]...[/hn_members]`.
+It also adds a "Dues" column on the admin Users list and a Treasurer
+checkbox for members who pay by Zelle / Cash App / cash. A member can see
+only their OWN status (via `[hn_dues_status]` on the account page) —
+never anyone else's.
+
+**Do this AFTER §6 creates the products** (the code needs their IDs).
+
+Route A — Code Snippets plugin (preferred; no file upload involved):
+1. Plugins → Add New → search **"Code Snippets"** (free) → Install →
+   Activate.
+2. Open the file in a browser tab:
+   `github.com/MEG-agt25/Family-Reunion/blob/main/wordpress/hn-member-benefits.php`
+   → click **Raw** → select all → copy.
+3. Snippets → Add New → title `HN Member Benefits Bridge` → paste the code
+   **minus the opening `<?php` line** (Code Snippets supplies its own; a
+   duplicate `<?php` is a syntax error) → scope "Run snippet everywhere" →
+   Save Changes and Activate.
+
+Route B — plugin upload (needs the owner's `hn-member-benefits.zip`):
+1. Plugins → Add New → **Upload Plugin**. WordPress only accepts a `.zip`
+   here — a bare `.php` file will not be accepted by the uploader.
+2. The OWNER clicks "Choose File" and picks `hn-member-benefits.zip` from
+   her computer (only she can drive the browser's file picker) →
+   Install Now → Activate.
+
+Then, on either route:
+4. Edit the code where `hn_mb_map()` lists four entries keyed
+   `0 => ... // TODO real ID`. Replace each `0` with the matching product
+   ID from §6 (Products list — the ID appears in the row/URL). The three
+   dues products keep `'type' => 'dues'`; the $25 installment keeps
+   `'type' => 'installment'`. Save.
+5. Verify with a NON-admin test user: an `[hn_members]` section shows the
+   "pay your dues" prompt → tick the Treasurer "Paid" checkbox on that
+   user's profile → section unlocks → un-tick → locks again.
+6. Privacy rule §0 covers dues data too: never screenshot or record real
+   orders or member payment info while testing.
+
+## 9. Verification checklist
 - [ ] Register a test member → profile requires login to view → the
       registration email (with genealogy fields) arrives at the family inbox
 - [ ] Interactive Family Tree page renders Mildred's branch; "+ add" works
