@@ -99,6 +99,16 @@ whether something identifies a living person: restrict it and ask.
   $125 of $25 installments unlock `[hn_members]` sections; Treasurer gets
   a Dues column + manual-paid checkbox. Its four product IDs are still
   `0 => TODO` until Task I creates the products — see Task L.
+- Task B PARTIAL: page ID 48 "Interactive Family Tree" exists, published
+  WITH the UM logged-in restriction applied (verified: logged-out visitors
+  get only a login redirect — zero family content ever leaked). Known
+  bug: the restriction OVER-blocks — even logged-in members/admins get
+  redirected. Fix (pre-approved): explicitly check ALL logged-in role
+  boxes (Administrator, Subscriber, Customer, member roles) in the page's
+  UM Content Restriction, save, re-verify both directions. Do NOT
+  re-create the page or unpublish it.
+- Site was on PLAIN permalinks as of last check; switching to "Post name"
+  is pre-approved and REQUIRED (see decision log).
 
 **HUMAN-ONLY (ask the owner, never do):** Stripe/PayPal connection, any
 passwords/logins, file selection from her computer, GitHub settings.
