@@ -79,16 +79,29 @@ github.com/MEG-agt25/Family-Reunion/tree/main/wordpress/pages — use the
 
 Delete "Sample Page" and the "Hello world!" post.
 
-## 3. Menus (the dropdown structure)
-Appearance → Editor → Navigation (or Menus). Primary menu:
+## 3. Menus — THREE headings with dropdowns (owner's structure)
+Appearance → Editor → Navigation (or Menus). Site identity first:
+**Settings → General** → Site Title: `Harris-Nelson Family Reunion`,
+Tagline: `Rooted in love. Growing together.` (removes the "Wanderlust"
+placeholder branding). **Settings → Reading** → static front page = Home;
+no posts page. Delete the "Hello world!" post and Sample Page — this is
+not a blog; remove any blog/latest-posts blocks from the theme templates.
 
-- **Home**
-- **Family Tree** → children: *Family Tree Form*, *Interactive Family Tree (members-only — hidden or lock-marked for logged-out visitors)*
-- **Get Involved** → children: *Committees*, *Superlatives*, *Hardship Fund*
-- **Money** → children: *Dues & T-Shirts* , *Give*, *Shop* (WooCommerce)
-- **Our Story** → children: *Our History*, *Photos*, *Features*
-- **Family Business** → children: *Family Business*, *Constitution & Bylaws*
-- **My Account** → Ultimate Member's Account page (shows Login/Register when logged out)
+Primary menu — exactly three top-level headings:
+
+- **Home** (links to the front page) → dropdown:
+  *Features* · *Give* · *Dues & T-Shirts* · *Hardship Fund* ·
+  *Family Business* · *Constitution & Bylaws*
+- **History** (links to Our History) → dropdown:
+  *Photos & Slideshow* · *Family Tree Form* ·
+  *Interactive Family Tree (members-only)* · *Committees*
+- **Account** (links to Ultimate Member's Account page — shows
+  Login/Register when logged out) → dropdown:
+  *Register* · *Login* · *My Profile* · *Members Directory (login-only)* ·
+  *Committee Sign-Up* · *Superlatives Voting*
+
+Keep WooCommerce's Cart/Checkout out of the menu (they're reachable from
+the shop flow); the Shop product page links from Dues & T-Shirts.
 
 ## 4. Ultimate Member — registration = the generalized questionnaire
 UM → Forms → edit the Registration form. Fields (basics required, all
