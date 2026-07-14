@@ -342,15 +342,18 @@ s = slide()
 kicker(s, "Family Business · Governance"); title(s, "How We'll Govern Going Forward \U0001F3DB")
 officers = [("President", "Miesha", "Presides, sets agenda, speaks for the family"),
             ("Vice President", "Aunt Shirley", "Presides in absence; oversees committee chairs"),
-            ("Secretary", "Marcelette", "Minutes, records, correspondence, notices"),
+            ("Secretary", "Marcelette", "Minutes; TAKES ATTENDANCE; records, correspondence & notices"),
             ("Treasurer", "Jasmine", "Holds funds, pays approved expenses, reports"),
             ("Financial Secretary", "Aunt Vanessa", "Records all money in, issues receipts, tracks dues"),
             ("Historian", "Shone", "History, archives, yearbook, family tree"),
-            ("Hospitality", "Loretta", "Welcome, elders' care, tables & ushers"),
-            ("Sergeant-at-Arms", "Joseph", "Order at meetings & events, safety"),
-            ("Membership Chair", "[Open — nominate today!]", "Membership roll & recruitment; matches volunteers to committees")]
-tbl = s.shapes.add_table(len(officers) + 1, 3, Inches(0.8), Inches(1.8),
-                         Inches(11.7), Inches(4.6)).table
+            ("Hospitality Chair", "Loretta", "Leads the COURTESY COMMITTEE: welcome, elders' care, tables & ushers, birthdays & accomplishments"),
+            ("Sergeant-at-Arms", "Joseph", "Keeps order; GUARDS THE DOOR (assisted by the Doorkeeper); safety"),
+            ("Membership Chair", "[Open — vote today]", "Membership roll & recruitment; matches volunteers to committees"),
+            ("Parliamentarian", "[Open — vote today]", "Advises on Robert's Rules; rules on points of order; CHAIRS THE PROTOCOL COMMITTEE"),
+            ("Doorkeeper", "[Open — vote today]", "Assists the Sergeant-at-Arms: door check-in, controls entry during votes, carries messages"),
+            ("Meditation Chair", "[Open — vote today]", "Leads prayers & prayer requests; delivers the condolences report; memorials with Services")]
+tbl = s.shapes.add_table(len(officers) + 1, 3, Inches(0.8), Inches(1.55),
+                         Inches(11.7), Inches(5.3)).table
 tbl.columns[0].width = Inches(2.9); tbl.columns[1].width = Inches(2.4)
 tbl.columns[2].width = Inches(6.4)
 for j, htxt in enumerate(["Office", "Officer", "Core duty"]):
@@ -362,7 +365,7 @@ for i, row in enumerate(officers, 1):
     for j, v in enumerate(row):
         c = tbl.cell(i, j); c.text = v
         f = c.text_frame.paragraphs[0].runs[0].font
-        f.size = Pt(12); f.color.rgb = INK; f.bold = (j == 1)
+        f.size = Pt(10); f.color.rgb = INK; f.bold = (j == 1)
 footer(s, "Our written Constitution & Bylaws (Robert's Rules as parliamentary authority) is ready for adoption at this meeting.")
 
 # ---------------------------------------------------- 16b · RECOGNITION
@@ -378,7 +381,9 @@ bullets(s, 4.85, 1.8, 4.0, [
     "[Add the names of everyone currently serving on a committee — they get recognized here]"],
     head="Our committee members", size=13, head_color=ORANGE)
 bullets(s, 9.0, 1.8, 3.9, [
-    "MEMBERSHIP CHAIR — a new board seat, open for nominations today",
+    "Four new board seats, open for votes today:",
+    "MEMBERSHIP CHAIR — roll & recruitment", "PARLIAMENTARIAN — Robert's Rules + Protocol Committee",
+    "DOORKEEPER — assists the Sergeant-at-Arms", "MEDITATION CHAIR — prayers & condolences report",
     "COMMITTEE MEMBERS — every committee needs 2–5 members to assist its chair; no chair should carry a committee alone"],
     head="We need YOU", size=13, head_color=RED)
 footer(s, "The Membership Chair keeps the family roll, welcomes new members, and matches volunteers to committees. The Secretary is taking nominations right now.")
@@ -409,18 +414,19 @@ kicker(s, "Family Business · Committees")
 title(s, "Committees Need Chairs — That Means YOU \U0001F64B")
 coms = ["\U0001F3C8 Sports / Games", "\U0001F3B6 Music", "\U0001F37D Food",
         "\U0001F9BA Safety", "\U0001F64F Services", "\U0001F4F8 Photography",
-        "\U0001F49D Philanthropy & Fundraising", "\U0001F5D3 Planning", "\U0001F4BB Technology"]
+        "\U0001F49D Philanthropy & Fundraising", "\U0001F5D3 Planning", "\U0001F4BB Technology",
+        "\U0001F490 Courtesy (led by the Hospitality Chair)", "\U0001F4DC Protocol (chaired by the Parliamentarian)"]
 for i, cname in enumerate(coms):
     col, row = i % 3, i // 3
-    x, y = 0.8 + col * 4.1, 1.75 + row * 1.05
+    x, y = 0.8 + col * 4.1, 1.7 + row * 0.85
     text(s, x, y, 3.9, 0.95, [(cname, {"size": 16, "bold": True, "color": GREEN, "space_after": 1}),
                                ("Chair: [sign up] · Members: [sign up]", {"size": 12, "color": MUTED})])
-bullets(s, 0.7, 5.0, 6.2, [
+bullets(s, 0.7, 5.25, 6.2, [
     "Chairs appointed by the President, confirmed by member vote",
     "Meet monthly · report to the Vice President · 3-minute report each meeting",
     "Budget requests in writing to the Treasurer BEFORE spending"],
     head="How committees operate", size=13, h=2.0)
-bullets(s, 7.2, 5.0, 5.4, [
+bullets(s, 7.2, 5.25, 5.4, [
     "Paper sheets at the welcome table (write your name under Chair or Member)",
     "Online: Committee Sign-Up form on hnfamilyreunion.com",
     "Right now: raise your hand when your committee is called"],

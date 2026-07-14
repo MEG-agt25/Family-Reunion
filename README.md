@@ -24,7 +24,7 @@ presentation, the code for **hnfamilyreunion.com**, and the governance /
 | `index.html` | Home — next reunion, registration button, missions |
 | `history.html` | The known family history (from "That Aunt") + the nine branches |
 | `tree.html` | Family Tree Project form (mirrors the Google Form) — feeds the Ancestry tree & printed poster |
-| `committees.html` | All nine committees with **chair/member sign-up** + volunteer questionnaire (adapted from the WIML questionnaire) |
+| `committees.html` | All eleven committees (incl. Courtesy, led by the Hospitality Chair, and Protocol, chaired by the Parliamentarian) with **chair/member sign-up** + volunteer questionnaire (adapted from the WIML questionnaire) |
 | `superlatives.html` | Family superlatives **voting ballot** (awarded at each reunion) |
 | `gallery.html` | Photo gallery + fullscreen auto-playing slideshow of all 123 slides from Reunion 2024 (Cleveland) — "We All We Got… We All We Need!" (photos in `photos/2024/`) |
 | `mildred-tree.html` | **Interactive Mildred Harris branch tree** (1942–2012) built from the Ancestry GEDCOM + written history — "+ add" buttons on every person, weekend additions saved locally and exportable as CSV for the Historian |

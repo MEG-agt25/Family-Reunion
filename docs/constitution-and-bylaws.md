@@ -33,8 +33,9 @@ The purposes of the Organization are to:
 
 ## Article IV — Officers
 The elected officers are: **President, Vice President, Secretary, Treasurer,
-Financial Secretary, Historian, Hospitality Chair, Sergeant-at-Arms, and
-Membership Chair.** Their duties are defined in the Bylaws.
+Financial Secretary, Historian, Hospitality Chair, Sergeant-at-Arms,
+Membership Chair, Parliamentarian, Doorkeeper, and Meditation Chair.**
+Their duties are defined in the Bylaws.
 
 ## Article V — Meetings
 1. The **Annual Business Meeting** is held during the family reunion (or by
@@ -58,9 +59,10 @@ amendment was distributed to the family at least [30] days in advance.
    vote); represents the Organization.
 2. **Vice President** — presides in the President's absence; supervises and
    supports all committee chairs; receives monthly committee reports.
-3. **Secretary** — records and keeps minutes; maintains the roll of members;
-   sends meeting notices at least [14] days ahead; keeps this Constitution &
-   Bylaws current with adopted amendments.
+3. **Secretary** — records and keeps minutes; **takes attendance at every
+   meeting**; maintains the roll of members; sends meeting notices at least
+   [14] days ahead; keeps this Constitution & Bylaws current with adopted
+   amendments.
 4. **Treasurer** — has custody of all funds; pays approved expenses; signs
    with a second authorized officer on amounts over $[500]; presents a
    written financial report at every business meeting.
@@ -69,13 +71,25 @@ amendment was distributed to the family at least [30] days in advance.
    with the Treasurer monthly.
 6. **Historian** — maintains the family history, archives, yearbook, photo
    collections, and the family tree (including the Ancestry tree).
-7. **Hospitality Chair** — leads welcome and comfort at all events; elder
-   care, ushers, and assigned tables; counts superlatives ballots.
+7. **Hospitality Chair** — leads the **Courtesy Committee**: welcome and
+   comfort at all events; elder care, ushers, and assigned tables;
+   **recognition of birthdays and accomplishments**; get-well and condolence
+   cards (with the Meditation Chair); counts superlatives ballots.
 8. **Sergeant-at-Arms** — maintains order at meetings and events under the
-   direction of the chair; supports the Safety Committee.
+   direction of the chair; **guards the door** during business meetings
+   (assisted by the Doorkeeper); supports the Safety Committee.
 9. **Membership Chair** — maintains the membership roll with the Secretary;
    recruits and welcomes new members; matches volunteer sign-ups to
    committees so that every committee has 2–5 members assisting its chair.
+10. **Parliamentarian** — advises the President on Robert's Rules of Order
+    during meetings; rules on points of order; ensures motions, debate, and
+    elections follow proper procedure; **chairs the Protocol Committee**.
+11. **Doorkeeper** — assists the Sergeant-at-Arms: checks members in at the
+    door, controls entry and exit during votes and closed sessions, and
+    delivers messages without disrupting the meeting.
+12. **Meditation Chair** — leads opening and closing prayers; gathers and
+    lifts prayer requests; delivers the **condolences report** at each
+    business meeting; coordinates memorials with the Services Committee.
 
 ## Article 2 — Elections & Terms
 1. Officers are elected at the Annual Business Meeting by majority vote and
@@ -120,7 +134,11 @@ amendment was distributed to the family at least [30] days in advance.
 
 ## Article 5 — Committees
 1. **Standing committees:** Sports/Games; Music; Food; Safety; Services;
-   Photography; Philanthropy & Fundraising; Planning; Technology.
+   Photography; Philanthropy & Fundraising; Planning; Technology;
+   **Courtesy** (led by the Hospitality Chair — welcome, elders' care,
+   birthdays & accomplishments, cards & condolences); and **Protocol**
+   (chaired by the Parliamentarian — meeting procedure, quorum & attendance
+   with the Secretary, elections & ballots).
 2. Chairs are appointed by the President and confirmed by member vote;
    each committee has 2–5 members drawn from volunteer sign-ups.
 3. Committees meet monthly; chairs report to the Vice President and give a
