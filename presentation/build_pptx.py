@@ -141,7 +141,7 @@ text(s, 7.0, 1.8, 5.9, 5.2, [(f"{i+10}.  {t}", {"size": 16, "space_after": 10}) 
 s = slide()
 kicker(s, "July 17–19, 2026 · Cleveland, Ohio"); title(s, "The Weekend at a Glance")
 bullets(s, 0.7, 1.8, 4.0, [
-    "Andrews Osborne Park (in back), 38575 Lakeshore Blvd, Willoughby OH 44094",
+    "Andrews Osborne Park — at the front pavilion, 38575 Lakeshore Blvd, Willoughby OH 44094",
     "Wear any PREVIOUS reunion shirt",
     "Pick up your 2026 shirt & Clay's Park tickets",
     "Courts, pool, playground, disc golf & swings by the lake"],
@@ -151,7 +151,7 @@ bullets(s, 4.85, 1.8, 4.0, [
     "Wear the BEIGE/BURGUNDY 2026 reunion tee",
     "Water & dry activities all day",
     "FAMILY PICTURE 11:30 AM at the pavilion — ALL attendees"],
-    head="SATURDAY 7/18 · 10 AM–3 PM · Family Fun", head_color=ORANGE)
+    head="SATURDAY 7/18 · 11 AM–8 PM · Family Fun", head_color=ORANGE)
 bullets(s, 9.0, 1.8, 3.9, [
     "SiteCenters, 3333 Richmond Rd, Beachwood OH",
     "Wear WHITE top & blue-jean bottom",
