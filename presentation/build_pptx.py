@@ -408,6 +408,27 @@ bullets(s, 7.0, 1.8, 5.6, [
     head="Cheat sheet — what do I say?", size=15, head_color=ORANGE)
 footer(s, "Motion on today's agenda: adopt the Harris-Nelson Constitution & Bylaws — membership, officers & terms, quorum, dues, committees, amendments.")
 
+# ------------------------------------------------- 17b · OPEN CHAIRS
+s = slide()
+kicker(s, "Family Business · Open Seats")
+title(s, "Nine Committee Chairs Still Need a Name Next to Them \U0001F4CB")
+chairs = [
+    ("\U0001F3C8 Sports / Games", "tournaments, kids' games, family Olympics, spades & dominoes brackets"),
+    ("\U0001F3B6 Music", "DJ & playlists, line-dance sets, old-school hour, banquet music"),
+    ("\U0001F37D Food", "caterers, menus, the cookout & potluck, family cookbook"),
+    ("\U0001F9BA Safety", "first aid, headcounts, weather plans — with the Sergeant-at-Arms"),
+    ("\U0001F64F Services", "Sunday worship, memorial tribute, elder care — with the Meditation Chair"),
+    ("\U0001F4F8 Photography", "photographer & videographer, branch portraits, yearbook photos"),
+    ("\U0001F49D Philanthropy & Fundraising", "fundraisers for all three funds; scholarship & hardship review"),
+    ("\U0001F5D3 Planning", "dates, venues, decade planning, budgets, registration"),
+    ("\U0001F4BB Technology", "hnfamilyreunion.com, online payments & shirts, tree tools")]
+for i, (cname, duty) in enumerate(chairs):
+    col, row = i % 3, i // 3
+    x, y = 0.8 + col * 4.1, 1.75 + row * 1.5
+    text(s, x, y, 3.9, 1.4, [(cname + " Chair — OPEN", {"size": 14, "bold": True, "color": ORANGE, "space_after": 1}),
+                              (duty, {"size": 11, "color": MUTED})])
+footer(s, "Courtesy (Loretta) and Protocol (Parliamentarian) are covered. Chairs appointed by the President, confirmed by member vote — raise your hand or check 'I want to chair' on the sign-up form.")
+
 # ------------------------------------------------------------ 18 · COMMITTEES
 s = slide()
 kicker(s, "Family Business · Committees")
