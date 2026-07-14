@@ -16,6 +16,7 @@ presentation, the code for **hnfamilyreunion.com**, and the governance /
 | `docs/roberts-rules-quick-guide.md` | One-page Robert's Rules handout for business meetings. |
 | `docs/501c3-roadmap.md` | Step-by-step checklist to form the family foundation in the next few months. |
 | `data/Latest-Family-Tree.ged` | The Ancestry GEDCOM export (July 2026, 3,465 people) — source of truth for tree dates; keep this updated after each Ancestry sync. |
+| `data/questionnaire-2026.csv` | 2026 Family Questionnaire responses, cleaned for the Historian (payment/receipt/dues columns removed). |
 
 ## The website (`website/`)
 

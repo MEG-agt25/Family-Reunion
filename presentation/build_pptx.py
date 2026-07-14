@@ -257,6 +257,70 @@ text(s, 0.7, 4.95, W - 1.4, 1.8, [
      {"size": 15, "color": MUTED})])
 footer(s, "Edit the [Add name] boxes above with each graduate's name and school. Send accomplishments to harrisnelsonfamilyreunion@gmail.com for the yearbook.")
 
+# ------------------------------------------- 10b · QUESTIONNAIRE SPOTLIGHT
+s = slide()
+kicker(s, "Straight From the Family Questionnaire")
+title(s, "You Talked, We Listened \U0001F4DD")
+bullets(s, 0.7, 1.8, 4.0, [
+    "Miesha — first college degree in her grandmother's family; NuLife Fitness Camp turns 20 (Mar 2026); Juicy Vegan; property owner since 2021",
+    "Lovie — homeowner at 24 (May 2026)",
+    "Denisha — RN for 10 years, NP in progress",
+    "Dennis Jr. — serves special-needs students"],
+    head="\U0001F31F Shine on", size=12)
+bullets(s, 4.85, 1.8, 4.0, [
+    "Nyeri is our resident makeup artist",
+    "Lovie reps us in Cincinnati — and Delta Sigma Theta Sorority, Inc.",
+    "Mary Jane loves to fish",
+    "Miesha researched the census from when Grandma Lela Mae was a baby"],
+    head="\U0001F604 Did you know…", size=12, head_color=ORANGE)
+bullets(s, 9.0, 1.8, 3.9, [
+    "More participants — every branch in the building",
+    "More creative ways to showcase our history",
+    "Skits from the youth",
+    "A destination reunion — 'a 1-hour trip'",
+    "Keep the competitions coming!"],
+    head="\U0001F5F3 What y'all want next", size=12, head_color=RED)
+footer(s, "From the 2026 Family Questionnaire (7 responses so far). Genealogy answers went straight to the Historian for the family tree.")
+
+# ------------------------------------------- 10c · PARTICIPATION STATS
+s = slide()
+kicker(s, "Real Talk · The Numbers")
+title(s, "115 of Us Showed Up. 7 Filled Out the Questionnaire. \U0001F62C")
+for i, (amt, lab, c) in enumerate([("≈115", "Family members at Reunion 2026", GREEN),
+                                   ("7", "Questionnaire responses", ORANGE),
+                                   ("6%", "Our participation rate, family…", RED)]):
+    x = 0.8 + i * 4.15
+    text(s, x, 1.75, 3.9, 1.3, [(amt, {"size": 34, "bold": True, "color": c, "space_after": 2}),
+                                 (lab, {"size": 13, "color": MUTED})])
+TRACK = RGBColor(0xEE, 0xE4, 0xD0)
+def hbar(x, y, label, value_txt, frac, w_lab=2.55, w_bar=2.5, track=False, fill=GREEN_MID):
+    text(s, x, y - 0.04, w_lab, 0.3, label, size=10, color=MUTED, font="Verdana")
+    if track:
+        bg = s.shapes.add_shape(1, Inches(x + w_lab), Inches(y), Inches(w_bar), Inches(0.22))
+        bg.fill.solid(); bg.fill.fore_color.rgb = TRACK; bg.line.fill.background()
+    if frac > 0:
+        fg = s.shapes.add_shape(1, Inches(x + w_lab), Inches(y), Inches(max(0.06, w_bar * frac)), Inches(0.22))
+        fg.fill.solid(); fg.fill.fore_color.rgb = fill; fg.line.fill.background()
+    text(s, x + w_lab + w_bar + 0.08, y - 0.04, 0.9, 0.3, value_txt, size=10, color=INK, bold=True, font="Verdana")
+text(s, 0.8, 2.95, 5.6, 0.3, "Who showed up vs. who spoke up", size=12, bold=True, color=GREEN)
+hbar(0.8, 3.35, "Attended Reunion 2026", "≈115", 1.0)
+hbar(0.8, 3.72, "Serving on the board today", "8", 0.07)
+hbar(0.8, 4.09, "Filled out the questionnaire", "7", 0.06)
+text(s, 7.0, 2.95, 5.6, 0.3, "Seats filled vs. seats we need", size=12, bold=True, color=GREEN)
+hbar(7.0, 3.35, "Board seats", "8/12", 0.67, w_lab=2.3, w_bar=2.3, track=True)
+hbar(7.0, 3.72, "Committee chairs", "1/11", 0.09, w_lab=2.3, w_bar=2.3, track=True)
+hbar(7.0, 4.09, "Committee members", "0/~33", 0.0, w_lab=2.3, w_bar=2.3, track=True)
+bullets(s, 0.7, 4.55, 6.0, [
+    "The yearbook, tree poster, acknowledgments & trivia were ALL built from those 7 responses",
+    "Imagine what we could show with 115 — your history dies untold if you don't tell it"],
+    head="Why it matters", size=12, h=1.9)
+bullets(s, 7.0, 4.55, 5.6, [
+    "Before you leave Sunday: fill out the questionnaire — phone, paper, or grab a grandchild to type",
+    "Join a committee — 9 chairs and every membership seat still open",
+    "Add yourself to the family tree; send photos to the family email"],
+    head="The plea \U0001F64F", size=12, head_color=RED, h=1.9)
+footer(s, "Goal for the next reunion: 100+ questionnaire responses. The Membership Chair (voting today!) will be on all of us about it — lovingly.")
+
 # --------------------------------------------------------- 11 · FAMILY ALBUM
 s = slide()
 kicker(s, "Family Album"); title(s, "Throwbacks & Treasures \U0001F4BE")
@@ -563,7 +627,7 @@ bullets(s, 7.0, 1.8, 5.6, [
     "Its own body with its own votes, separate from reunion officers",
     "Board meets quarterly; minutes published to the family"],
     head="Foundation board (to be elected)", size=15, head_color=ORANGE)
-footer(s, "Nominations open today — see the Secretary. We ratify the founding board by motion and vote.")
+footer(s, "Nominations open today — see the Secretary. Already raised their hands on the questionnaire: Toni Nelson & Dennis Derrick Jr. We ratify the founding board by motion and vote.")
 
 # ----------------------------------------------------------- 24 · FAMILY TREE
 s = slide()
