@@ -271,6 +271,56 @@ Then, on either route:
 - [ ] Give page shows three goal meters
 - [ ] Nothing anywhere shows dues balances, receipts, or payment confirmations
 
+## 10. Harris-Nelson Voting Portal — install & test
+The family's ballot system (repo `wordpress/hn-voting-portal/`):
+ballots are built in wp-admin, members vote via shortcode, the
+Secretary exports CSV results for the minutes. Soft-integrates with the
+Member Benefits Bridge (dues-current eligibility) — no hard dependency.
+
+**Install**
+1. Build the zip (repo, one command): from `wordpress/` run
+   `sh hn-voting-portal/build-zip.sh` → `wordpress/hn-voting-portal.zip`
+   (or the owner uses the zip Claude Code sent her).
+2. The OWNER uploads: Plugins → Add New → Upload Plugin → the zip →
+   Install Now → Activate. (Uploader accepts .zip only; the file picker
+   is owner-only.)
+3. Activation auto-creates the votes table and a DRAFT ballot
+   "Constitution & Bylaws 2026 — Family Ballot" pre-loaded with the 14
+   bracketed decisions from the constitution.
+
+**Configure the first vote**
+4. Ballots → edit the seeded draft → set Opens/Closes datetimes →
+   eligibility "Dues-current members" → keep "voters may revise" ✓ →
+   Publish.
+5. Create a page `family-vote` (behind login like other member pages)
+   containing `[hn_ballot id="<ID>"]` — the ID shows in the Ballots
+   list's Shortcode column. Add it under My Account → Membership
+   Benefits in the menu.
+
+**Test checklist**
+- [ ] Logged out: ballot page asks for login (page restriction) and the
+      shortcode itself also refuses non-eligible visitors
+- [ ] Non-dues member: sees the "voting members are current on dues"
+      prompt with a Pay Dues button (needs Bridge active; if Bridge is
+      off, an admin notice appears on the Ballots screens)
+- [ ] Dues-current member (tick Treasurer Paid checkbox on a test user):
+      sees questions, votes, gets the green thank-you
+- [ ] Same member votes again: with revise ON the form prefills and
+      updates; with revise OFF it politely refuses (server-enforced)
+- [ ] Before open / after close: friendly motto messages, no form
+- [ ] Ballots → Results: counts correct, ties flagged red, write-ins
+      listed admin-only; CSV downloads with one row per ballot cast
+- [ ] "Publish totals" unticked: [hn_ballot_results] says results come
+      after close; ticked + closed: aggregate bars only, write-in text
+      NEVER shown publicly
+- [ ] Duplicate ballot: copies questions/settings, never votes/dates
+- [ ] Delete the test votes/users when done (Results CSV first if the
+      Secretary wants a record)
+
+**Privacy rules (same as everything else):** individual votes are
+admin-eyes only; nothing about who voted or how is ever public; the
+public results shortcode is aggregate-only and opt-in.
+
 ## Rules
 - Profiles and member directory stay behind login. DOB and board-suggestion
   fields are never publicly visible.
