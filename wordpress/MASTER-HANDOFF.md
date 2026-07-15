@@ -138,7 +138,15 @@ questionnaire (form id 6 still default) · Fluent form FIELDS +
 notifications · GiveWP campaigns (blocked) · Dues & T-Shirts page
 buttons not linked to products 59–63 · Task O finish · Design v2 CSS +
 self-hosted fonts (see playbook §5–6) · Home page re-paste (venue fix) ·
-full Task M stress test + cleanup.
+full Task M stress test + cleanup · **Task Q — Voting Portal setup**:
+after the OWNER uploads/activates the hn-voting-portal plugin zip
+(owner-only upload), configure the seeded draft "Constitution & Bylaws
+2026 — Family Ballot" (set open/close dates the owner names, or leave
+draft if she hasn't), create a members-restricted page `family-vote`
+containing its `[hn_ballot id="…"]` shortcode, add "Family Vote" to the
+My Account → Membership Benefits menu group, and run the test checklist
+in RUNBOOK-WORDPRESS.md §10 (dues gate, revise toggle, one-vote
+enforcement, admin Results + CSV, publish-totals privacy).
 
 **RESTRICTION PLAYBOOK (pre-approved; supersedes the role-checkbox fix):**
 1. Install the free **User Switching** plugin (John Blackbourn — the
